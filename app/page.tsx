@@ -44,13 +44,13 @@ const modeLabel = (m: Mode) => {
 const modeDescription = (m: Mode) => {
   switch (m) {
     case 'summarize':
-      return 'Short, punchy overview of what you wrote.';
+      return 'Extract key people, dates, and important points automatically.';
     case 'structure':
-      return 'Turn messy paragraphs into bullet points.';
+      return 'Organize into sections with headers and bullet points.';
     case 'polish':
-      return 'Clean up tone, spacing, and flow.';
+      return 'Fix typos, grammar, and improve readability.';
     case 'tasks':
-      return 'Pull out actionable items and todos.';
+      return 'Extract action items with people and deadlines.';
   }
 };
 
@@ -313,7 +313,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-100 backdrop-blur">
                 <span className="text-violet-200">✏️ SHRP Notes</span>
                 <span className="h-1 w-1 rounded-full bg-violet-300" />
-                <span className="text-violet-100/80">Turn messy notes into sharp docs</span>
+                <span className="text-violet-100/80">NLP-Powered Note Transformation</span>
               </span>
 
               <div className="mt-6">
@@ -322,7 +322,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
-                  <span>Client-side only · Your text never leaves this tab</span>
+                  <span>NLP-powered · 100% local · No data ever leaves your browser</span>
                 </div>
 
                 <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -331,13 +331,10 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     SHRP makes them sharp.
                   </span>
                 </h1>
-                <p className="mt-4 max-w-xl text-sm text-slate-200/80 sm:text-base">
+                <p className="mt-4 text-sm text-slate-200/80 sm:text-base">
                   Paste your messy meeting notes, brain dumps, or half-written drafts.
-                  SHRP Notes restructures them into clean summaries, bullet-point outlines,
-                  polished text, or actionable task lists.
-                </p>
-                <p className="mt-3 max-w-xl text-sm font-medium text-emerald-300/90">
-                  🔒 Runs 100% in your browser. No uploads. No AI. No tracking.
+                  SHRP Notes uses natural language processing to extract key information,
+                  organize content, fix grammar, and identify action items.
                 </p>
               </div>
             </div>

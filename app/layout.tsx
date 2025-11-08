@@ -5,24 +5,34 @@ import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'SHRP Notes – Turn messy notes into sharp docs',
-  description: 'Paste your messy notes and SHRP Notes restructures them into clean summaries, outlines, polished drafts, or actionable task lists — all in your browser.',
+  title: 'SHRP Notes – NLP-Powered Note Transformation',
+  description: 'Transform messy notes into sharp, structured documents with natural language processing. Extract tasks, summarize content, fix grammar, and organize information—all client-side with complete privacy.',
   keywords: [
     // Core functionality
     'note taking app',
-    'text summarizer',
-    'note organizer',
-    'meeting notes',
+    'nlp note organizer',
+    'text transformation tool',
+    'natural language processing notes',
+    'meeting notes organizer',
     'note formatting',
-    'text transformation',
     
     // Specific features
     'summarize notes',
+    'extract action items',
     'structure notes',
     'polish writing',
-    'extract tasks from notes',
+    'grammar checker',
+    'task extraction from text',
     'convert notes to bullet points',
     'meeting minutes organizer',
+    
+    // Privacy & local-first
+    'privacy-focused note app',
+    'local note processing',
+    'offline note app',
+    'client-side nlp',
+    'browser-based text processing',
+    'no cloud note app',
     
     // Use cases
     'productivity tool',
@@ -36,7 +46,7 @@ export const metadata: Metadata = {
     'how to organize meeting notes',
     'best free note taking app',
     'summarize text online',
-    'convert notes to tasks',
+    'extract tasks from notes',
     'clean up messy notes',
     'note taking for students',
     'note taking for professionals',
@@ -51,8 +61,10 @@ export const metadata: Metadata = {
     'quick note taking app',
     'capture meeting action items',
     'automatic note summarizer',
-    'ai note organizer',
+    'nlp text organizer',
     'text cleanup tool',
+    'compromise js',
+    'natural language processing browser',
     
     // Technical
     'local storage notes',
@@ -63,17 +75,17 @@ export const metadata: Metadata = {
   authors: [{ name: 'Digiwares' }],
   creator: 'Digiwares',
   openGraph: {
-    title: 'SHRP Notes – Turn messy notes into sharp docs',
-    description: 'Transform messy brain dumps into clean, structured notes instantly.',
-    url: 'https://shrp.app', // Update with your domain
+    title: 'SHRP Notes – NLP-Powered Note Transformation',
+    description: 'Transform messy brain dumps into clean, structured notes with natural language processing—100% private and local.',
+    url: 'https://shrp.app',
     siteName: 'SHRP Notes',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SHRP Notes – Turn messy notes into sharp docs',
-    description: 'Transform messy brain dumps into clean, structured notes instantly.',
+    title: 'SHRP Notes – NLP-Powered Note Transformation',
+    description: 'Transform messy brain dumps into clean, structured notes with natural language processing—100% private and local.',
     creator: '@digi_wares',
   },
   robots: {
@@ -115,7 +127,7 @@ export default function RootLayout({
               "name": "SHRP Notes",
               "applicationCategory": "ProductivityApplication",
               "operatingSystem": "Web Browser, macOS, Windows, Linux",
-              "description": "Transform messy notes into clean, structured documents instantly. Summarize, organize, polish, and extract tasks from your notes.",
+              "description": "Transform messy notes into clean, structured documents with natural language processing. Extract tasks, summarize content, organize information, and fix grammar—all client-side with complete privacy.",
               "offers": {
                 "@type": "Offer",
                 "price": "0",
@@ -127,13 +139,14 @@ export default function RootLayout({
                 "ratingCount": "127"
               },
               "featureList": [
-                "Summarize long notes into key points",
-                "Structure messy text into organized outlines",
-                "Polish and improve writing quality",
-                "Extract actionable tasks automatically",
+                "NLP-powered text summarization",
+                "Automatic task extraction with people and dates",
+                "Smart content organization and structuring",
+                "Grammar and typo correction",
                 "Voice-to-text note taking",
                 "Export to multiple formats",
-                "Privacy-focused local storage",
+                "100% client-side processing for privacy",
+                "Unlimited local storage",
                 "Free to use"
               ],
               "screenshot": "https://shrp.app/og-image.png",

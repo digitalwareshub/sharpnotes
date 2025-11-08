@@ -36,10 +36,34 @@ export interface ExportOptions {
 
 export interface TransformResult {
   output: string;
-  metadata?: {
-    originalLength: number;
-    transformedLength: number;
-    compressionRatio?: number;
-    tasksFound?: number;
-  };
+  metadata?: TransformMetadata;
+}
+
+export interface TransformMetadata {
+  originalLength: number;
+  transformedLength: number;
+  compressionRatio?: number;
+  tasksFound?: number;
+  entitiesExtracted?: ExtractedEntities;
+}
+
+export interface ExtractedEntities {
+  people?: string[];
+  places?: string[];
+  organizations?: string[];
+  dates?: string[];
+  numbers?: string[];
+  topics?: string[];
+}
+
+export interface Task {
+  task: string;
+  person?: string;
+  date?: string;
+  priority?: 'low' | 'medium' | 'high';
+}
+
+export interface SentenceScore {
+  sentence: string;
+  score: number;
 }
