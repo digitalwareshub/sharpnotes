@@ -64,6 +64,7 @@ export default function Page() {
   const [isHistoryPinned, setIsHistoryPinned] = useState(true); // Desktop: pinned by default
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(true);
   
   console.log('[Page] State - input length:', input.length, 'isProcessing:', isProcessing, 'button disabled:', !input.trim() || isProcessing);
   
@@ -293,11 +294,19 @@ Remember to check in with marketing about the launch campaign and schedule a cal
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900 text-slate-50">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900 text-slate-50' 
+        : 'bg-gradient-to-br from-violet-50 via-purple-50 to-blue-50 text-slate-900'
+    }`}>
       {/* glowing blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-violet-500/30 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-sky-500/30 blur-3xl" />
+        <div className={`absolute -top-24 -left-24 h-64 w-64 rounded-full blur-3xl ${
+          isDarkMode ? 'bg-violet-500/30' : 'bg-violet-300/40'
+        }`} />
+        <div className={`absolute bottom-0 right-0 h-72 w-72 rounded-full blur-3xl ${
+          isDarkMode ? 'bg-sky-500/30' : 'bg-blue-300/40'
+        }`} />
       </div>
 
       {/* Main Content */}
@@ -310,63 +319,96 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         <header className="mb-10">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-100 backdrop-blur">
-                <span className="text-violet-200">✏️ SHRP Notes</span>
-                <span className="h-1 w-1 rounded-full bg-violet-300" />
-                <span className="text-violet-100/80">NLP-Powered Note Transformation</span>
-              </span>
-
-              <div className="mt-6">
-                {/* Privacy Badge */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-300 backdrop-blur-sm mb-4">
+              <div className="mt-0">
+                {/* Combined Badge */}
+                <div className={`inline-flex items-center gap-2 rounded-full border backdrop-blur-sm mb-4 px-4 py-1.5 text-xs font-medium ${
+                  isDarkMode
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                    : 'border-emerald-600/40 bg-emerald-100/70 text-emerald-800'
+                }`}>
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
-                  <span>NLP-powered · 100% local · No data ever leaves your browser</span>
+                  <span>✏️ SHRP Notes · NLP-Powered Note Transformation · 100% local · No data ever leaves your browser</span>
                 </div>
 
-                <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+                <h1 className={`text-balance text-4xl font-semibold tracking-tight sm:text-5xl ${
+                  isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                }`}>
                   Your notes are chaotic.<br />
-                  <span className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-sky-200 bg-clip-text text-transparent">
+                  <span className={`bg-clip-text text-transparent ${
+                    isDarkMode
+                      ? 'bg-gradient-to-r from-violet-200 via-fuchsia-200 to-sky-200'
+                      : 'bg-gradient-to-r from-violet-600 via-purple-600 to-blue-600'
+                  }`}>
                     SHRP makes them sharp.
                   </span>
                 </h1>
-                <p className="mt-4 text-sm text-slate-200/80 sm:text-base">
+                <p className={`mt-4 text-sm sm:text-base ${
+                  isDarkMode ? 'text-slate-200/80' : 'text-slate-700/90'
+                }`}>
                   Paste your messy meeting notes, brain dumps, or half-written drafts.
                   SHRP Notes uses natural language processing to extract key information,
                   organize content, fix grammar, and identify action items.
                 </p>
-              </div>
             </div>
+          </div>
 
+          <div className="flex items-center gap-2">
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium shadow-lg backdrop-blur-sm transition-colors ${
+                isDarkMode
+                  ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                  : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+              }`}
+              title="Toggle theme"
+            >
+              {isDarkMode ? '☀️' : '🌙'}
+            </button>
+            
             {/* History Toggle */}
             <button
               onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-              className="inline-flex items-center gap-2 rounded-full border border-violet-300/60 bg-violet-500/30 px-4 py-2 text-sm font-medium text-violet-50 shadow-lg shadow-violet-900/40 backdrop-blur-sm hover:bg-violet-500/40 lg:hidden"
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium shadow-lg backdrop-blur-sm lg:hidden ${
+                isDarkMode
+                  ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                  : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+              }`}
             >
               📚 History
             </button>
           </div>
-        </header>
-
-        {/* main grid */}
+        </div>
+      </header>        {/* main grid */}
         <section className="grid flex-1 gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           {/* input + controls */}
           <div
             id="notes-input"
-            className="flex flex-col rounded-2xl border border-slate-700/70 bg-slate-900/80 p-4 shadow-xl shadow-slate-950/60 backdrop-blur"
+            className={`flex flex-col rounded-2xl border p-4 shadow-xl backdrop-blur ${
+              isDarkMode
+                ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
+                : 'border-violet-200/60 bg-white/80 shadow-violet-200/40'
+            }`}
           >
             <div className="mb-2 flex items-center justify-between gap-2">
               <div>
-                <h2 className="text-sm font-semibold text-slate-50">Raw notes</h2>
-                <p className="text-xs text-slate-300/70">
+                <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
+                  Raw notes
+                </h2>
+                <p className={`text-xs ${isDarkMode ? 'text-slate-300/70' : 'text-slate-600/70'}`}>
                   Paste anything — meeting minutes, planning notes, or a messy braindump.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={handleSample}
-                className="rounded-full border border-slate-600/80 bg-slate-900/70 px-3 py-1 text-[11px] text-slate-200 hover:bg-slate-800"
+                className={`rounded-full border px-3 py-1 text-[11px] ${
+                  isDarkMode
+                    ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
+                    : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                }`}
               >
                 Fill with sample
               </button>
@@ -374,7 +416,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
 
             <div className="relative flex-1 mb-3 min-h-[280px] sm:min-h-[320px]">
               <textarea
-                className="h-full w-full resize-none rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-3 pr-12 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-violet-400 focus:ring-1 focus:ring-violet-500"
+                className={`h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 ${
+                  isDarkMode
+                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-slate-500 focus:border-violet-400 focus:ring-1 focus:ring-violet-500'
+                    : 'border-violet-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-400'
+                }`}
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
                 value={input + (interimTranscript ? ' ' + interimTranscript : '')}
                 onChange={(e) => {
@@ -427,8 +473,10 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   onClick={() => setMode(m)}
                   className={`rounded-full px-3 py-1 text-[11px] font-medium capitalize transition ${
                     mode === m
-                      ? 'bg-violet-500 text-slate-950 shadow-sm shadow-violet-900/70'
-                      : 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
+                      ? 'bg-violet-500 text-white shadow-sm shadow-violet-900/70'
+                      : isDarkMode
+                        ? 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
+                        : 'border border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
                   }`}
                 >
                   {modeLabel(m)}
@@ -437,13 +485,17 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             </div>
 
             <div className="mt-2 flex items-center justify-between gap-3">
-              <StorageIndicator />
+              <StorageIndicator isDarkMode={isDarkMode} />
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={handleSaveManually}
                   disabled={!input.trim()}
-                  className="rounded-full border border-slate-600/80 px-3 py-1 text-xs text-slate-300 hover:bg-slate-800/80 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    isDarkMode
+                      ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
+                      : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                  }`}
                   title="Cmd/Ctrl + S"
                 >
                   Save
@@ -451,7 +503,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="rounded-full border border-slate-600/80 px-3 py-1 text-xs text-slate-300 hover:bg-slate-800/80"
+                  className={`rounded-full border px-3 py-1 text-xs ${
+                    isDarkMode
+                      ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
+                      : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                  }`}
                   title="Cmd/Ctrl + K"
                 >
                   Clear
@@ -460,7 +516,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   type="button"
                   onClick={handleRun}
                   disabled={!input.trim() || isProcessing}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-violet-500 px-4 py-1.5 text-xs font-medium text-slate-950 shadow-lg shadow-violet-900/50 hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-violet-500 px-4 py-1.5 text-xs font-medium text-white shadow-lg shadow-violet-900/50 hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600"
                   title="Cmd/Ctrl + Enter"
                 >
                   {isProcessing ? (
@@ -479,23 +535,31 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             </div>
 
             {/* Mode Description - Centered below storage */}
-            <p className="mt-2 text-center text-[11px] text-slate-400">
+            <p className={`mt-2 text-center text-[11px] ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               {modeDescription(mode)}
             </p>
           </div>
 
           {/* output */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-1 flex-col rounded-2xl border border-slate-700/70 bg-slate-900/80 p-4 shadow-xl shadow-slate-950/60 backdrop-blur">
+            <div className={`flex flex-1 flex-col rounded-2xl border p-4 shadow-xl backdrop-blur ${
+              isDarkMode
+                ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
+                : 'border-violet-200/60 bg-white/80 shadow-violet-200/40'
+            }`}>
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <h2 className="text-sm font-semibold text-slate-50">
+                  <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
                     {mode === 'summarize' && 'Sharp summary'}
                     {mode === 'structure' && 'Structured outline'}
                     {mode === 'polish' && 'Polished draft'}
                     {mode === 'tasks' && 'Actionable task list'}
                   </h2>
-                  <span className="rounded-full bg-slate-900/80 px-3 py-1 text-[10px] font-medium uppercase tracking-wide text-slate-400">
+                  <span className={`rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wide ${
+                    isDarkMode 
+                      ? 'bg-slate-900/80 text-slate-400' 
+                      : 'bg-violet-100/70 text-violet-700'
+                  }`}>
                     {modeLabel(mode)}
                   </span>
                 </div>
@@ -504,7 +568,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     <button
                       type="button"
                       onClick={handleCopyOutput}
-                      className="rounded-full border border-slate-600/80 bg-slate-900/70 px-3 py-1 text-[11px] text-slate-200 hover:bg-slate-800 flex items-center gap-1.5"
+                      className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
+                        isDarkMode
+                          ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
+                          : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                      }`}
                     >
                       <span>📋</span>
                       <span>Copy</span>
@@ -512,7 +580,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     <button
                       type="button"
                       onClick={() => handleExport('md')}
-                      className="rounded-full border border-slate-600/80 bg-slate-900/70 px-3 py-1 text-[11px] text-slate-200 hover:bg-slate-800"
+                      className={`rounded-full border px-3 py-1 text-[11px] ${
+                        isDarkMode
+                          ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
+                          : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                      }`}
                       title="Cmd/Ctrl + E"
                     >
                       Export
@@ -522,13 +594,21 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               </div>
 
               {output ? (
-                <pre className="mt-1 flex-1 whitespace-pre-wrap rounded-xl bg-slate-950/70 p-3 text-xs leading-relaxed text-slate-100">
+                <pre className={`mt-1 flex-1 whitespace-pre-wrap rounded-xl p-3 text-xs leading-relaxed ${
+                  isDarkMode 
+                    ? 'bg-slate-950/70 text-slate-100' 
+                    : 'bg-violet-50/50 text-slate-900'
+                }`}>
                   {output}
                 </pre>
               ) : (
                 <div className="flex flex-1 flex-col items-center justify-center gap-3 py-8 text-center">
-                  <div className="h-14 w-14 rounded-xl border border-dashed border-slate-600/80 bg-slate-900/60" />
-                  <p className="max-w-xs text-xs text-slate-300/80">
+                  <div className={`h-14 w-14 rounded-xl border border-dashed ${
+                    isDarkMode 
+                      ? 'border-slate-600/80 bg-slate-900/60' 
+                      : 'border-violet-300/60 bg-violet-50/50'
+                  }`} />
+                  <p className={`max-w-xs text-xs ${isDarkMode ? 'text-slate-300/80' : 'text-slate-600/80'}`}>
                     Your transformed notes will show up here. Paste something on the left,
                     pick a mode, and hit &ldquo;Make it sharp&rdquo;.
                   </p>
@@ -536,20 +616,26 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               )}
             </div>
 
-            <div className="rounded-2xl border border-slate-700/70 bg-slate-900/80 p-4 text-[11px] text-slate-300/80 shadow-xl shadow-slate-950/60 backdrop-blur">
-              <p className="mb-1 font-semibold text-slate-100">⌨️ Keyboard Shortcuts</p>
+            <div className={`rounded-2xl border p-4 text-[11px] shadow-xl backdrop-blur ${
+              isDarkMode
+                ? 'border-slate-700/70 bg-slate-900/80 text-slate-300/80 shadow-slate-950/60'
+                : 'border-violet-200/60 bg-white/80 text-slate-600/80 shadow-violet-200/40'
+            }`}>
+              <p className={`mb-1 font-semibold ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>
+                ⌨️ Keyboard Shortcuts
+              </p>
               <div className="space-y-1 text-[10px]">
-                <p><kbd className="px-1 py-0.5 bg-slate-800 rounded">Cmd/Ctrl+Enter</kbd> Transform</p>
-                <p><kbd className="px-1 py-0.5 bg-slate-800 rounded">Cmd/Ctrl+S</kbd> Save</p>
-                <p><kbd className="px-1 py-0.5 bg-slate-800 rounded">Cmd/Ctrl+E</kbd> Export</p>
-                <p><kbd className="px-1 py-0.5 bg-slate-800 rounded">Cmd/Ctrl+K</kbd> Clear</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+Enter</kbd> Transform</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+S</kbd> Save</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+E</kbd> Export</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+K</kbd> Clear</p>
               </div>
             </div>
           </div>
         </section>
 
-        <footer className="mt-8 text-center text-xs text-slate-400 space-y-2">
-          <p className="text-slate-500">
+        <footer className={`mt-8 text-center text-xs space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+          <p className={isDarkMode ? 'text-slate-500' : 'text-slate-600'}>
             Built for builders, writers, and overthinkers. SHRP Notes stores everything locally — unlimited & private.
           </p>
           <div className="flex items-center justify-center gap-4 text-[11px]">
@@ -557,29 +643,35 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               href="https://github.com/digitalwareshub/sharpnotes" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-violet-400 transition-colors"
+              className={`transition-colors ${
+                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+              }`}
             >
               ⭐ Star on GitHub
             </a>
-            <span className="text-slate-600">•</span>
+            <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>•</span>
             <a 
               href="https://x.com/digi_wares" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-violet-400 transition-colors"
+              className={`transition-colors ${
+                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+              }`}
             >
               🐦 Follow Updates
             </a>
-            <span className="text-slate-600">•</span>
+            <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>•</span>
             <button
               onClick={() => setIsFeedbackOpen(true)}
-              className="text-slate-400 hover:text-violet-400 transition-colors"
+              className={`transition-colors ${
+                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+              }`}
             >
               ✉️ Feedback
             </button>
           </div>
-          <p className="text-[10px] text-slate-600">
-            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">Digiwares</a> • Open Source (MIT License)
+          <p className={`text-[10px] ${isDarkMode ? 'text-slate-600' : 'text-slate-500'}`}>
+            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-violet-400 hover:underline' : 'text-violet-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
           </p>
         </footer>
       </main>
@@ -599,6 +691,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         onClose={() => setIsHistoryOpen(false)}
         isPinned={isHistoryPinned}
         onTogglePin={() => setIsHistoryPinned(!isHistoryPinned)}
+        isDarkMode={isDarkMode}
       />
 
       {/* Feedback Modal */}

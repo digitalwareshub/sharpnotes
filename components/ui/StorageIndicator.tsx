@@ -5,7 +5,7 @@ import { getStorageInfo } from '../../lib/storage/localStorage';
 import { formatFileSize } from '../../lib/export';
 import { StorageInfo } from '../../types';
 
-export function StorageIndicator() {
+export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }) {
   const [storageInfo, setStorageInfo] = useState<StorageInfo | null>(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function StorageIndicator() {
   const isFull = percentage >= 95;
 
   return (
-    <div className={`text-xs ${isNearFull ? 'text-yellow-400' : 'text-slate-500'}`}>
+    <div className={`text-xs ${isNearFull ? 'text-yellow-400' : isDarkMode ? 'text-slate-500' : 'text-slate-600'}`}>
       <div className="flex items-center gap-2">
         {isFull && <span className="text-red-400">🔴</span>}
         {isNearFull && !isFull && <span>⚠️</span>}

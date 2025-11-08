@@ -19,6 +19,7 @@ interface NoteHistoryProps {
   onClose: () => void;
   isPinned?: boolean;
   onTogglePin?: () => void;
+  isDarkMode?: boolean;
 }
 
 export function NoteHistory({
@@ -35,6 +36,7 @@ export function NoteHistory({
   onClose,
   isPinned = true,
   onTogglePin,
+  isDarkMode = true,
 }: NoteHistoryProps) {
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
 
@@ -77,7 +79,11 @@ export function NoteHistory({
 
       {/* Sidebar - collapsible on desktop, toggle on mobile */}
       <aside
-        className={`fixed top-0 right-0 h-screen bg-slate-900/95 border-l border-slate-700/70 backdrop-blur-xl z-50 flex flex-col transition-all duration-300 ${
+        className={`fixed top-0 right-0 h-screen backdrop-blur-xl z-50 flex flex-col transition-all duration-300 border-l ${
+          isDarkMode 
+            ? 'bg-slate-900/95 border-slate-700/70' 
+            : 'bg-white/95 border-violet-200/60'
+        } ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } lg:translate-x-0 ${isPinned ? 'w-80' : 'w-12'}`}
       >
@@ -85,7 +91,11 @@ export function NoteHistory({
         {!isPinned && (
           <button
             onClick={onTogglePin}
-            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full bg-slate-900/95 border border-slate-700/70 border-r-0 rounded-l-lg p-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800/95"
+            className={`hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full border border-r-0 rounded-l-lg p-2 hover:opacity-80 ${
+              isDarkMode
+                ? 'bg-slate-900/95 border-slate-700/70 text-slate-400 hover:text-slate-200 hover:bg-slate-800/95'
+                : 'bg-white/95 border-violet-200/60 text-violet-600 hover:text-violet-900 hover:bg-violet-50/95'
+            }`}
             aria-label="Expand history"
           >
             <span className="text-sm">«</span>
@@ -97,7 +107,9 @@ export function NoteHistory({
           <div className="hidden lg:flex flex-col items-center justify-center h-full gap-4">
             <button
               onClick={onTogglePin}
-              className="writing-mode-vertical text-slate-400 hover:text-slate-200 text-sm font-medium tracking-wider"
+              className={`writing-mode-vertical text-sm font-medium tracking-wider ${
+                isDarkMode ? 'text-slate-400 hover:text-slate-200' : 'text-violet-600 hover:text-violet-900'
+              }`}
               style={{ writingMode: 'vertical-rl' }}
             >
               HISTORY
@@ -108,14 +120,20 @@ export function NoteHistory({
         {/* Expanded content */}
         <div className={`flex-1 flex flex-col overflow-hidden ${!isPinned ? 'hidden lg:hidden' : ''}`}>
         {/* Header */}
-        <div className="p-4 border-b border-slate-700/70 flex-shrink-0">
+        <div className={`p-4 border-b flex-shrink-0 ${
+          isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'
+        }`}>
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-slate-50">Note History</h2>
+            <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>Note History</h2>
             <div className="flex items-center gap-1">
               {/* Pin button - Desktop only */}
               <button
                 onClick={onTogglePin}
-                className="hidden lg:block rounded-full p-1.5 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                className={`hidden lg:block rounded-full p-1.5 ${
+                  isDarkMode 
+                    ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' 
+                    : 'text-violet-600 hover:bg-violet-100 hover:text-violet-900'
+                }`}
                 aria-label={isPinned ? 'Unpin history' : 'Pin history'}
                 title={isPinned ? 'Collapse sidebar' : 'Pin sidebar'}
               >
@@ -124,7 +142,11 @@ export function NoteHistory({
               {/* Close button - Mobile only */}
               <button
                 onClick={onClose}
-                className="lg:hidden rounded-full p-1.5 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                className={`lg:hidden rounded-full p-1.5 ${
+                  isDarkMode 
+                    ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' 
+                    : 'text-violet-600 hover:bg-violet-100 hover:text-violet-900'
+                }`}
                 aria-label="Close history"
               >
                 ✕
@@ -138,39 +160,47 @@ export function NoteHistory({
             placeholder="Search notes..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500"
+            className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-violet-500 ${
+              isDarkMode
+                ? 'bg-slate-950/80 border-slate-700 text-slate-50 placeholder:text-slate-500 focus:border-violet-500'
+                : 'bg-white border-violet-200 text-slate-900 placeholder:text-slate-400 focus:border-violet-500'
+            }`}
           />
         </div>
 
         {/* Notes List */}
         <div className="flex-1 overflow-y-auto">
           {isLoading ? (
-            <div className="p-4 text-center text-slate-400 text-sm">
+            <div className={`p-4 text-center text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               Loading notes...
             </div>
           ) : notes.length === 0 ? (
             <div className="p-4 text-center">
-              <div className="text-slate-400 text-sm mb-2">
+              <div className={`text-sm mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 {searchQuery ? 'No notes found' : 'No notes yet'}
               </div>
               {!searchQuery && (
-                <p className="text-xs text-slate-500">
+                <p className={`text-xs ${isDarkMode ? 'text-slate-500' : 'text-slate-500'}`}>
                   Your notes will appear here as you create them
                 </p>
               )}
             </div>
           ) : (
-            <div className="divide-y divide-slate-800">
+            <div className={`divide-y ${isDarkMode ? 'divide-slate-800' : 'divide-violet-100'}`}>
               {notes.map((note) => (
                 <div
                   key={note.id}
                   onClick={() => onSelectNote(note)}
-                  className={`p-3 cursor-pointer transition-colors hover:bg-slate-800/50 ${
-                    selectedNoteId === note.id ? 'bg-violet-500/10' : ''
+                  className={`p-3 cursor-pointer transition-colors ${
+                    selectedNoteId === note.id 
+                      ? isDarkMode ? 'bg-violet-500/10' : 'bg-violet-100/50'
+                      : isDarkMode ? 'hover:bg-slate-800/50' : 'hover:bg-violet-50/50'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="text-sm font-medium text-slate-100 line-clamp-1 flex-1">
+                    <h3 className={`text-sm font-medium line-clamp-1 flex-1 ${
+                      isDarkMode ? 'text-slate-100' : 'text-slate-900'
+                    }`}>
                       {note.isPinned && <span className="mr-1">📌</span>}
                       {note.title}
                     </h3>
