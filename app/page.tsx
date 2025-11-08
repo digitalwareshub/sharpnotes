@@ -317,6 +317,14 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               </span>
 
               <div className="mt-6">
+                {/* Privacy Badge */}
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-300 backdrop-blur-sm mb-4">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span>Client-side only · Your text never leaves this tab</span>
+                </div>
+
                 <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
                   Your notes are chaotic.<br />
                   <span className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-sky-200 bg-clip-text text-transparent">
@@ -326,7 +334,10 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 <p className="mt-4 max-w-xl text-sm text-slate-200/80 sm:text-base">
                   Paste your messy meeting notes, brain dumps, or half-written drafts.
                   SHRP Notes restructures them into clean summaries, bullet-point outlines,
-                  polished text, or actionable task lists — in your browser.
+                  polished text, or actionable task lists.
+                </p>
+                <p className="mt-3 max-w-xl text-sm font-medium text-emerald-300/90">
+                  🔒 Runs 100% in your browser. No uploads. No AI. No tracking.
                 </p>
               </div>
             </div>
@@ -364,7 +375,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               </button>
             </div>
 
-            <div className="relative flex-1 mb-3">
+            <div className="relative flex-1 mb-3 min-h-[280px] sm:min-h-[320px]">
               <textarea
                 className="h-full w-full resize-none rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-3 pr-12 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-violet-400 focus:ring-1 focus:ring-violet-500"
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}

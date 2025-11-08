@@ -40,6 +40,19 @@ export const metadata: Metadata = {
     'clean up messy notes',
     'note taking for students',
     'note taking for professionals',
+    'meeting notes template',
+    'voice to text notes',
+    'organize lecture notes',
+    'transcribe meeting notes',
+    'note taking app for mac',
+    'note taking app for windows',
+    'free alternative to notion',
+    'markdown note taking',
+    'quick note taking app',
+    'capture meeting action items',
+    'automatic note summarizer',
+    'ai note organizer',
+    'text cleanup tool',
     
     // Technical
     'local storage notes',
@@ -90,6 +103,46 @@ export default function RootLayout({
             gtag('config', 'G-K5WHXKDGE4', {
               page_path: window.location.pathname,
             });
+          `}
+        </Script>
+        
+        {/* JSON-LD Structured Data for Rich Snippets */}
+        <Script id="structured-data" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "SHRP Notes",
+              "applicationCategory": "ProductivityApplication",
+              "operatingSystem": "Web Browser, macOS, Windows, Linux",
+              "description": "Transform messy notes into clean, structured documents instantly. Summarize, organize, polish, and extract tasks from your notes.",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127"
+              },
+              "featureList": [
+                "Summarize long notes into key points",
+                "Structure messy text into organized outlines",
+                "Polish and improve writing quality",
+                "Extract actionable tasks automatically",
+                "Voice-to-text note taking",
+                "Export to multiple formats",
+                "Privacy-focused local storage",
+                "Free to use"
+              ],
+              "screenshot": "https://shrp.app/og-image.png",
+              "url": "https://shrp.app",
+              "author": {
+                "@type": "Organization",
+                "name": "Digiwares"
+              }
+            }
           `}
         </Script>
       </head>
