@@ -163,26 +163,36 @@ export default function Page() {
     }
     setIsProcessing(true);
     setTimeout(() => {
-      const result = transform(input, mode);
-      setOutput(result.output);
-      setIsProcessing(false);
-      
-      // Track transformation
-      const wordCount = input.split(/\s+/).filter(Boolean).length;
-      trackNoteTransform(mode, wordCount);
-      
-      // Show metadata if available
-      if (result.metadata) {
-        if (result.metadata.tasksFound !== undefined) {
-          toast.success(`Found ${result.metadata.tasksFound} task(s)`);
-        } else if (result.metadata.compressionRatio) {
-          const ratio = result.metadata.compressionRatio.toFixed(1);
-          toast.success(`Compressed by ${ratio}x`);
+      try {
+        const result = transform(input, mode);
+        setOutput(result.output);
+        setIsProcessing(false);
+        
+        // Track transformation
+        const wordCount = input.split(/\s+/).filter(Boolean).length;
+        trackNoteTransform(mode, wordCount);
+        
+        // Show metadata if available
+        if (result.metadata) {
+          if (result.metadata.tasksFound !== undefined) {
+            toast.success(`Found ${result.metadata.tasksFound} task(s)`);
+          } else if (result.metadata.compressionRatio) {
+            const ratio = result.metadata.compressionRatio.toFixed(1);
+            toast.success(`Compressed by ${ratio}x`);
+          } else {
+            toast.success('Notes transformed successfully!');
+          }
         } else {
           toast.success('Notes transformed successfully!');
         }
-      } else {
-        toast.success('Notes transformed successfully!');
+      } catch (error) {
+        console.error('Transform error:', error);
+        setIsProcessing(false);
+        toast.error(
+          error instanceof Error 
+            ? `Transformation failed: ${error.message}` 
+            : 'An unexpected error occurred. Please try again.'
+        );
       }
     }, 200);
   };
@@ -197,10 +207,15 @@ Remember to check in with marketing about the launch campaign and schedule a cal
   };
 
   const handleCopyOutput = async () => {
-    const success = await copyToClipboard(output);
-    if (success) {
-      trackCopyToClipboard();
-      // Toast handled in copyToClipboard
+    try {
+      const success = await copyToClipboard(output);
+      if (success) {
+        trackCopyToClipboard();
+        // Toast handled in copyToClipboard
+      }
+    } catch (error) {
+      console.error('Copy error:', error);
+      toast.error('Failed to copy to clipboard. Please try again.');
     }
   };
 
@@ -217,35 +232,45 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       return;
     }
 
-    const note: Note = {
-      // Always keep the same ID if we have a currentNote (update mode)
-      id: currentNote?.id || `note-${Date.now()}`,
-      title: generateTitle(input),
-      input,
-      output: output || input, // Use input as output if not transformed yet
-      mode,
-      createdAt: currentNote?.createdAt || Date.now(),
-      updatedAt: Date.now(),
-      wordCount: input.split(/\s+/).filter(Boolean).length,
-      isFavorite: currentNote?.isFavorite || false,
-    };
+    try {
+      const note: Note = {
+        // Always keep the same ID if we have a currentNote (update mode)
+        id: currentNote?.id || `note-${Date.now()}`,
+        title: generateTitle(input),
+        input,
+        output: output || input, // Use input as output if not transformed yet
+        mode,
+        createdAt: currentNote?.createdAt || Date.now(),
+        updatedAt: Date.now(),
+        wordCount: input.split(/\s+/).filter(Boolean).length,
+        isFavorite: currentNote?.isFavorite || false,
+      };
 
-    console.log('Attempting to save note:', note);
-    const saved = saveNote(note);
-    console.log('Save result:', saved);
-    
-    // Debug: Check localStorage after save
-    const storedNotes = localStorage.getItem('shrp_notes');
-    console.log('Notes in localStorage after save:', storedNotes ? JSON.parse(storedNotes).length : 0);
-    
-    if (saved) {
-      setCurrentNote(note);
-      trackNoteSave(false); // Manual save
-      toast.success(currentNote ? 'Note updated!' : 'Note saved!');
-      console.log('Calling refreshHistory...');
-      refreshHistory();
-    } else {
-      console.error('Failed to save note');
+      console.log('Attempting to save note:', note);
+      const saved = saveNote(note);
+      console.log('Save result:', saved);
+      
+      // Debug: Check localStorage after save
+      const storedNotes = localStorage.getItem('shrp_notes');
+      console.log('Notes in localStorage after save:', storedNotes ? JSON.parse(storedNotes).length : 0);
+      
+      if (saved) {
+        setCurrentNote(note);
+        trackNoteSave(false); // Manual save
+        toast.success(currentNote ? 'Note updated!' : 'Note saved!');
+        console.log('Calling refreshHistory...');
+        refreshHistory();
+      } else {
+        console.error('Failed to save note');
+        toast.error('Failed to save note. Please try again.');
+      }
+    } catch (error) {
+      console.error('Save error:', error);
+      toast.error(
+        error instanceof Error
+          ? `Save failed: ${error.message}`
+          : 'An unexpected error occurred while saving. Please try again.'
+      );
     }
   };
 
@@ -255,25 +280,35 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       return;
     }
 
-    const note: Note = currentNote || {
-      id: `note-${Date.now()}`,
-      title: generateTitle(input),
-      input,
-      output,
-      mode,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      wordCount: input.split(/\s+/).filter(Boolean).length,
-      isFavorite: false,
-    };
+    try {
+      const note: Note = currentNote || {
+        id: `note-${Date.now()}`,
+        title: generateTitle(input),
+        input,
+        output,
+        mode,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        wordCount: input.split(/\s+/).filter(Boolean).length,
+        isFavorite: false,
+      };
 
-    if (format === 'md') {
-      exportNoteAsMarkdown(note);
-    } else {
-      exportNoteAsTxt(note);
+      if (format === 'md') {
+        exportNoteAsMarkdown(note);
+      } else {
+        exportNoteAsTxt(note);
+      }
+      
+      trackNoteExport(format);
+      toast.success(`Exported as ${format.toUpperCase()}`);
+    } catch (error) {
+      console.error('Export error:', error);
+      toast.error(
+        error instanceof Error
+          ? `Export failed: ${error.message}`
+          : 'An unexpected error occurred during export. Please try again.'
+      );
     }
-    
-    trackNoteExport(format);
   };
 
   const handleSelectNote = (note: Note) => {
