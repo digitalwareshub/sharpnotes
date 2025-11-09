@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Note, Mode } from '../../types';
-import { formatFileSize } from '../../lib/export';
+import type { Note, Mode } from '../../types';
 import { ConfirmModal } from '../ui/ConfirmModal';
 
 interface NoteHistoryProps {
@@ -62,9 +61,9 @@ export function NoteHistory({
       return `${Math.floor(diffInHours)}h ago`;
     } else if (diffInHours < 48) {
       return 'Yesterday';
-    } else {
+    } 
       return date.toLocaleDateString();
-    }
+    
   };
 
   return (

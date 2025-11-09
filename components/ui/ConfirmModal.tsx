@@ -21,7 +21,7 @@ export function ConfirmModal({
   cancelText = 'Cancel',
   isDangerous = false,
 }: ConfirmModalProps) {
-  if (!isOpen) return null;
+  if (!isOpen) {return null;}
 
   const handleConfirm = () => {
     onConfirm();

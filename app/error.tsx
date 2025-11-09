@@ -38,7 +38,7 @@ export default function Error({
         </h2>
         
         <p className="text-slate-300 mb-6">
-          We encountered an unexpected error. Don't worry, your notes are safe in your browser's local storage.
+          We encountered an unexpected error. Don&apos;t worry, your notes are safe in your browser&apos;s local storage.
         </p>
         
         <div className="space-y-3">

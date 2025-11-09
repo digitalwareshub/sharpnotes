@@ -41,7 +41,7 @@ export default function NotFound() {
             Looking for our PDF extraction or OCR service?
           </p>
           <p className="text-slate-400 text-sm mb-4">
-            We've evolved! <span className="text-purple-400 font-semibold">SHRP Notes</span> is our 
+            We&apos;ve evolved! <span className="text-purple-400 font-semibold">SHRP Notes</span> is our 
             new privacy-first note transformation tool that helps you organize meeting notes, extract 
             tasks, and structure information—all locally in your browser.
           </p>

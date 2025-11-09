@@ -1,9 +1,7 @@
 import nlp from 'compromise';
-// @ts-ignore - compromise plugins don't export proper types
 import dates from 'compromise-dates';
-// @ts-ignore - compromise plugins don't export proper types
 import numbers from 'compromise-numbers';
-import { TransformResult } from '../../types';
+import type { TransformResult } from '../../types';
 
 // Extend compromise with plugins
 nlp.extend(dates);
@@ -29,10 +27,8 @@ export function summarizeText(text: string): TransformResult {
   const people = doc.people().out('array') as string[];
   const places = doc.places().out('array') as string[];
   const organizations = doc.organizations().out('array') as string[];
-  const topics = doc.topics().out('array') as string[];
-  // @ts-ignore - dates plugin method
+  // @ts-expect-error - dates() added by compromise-dates plugin
   const extractedDates = doc.dates().out('array') as string[];
-  // @ts-ignore - numbers plugin method
   const extractedNumbers = doc.numbers().out('array') as string[];
   
   // Get all sentences
@@ -44,24 +40,24 @@ export function summarizeText(text: string): TransformResult {
     let score = 0;
     
     // Higher score for sentences with people
-    if (sentDoc.people().length > 0) score += 3;
+    if (sentDoc.people().length > 0) {score += 3;}
     
     // Higher score for sentences with dates
-    // @ts-ignore - dates plugin method
-    if (sentDoc.dates().length > 0) score += 2;
+    // @ts-expect-error - dates() added by compromise-dates plugin
+    if (sentDoc.dates().length > 0) {score += 2;}
     
     // Higher score for sentences with numbers
-    if (sentDoc.numbers().length > 0) score += 2;
+    if (sentDoc.numbers().length > 0) {score += 2;}
     
     // Higher score for sentences with topics
-    if (sentDoc.topics().length > 0) score += 2;
+    if (sentDoc.topics().length > 0) {score += 2;}
     
     // Higher score for questions (often important)
-    if (sentence.includes('?')) score += 3;
+    if (sentence.includes('?')) {score += 3;}
     
     // Higher score for sentences with important keywords
     const important = ['important', 'critical', 'urgent', 'key', 'must', 'need'];
-    if (important.some(word => sentence.toLowerCase().includes(word))) score += 3;
+    if (important.some(word => sentence.toLowerCase().includes(word))) {score += 3;}
     
     // Higher score for first and last sentences (often contain key info)
     if (sentence === sentences[0] || sentence === sentences[sentences.length - 1]) {
@@ -69,7 +65,7 @@ export function summarizeText(text: string): TransformResult {
     }
     
     // Lower score for very short sentences (likely incomplete thoughts)
-    if (sentence.split(/\s+/).length < 5) score -= 1;
+    if (sentence.split(/\s+/).length < 5) {score -= 1;}
     
     return { sentence, score };
   });

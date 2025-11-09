@@ -1,5 +1,5 @@
 import nlp from 'compromise';
-import { TransformResult } from '../../types';
+import type { TransformResult } from '../../types';
 
 export function polishText(text: string): TransformResult {
   if (!text.trim()) {
@@ -118,6 +118,7 @@ export function polishText(text: string): TransformResult {
   
   // Capitalize first word of each sentence
   const sentences = doc.sentences();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sentences.forEach((sentence: any) => {
     const text = sentence.out('text');
     if (text.length > 0) {
@@ -136,7 +137,7 @@ export function polishText(text: string): TransformResult {
     let sentence = sentenceArray[i]?.trim();
     const punct = sentenceArray[i + 1] || '';
     
-    if (!sentence) continue;
+    if (!sentence) {continue;}
     
     // If sentence doesn't end with punctuation, add period
     if (!sentence.match(/[.!?]$/) && punct === '') {
@@ -165,6 +166,7 @@ export function polishText(text: string): TransformResult {
   const finalDoc = nlp(polished);
   
   // Capitalize people names
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   finalDoc.people().forEach((person: any) => {
     const name = person.out('text');
     const capitalized = name
@@ -175,6 +177,7 @@ export function polishText(text: string): TransformResult {
   });
   
   // Capitalize places
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   finalDoc.places().forEach((place: any) => {
     const name = place.out('text');
     const capitalized = name

@@ -1,5 +1,5 @@
 import nlp from 'compromise';
-import { TransformResult } from '../../types';
+import type { TransformResult } from '../../types';
 
 export function structureText(text: string): TransformResult {
   const doc = nlp(text);
@@ -37,12 +37,12 @@ export function structureText(text: string): TransformResult {
   const sections: { [key: string]: string[] } = {};
   let hasFoundHeaders = false;
   
-  sentences.forEach((sentence, index) => {
+  sentences.forEach((sentence) => {
     const sentDoc = nlp(sentence);
     const trimmed = sentence.trim();
     
     // Skip empty sentences
-    if (!trimmed) return;
+    if (!trimmed) {return;}
     
     // Detect headers/topics (potential section breaks)
     const isQuestion = trimmed.endsWith('?');
@@ -104,7 +104,7 @@ export function structureText(text: string): TransformResult {
     
     // Build output from smart groups
     Object.entries(grouped).forEach(([topic, items]) => {
-      if (items.length === 0) return;
+      if (items.length === 0) {return;}
       
       structured.push(`## ${topic}\n`);
       items.forEach(item => {
@@ -115,7 +115,7 @@ export function structureText(text: string): TransformResult {
   } else {
     // Build output from detected sections
     Object.entries(sections).forEach(([header, items]) => {
-      if (items.length === 0) return;
+      if (items.length === 0) {return;}
       
       // Format header
       structured.push(`## ${header}\n`);

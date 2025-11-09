@@ -84,9 +84,9 @@ export function getAllBlogPosts(): BlogPost[] {
     return allPostsData.sort((a, b) => {
       if (a.date < b.date) {
         return 1;
-      } else {
+      } 
         return -1;
-      }
+      
     });
   } catch (error) {
     console.error('Error getting all blog posts:', error);

@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Mode, Note } from '../types';
+import type { Mode, Note } from '../types';
 import { transform } from '../lib/transformers';
 import { saveNote } from '../lib/storage/localStorage';
 import { exportNoteAsMarkdown, exportNoteAsTxt, copyToClipboard } from '../lib/export';
@@ -65,8 +65,6 @@ export default function Page() {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(true);
-  
-  console.log('[Page] State - input length:', input.length, 'isProcessing:', isProcessing, 'button disabled:', !input.trim() || isProcessing);
   
   const {
     notes,
@@ -140,8 +138,6 @@ export default function Page() {
   // Speech recognition
   const { isListening, isSupported, startListening, stopListening } = useSpeechRecognition({
     onTranscript: (transcript, isFinal) => {
-      console.log('Transcript:', transcript, 'isFinal:', isFinal);
-      
       if (isFinal) {
         // Final result: append to actual input
         setInput((prev) => {
@@ -246,19 +242,12 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         isFavorite: currentNote?.isFavorite || false,
       };
 
-      console.log('Attempting to save note:', note);
       const saved = saveNote(note);
-      console.log('Save result:', saved);
-      
-      // Debug: Check localStorage after save
-      const storedNotes = localStorage.getItem('shrp_notes');
-      console.log('Notes in localStorage after save:', storedNotes ? JSON.parse(storedNotes).length : 0);
       
       if (saved) {
         setCurrentNote(note);
         trackNoteSave(false); // Manual save
         toast.success(currentNote ? 'Note updated!' : 'Note saved!');
-        console.log('Calling refreshHistory...');
         refreshHistory();
       } else {
         console.error('Failed to save note');
@@ -457,9 +446,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     : 'border-violet-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-400'
                 }`}
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
-                value={input + (interimTranscript ? ' ' + interimTranscript : '')}
+                value={input + (interimTranscript ? ` ${  interimTranscript}` : '')}
                 onChange={(e) => {
-                  console.log('[Input] Text changed:', e.target.value.substring(0, 50));
                   setInput(e.target.value);
                   setInterimTranscript(''); // Clear interim when user types
                 }}

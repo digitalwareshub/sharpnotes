@@ -1,7 +1,6 @@
 import nlp from 'compromise';
-// @ts-ignore - compromise plugins don't export proper types
 import dates from 'compromise-dates';
-import { TransformResult } from '../../types';
+import type { TransformResult } from '../../types';
 
 // Extend compromise with dates plugin
 nlp.extend(dates);
@@ -27,6 +26,7 @@ export function extractTasks(text: string): TransformResult {
   // Get all sentences
   const sentences = doc.sentences();
   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sentences.forEach((sentence: any) => {
     const sentText = sentence.out('text');
     const sentDoc = nlp(sentText);
@@ -52,7 +52,7 @@ export function extractTasks(text: string): TransformResult {
       const people = sentDoc.people().out('array') as string[];
       
       // Extract dates/times
-      // @ts-ignore - dates plugin method
+      // @ts-expect-error - dates() added by compromise-dates plugin
       const extractedDates = sentDoc.dates().out('array') as string[];
       
       // Clean up task text - remove task indicators

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { getStorageInfo } from '../../lib/storage/localStorage';
 import { formatFileSize } from '../../lib/export';
-import { StorageInfo } from '../../types';
+import type { StorageInfo } from '../../types';
 
 export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }) {
   const [storageInfo, setStorageInfo] = useState<StorageInfo | null>(null);
@@ -21,9 +21,9 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
     setStorageInfo(info);
   };
 
-  if (!storageInfo) return null;
+  if (!storageInfo) {return null;}
 
-  const { used, total, notesCount, percentage } = storageInfo;
+  const { used, total, percentage } = storageInfo;
   const isNearFull = percentage >= 80;
   const isFull = percentage >= 95;
 

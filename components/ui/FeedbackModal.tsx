@@ -80,7 +80,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {return null;}
 
   return (
     <>
@@ -124,7 +124,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               </h3>
               <p className="text-sm text-slate-400">
                 We appreciate you taking the time to help us improve SHRP Notes.
-                Your feedback has been received and we'll review it shortly.
+                Your feedback has been received and we&apos;ll review it shortly.
               </p>
             </div>
           ) : (

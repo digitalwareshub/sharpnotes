@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { Note, UserPreferences, StorageInfo } from '../../types';
+import type { Note, UserPreferences, StorageInfo } from '../../types';
 
 const NOTES_KEY = 'shrp_notes';
 const PREFERENCES_KEY = 'shrp_preferences';
@@ -14,7 +14,7 @@ const ESTIMATED_QUOTA = 5 * 1024 * 1024; // 5MB conservative estimate
 export function getAllNotes(): Note[] {
   try {
     const data = localStorage.getItem(NOTES_KEY);
-    if (!data) return [];
+    if (!data) {return [];}
     
     const parsed = JSON.parse(data);
     return Array.isArray(parsed) ? parsed : [];
@@ -52,10 +52,10 @@ export function saveNote(note: Note): boolean {
     localStorage.setItem(NOTES_KEY, serialized);
     
     return true;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to save note:', error);
     
-    if (error.name === 'QuotaExceededError') {
+    if (error instanceof Error && error.name === 'QuotaExceededError') {
       toast.error('Storage full! Please delete old notes.', {
         duration: 5000,
         icon: '💾',
@@ -324,7 +324,7 @@ export function importNotesFromJSON(jsonString: string): boolean {
  * Search notes by text
  */
 export function searchNotes(query: string): Note[] {
-  if (!query.trim()) return getAllNotes();
+  if (!query.trim()) {return getAllNotes();}
   
   const notes = getAllNotes();
   const lowerQuery = query.toLowerCase();

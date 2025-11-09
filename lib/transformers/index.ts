@@ -1,4 +1,4 @@
-import { Mode, TransformResult } from '../../types';
+import type { Mode, TransformResult } from '../../types';
 import { summarizeText } from './summarize';
 import { structureText } from './structure';
 import { polishText } from './polish';

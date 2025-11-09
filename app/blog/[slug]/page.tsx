@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getBlogPost, getAllBlogPosts } from '../../../lib/blog';
 
@@ -181,6 +181,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="mt-12 p-6 bg-slate-900/50 border border-slate-800/50 rounded-xl">
           <div className="flex gap-4">
             <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/kam.JPG" 
                 alt={post.author}

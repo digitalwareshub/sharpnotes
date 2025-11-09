@@ -37,7 +37,7 @@ export default function BlogError({
         </h2>
         
         <p className="text-slate-300 mb-6">
-          We couldn't load this blog post. It might have been moved or deleted.
+          We couldn&apos;t load this blog post. It might have been moved or deleted.
         </p>
         
         <div className="space-y-3">

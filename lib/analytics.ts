@@ -1,14 +1,24 @@
 // Analytics helper for tracking user events
 
+// Google Analytics gtag function type
+interface GtagFunction {
+  (command: 'event', eventName: string, eventParams?: Record<string, string | number | boolean>): void;
+  (command: 'config', targetId: string, config?: Record<string, string | number | boolean>): void;
+}
+
+interface WindowWithGtag extends Window {
+  gtag?: GtagFunction;
+}
+
 /**
  * Track custom events in Google Analytics
  */
 export const trackEvent = (
   eventName: string,
-  eventParams?: Record<string, any>
+  eventParams?: Record<string, string | number | boolean>
 ) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', eventName, eventParams);
+  if (typeof window !== 'undefined' && (window as WindowWithGtag).gtag) {
+    (window as WindowWithGtag).gtag?.('event', eventName, eventParams);
   }
 };
 
@@ -106,8 +116,8 @@ export const trackError = (errorType: string, errorMessage: string) => {
  * Track page view (for SPA navigation)
  */
 export const trackPageView = (url: string) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('config', 'G-K5WHXKDGE4', {
+  if (typeof window !== 'undefined' && (window as WindowWithGtag).gtag) {
+    (window as WindowWithGtag).gtag?.('config', 'G-K5WHXKDGE4', {
       page_path: url,
     });
   }

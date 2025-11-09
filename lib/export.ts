@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { Note, ExportOptions } from '../types';
+import type { Note, ExportOptions } from '../types';
 
 /**
  * Download a file with error handling
@@ -132,9 +132,9 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     if (successful) {
       toast.success('Copied to clipboard!');
       return true;
-    } else {
+    } 
       throw new Error('Copy command failed');
-    }
+    
   } catch (error) {
     console.error('Failed to copy:', error);
     toast.error('Failed to copy. Please try manually.');
@@ -157,7 +157,7 @@ function sanitizeFilename(filename: string): string {
  * Get file size in human-readable format
  */
 export function formatFileSize(bytes: number): string {
-  if (bytes === 0) return '0 B';
+  if (bytes === 0) {return '0 B';}
   
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
