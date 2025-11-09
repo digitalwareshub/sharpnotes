@@ -180,8 +180,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Author Bio */}
         <div className="mt-12 p-6 bg-slate-900/50 border border-slate-800/50 rounded-xl">
           <div className="flex gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-violet-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-2xl">👨‍💻</span>
+            <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
+              <img 
+                src="/kam.JPG" 
+                alt={post.author}
+                className="w-full h-full object-cover pointer-events-none select-none"
+                draggable="false"
+              />
             </div>
             <div>
               <h3 className="text-lg font-semibold text-slate-50 mb-1">

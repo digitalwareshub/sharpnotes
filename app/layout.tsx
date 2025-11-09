@@ -7,6 +7,17 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   title: 'SHRP Notes – NLP-Powered Note Transformation',
   description: 'Transform messy notes into sharp, structured documents with natural language processing. Extract tasks, summarize content, fix grammar, and organize information—all client-side with complete privacy.',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   keywords: [
     // Core functionality
     'note taking app',
