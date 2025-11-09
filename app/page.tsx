@@ -651,6 +651,17 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             </a>
             <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>•</span>
             <a 
+              href="/blog" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`transition-colors ${
+                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+              }`}
+            >
+              📝 Blog
+            </a>
+            <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>•</span>
+            <a 
               href="https://x.com/digi_wares" 
               target="_blank" 
               rel="noopener noreferrer"
