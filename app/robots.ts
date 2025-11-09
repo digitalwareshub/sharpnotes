@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://shrp.app/sitemap.xml',
+    host: 'https://shrp.app',
   };
 }
