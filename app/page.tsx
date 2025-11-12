@@ -1476,6 +1476,7 @@ export default function LandingPage() {
               <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 <li><Link href="/privacy" className="hover:text-violet-300 transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-violet-300 transition-colors">Terms of Service</Link></li>
+                <li><Link href="/report" className="hover:text-violet-300 transition-colors">Report Bug/Feature</Link></li>
                 <li><a href="https://github.com/digitalwareshub/sharpnotes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-violet-300 transition-colors">Open Source (MIT)</a></li>
               </ul>
             </div>
