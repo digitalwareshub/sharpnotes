@@ -379,7 +379,7 @@ export default function LandingPage() {
 
             {/* Trust Signals */}
             <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              No signup required • No credit card • No installation • Works in browser
+              No signup required • No credit card • No installation • Works in browser • Open Source
             </p>
           </div>
         </div>
