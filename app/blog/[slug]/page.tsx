@@ -1,49 +1,107 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getBlogPost, getAllBlogPosts } from '../../../lib/blog';
+'use client';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import Script from 'next/script';
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+  author: string;
+  content: string;
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
-  
-  if (!post) {
-    return {
-      title: 'Blog Post Not Found',
-    };
+interface RelatedPost {
+  slug: string;
+  title: string;
+  description: string;
+}
+
+export default function BlogPost() {
+  const params = useParams();
+  const slug = params.slug as string;
+  // Initialize from localStorage immediately to prevent flash
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme === 'dark' || (!savedTheme && true);
+    }
+    return true;
+  });
+  const [blogPost, setBlogPost] = useState<BlogPost | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<RelatedPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Toggle theme and save to localStorage
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', newTheme);
+    document.documentElement.style.colorScheme = newTheme ? 'dark' : 'light';
+  };
+
+  // Load blog post
+  useEffect(() => {
+    async function loadPost() {
+      try {
+        const response = await fetch(`/api/blog/${slug}`);
+        if (!response.ok) {
+          throw new Error('Failed to load post');
+        }
+        const data = await response.json();
+        setBlogPost(data);
+        
+        // Load all posts for related posts
+        const allPostsResponse = await fetch('/api/blog');
+        const allPosts = await allPostsResponse.json();
+        const related = allPosts
+          .filter((p: BlogPost) => p.slug !== slug)
+          .slice(0, 2);
+        setRelatedPosts(related);
+      } catch (error) {
+        console.error('Failed to load blog post:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadPost();
+  }, [slug]);
+
+  if (isLoading) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
+          : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+      }`}>
+        <div className="text-violet-400 text-lg">Loading...</div>
+      </div>
+    );
   }
 
-  return {
-    title: `${post.title} | SHRP Notes Blog`,
-    description: post.description,
-    keywords: post.tags.join(', '),
-    authors: [{ name: post.author }],
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-      creator: '@digi_wares',
-    },
-  };
-}
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug);
-
-  if (!post) {
-    notFound();
+  if (!blogPost) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
+          : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+      }`}>
+        <div className="text-center">
+          <h1 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
+            Post not found
+          </h1>
+          <Link href="/blog" className="text-violet-400 hover:text-violet-300">
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   const formatDate = (dateString: string) => {
@@ -55,31 +113,118 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     });
   };
 
-  // Get related posts
-  const allPosts = getAllBlogPosts();
-  const relatedPosts = allPosts
-    .filter(p => p.slug !== params.slug)
-    .slice(0, 2);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900">
+    <div className={`min-h-screen ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
+        : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+    }`}>
+      {/* Breadcrumb Schema */}
+      {blogPost && (
+        <Script id="breadcrumb-schema" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://shrp.app"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://shrp.app/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": blogPost.title,
+                "item": `https://shrp.app/blog/${slug}`
+              }
+            ]
+          })}
+        </Script>
+      )}
+      
       {/* Header */}
-      <header className="border-b border-slate-800/50 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className={`border-b backdrop-blur-sm sticky top-0 z-10 ${
+        isDarkMode 
+          ? 'border-slate-800/50 bg-slate-900/50' 
+          : 'border-violet-200/50 bg-white/50'
+      }`}>
         <div className="max-w-4xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <Link 
-              href="/blog"
-              className="text-violet-400 hover:text-violet-300 transition-colors flex items-center gap-2 text-sm"
-            >
-              <span>←</span>
-              <span>All Posts</span>
-            </Link>
-            <Link 
-              href="/"
-              className="text-slate-400 hover:text-slate-300 transition-colors text-sm"
-            >
-              Try SHRP Notes
-            </Link>
+            {/* Breadcrumb Navigation */}
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
+              <Link 
+                href="/"
+                className={`hover:text-violet-400 transition-colors ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}
+              >
+                Home
+              </Link>
+              <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>/</span>
+              <Link 
+                href="/blog"
+                className={`hover:text-violet-400 transition-colors ${
+                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}
+              >
+                Blog
+              </Link>
+              <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>/</span>
+              <span className={`${isDarkMode ? 'text-slate-300' : 'text-slate-900'}`}>
+                {blogPost?.title.substring(0, 30)}{blogPost?.title && blogPost.title.length > 30 ? '...' : ''}
+              </span>
+            </nav>
+            <div className="flex items-center gap-3">
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
+                  isDarkMode
+                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                    : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                }`}
+                title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                aria-label="Toggle theme"
+              >
+                {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
+                <svg 
+                  className="w-5 h-5" 
+                  fill={isDarkMode ? "none" : "currentColor"} 
+                  stroke="currentColor" 
+                  strokeWidth={isDarkMode ? "2" : "1.5"}
+                  viewBox="0 0 24 24"
+                >
+                  {/* Bulb shape */}
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    opacity={isDarkMode ? "0.4" : "1"}
+                  />
+                  {/* Bulb base */}
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    d="M9 17v1a2 2 0 002 2h2a2 2 0 002-2v-1"
+                  />
+                </svg>
+              </button>
+              <Link 
+                href="/webapp"
+                className={`transition-colors text-sm ${
+                  isDarkMode ? 'text-slate-400 hover:text-slate-300' : 'text-slate-600 hover:text-slate-800'
+                }`}
+              >
+                Try SHRP Notes
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -88,29 +233,37 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="max-w-3xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Meta */}
         <div className="flex items-center gap-3 mb-6 text-sm">
-          <time className="text-slate-400">{formatDate(post.date)}</time>
-          <span className="text-slate-700">•</span>
-          <span className="text-slate-400">{post.readTime}</span>
-          <span className="text-slate-700">•</span>
-          <span className="text-slate-400">By {post.author}</span>
+          <time className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>{formatDate(blogPost.date)}</time>
+          <span className={isDarkMode ? 'text-slate-700' : 'text-slate-400'}>•</span>
+          <span className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>{blogPost.readTime}</span>
+          <span className={isDarkMode ? 'text-slate-700' : 'text-slate-400'}>•</span>
+          <span className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>By {blogPost.author}</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl font-bold text-slate-50 mb-6 leading-tight">
-          {post.title}
+        <h1 className={`text-4xl sm:text-5xl font-bold mb-6 leading-tight ${
+          isDarkMode ? 'text-slate-50' : 'text-slate-900'
+        }`}>
+          {blogPost.title}
         </h1>
 
         {/* Description */}
-        <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-          {post.description}
+        <p className={`text-xl mb-8 leading-relaxed ${
+          isDarkMode ? 'text-slate-300' : 'text-slate-700'
+        }`}>
+          {blogPost.description}
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-12">
-          {post.tags.map((tag: string) => (
+          {blogPost.tags.map((tag: string) => (
             <span 
               key={tag}
-              className="px-3 py-1 text-xs rounded-full bg-slate-800/50 text-slate-400 border border-slate-700/50"
+              className={`px-3 py-1 text-xs rounded-full border ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 text-slate-400 border-slate-700/50' 
+                  : 'bg-violet-100/50 text-violet-600 border-violet-200/50'
+              }`}
             >
               #{tag}
             </span>
@@ -119,35 +272,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Content */}
         <div 
-          className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-slate-50 prose-headings:font-semibold
-            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-slate-800 prose-h2:pb-3
-            prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-            prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
-            prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300 hover:prose-a:underline
-            prose-strong:text-slate-200 prose-strong:font-semibold
-            prose-code:text-violet-300 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
-            prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800
-            prose-ul:text-slate-300 prose-ul:my-6
-            prose-ol:text-slate-300 prose-ol:my-6
-            prose-li:my-2
-            prose-blockquote:border-l-violet-500 prose-blockquote:text-slate-400 prose-blockquote:italic
-            prose-img:rounded-xl prose-img:shadow-lg
-            prose-hr:border-slate-800 prose-hr:my-12
-            prose-table:text-slate-300"
-          dangerouslySetInnerHTML={{ __html: post.content || '' }}
+          className={`prose prose-lg max-w-none ${
+            isDarkMode 
+              ? `prose-invert
+                prose-headings:text-slate-50 prose-headings:font-semibold
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-slate-800 prose-h2:pb-3
+                prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
+                prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300 hover:prose-a:underline
+                prose-strong:text-slate-200 prose-strong:font-semibold
+                prose-code:text-violet-300 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
+                prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800
+                prose-ul:text-slate-300 prose-ul:my-6
+                prose-ol:text-slate-300 prose-ol:my-6
+                prose-li:my-2
+                prose-blockquote:border-l-violet-500 prose-blockquote:text-slate-400 prose-blockquote:italic
+                prose-img:rounded-xl prose-img:shadow-lg
+                prose-hr:border-slate-800 prose-hr:my-12
+                prose-table:text-slate-300`
+              : `prose-headings:text-slate-900 prose-headings:font-semibold
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-violet-200 prose-h2:pb-3
+                prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6
+                prose-a:text-violet-600 prose-a:no-underline hover:prose-a:text-violet-500 hover:prose-a:underline
+                prose-strong:text-slate-800 prose-strong:font-semibold
+                prose-code:text-violet-600 prose-code:bg-violet-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
+                prose-pre:bg-slate-100 prose-pre:border prose-pre:border-violet-200
+                prose-ul:text-slate-700 prose-ul:my-6
+                prose-ol:text-slate-700 prose-ol:my-6
+                prose-li:my-2
+                prose-blockquote:border-l-violet-500 prose-blockquote:text-slate-600 prose-blockquote:italic
+                prose-img:rounded-xl prose-img:shadow-lg
+                prose-hr:border-violet-200 prose-hr:my-12
+                prose-table:text-slate-700`
+          }`}
+          dangerouslySetInnerHTML={{ __html: blogPost.content || '' }}
         />
 
         {/* CTA Box */}
-        <div className="bg-gradient-to-r from-violet-900/30 to-blue-900/30 border border-violet-500/30 rounded-xl p-6 my-12">
-          <h3 className="text-xl font-semibold text-slate-50 mb-3">
+        <div className={`border rounded-xl p-6 my-12 ${
+          isDarkMode 
+            ? 'bg-gradient-to-r from-violet-900/30 to-blue-900/30 border-violet-500/30' 
+            : 'bg-gradient-to-r from-violet-100/50 to-blue-100/50 border-violet-300/30'
+        }`}>
+          <h3 className={`text-xl font-semibold mb-3 ${
+            isDarkMode ? 'text-slate-50' : 'text-slate-900'
+          }`}>
             Ready to organize your notes?
           </h3>
-          <p className="text-slate-300 mb-4">
+          <p className={`mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             Try SHRP Notes free - no signup required. Transform messy meeting notes in seconds.
           </p>
           <Link 
-            href="/"
+            href="/webapp"
             className="inline-block px-6 py-3 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors font-medium"
           >
             Try SHRP Notes Free →
@@ -155,22 +332,32 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Share */}
-        <div className="mt-12 pt-8 border-t border-slate-800/50">
-          <p className="text-slate-400 mb-4">Share this article:</p>
+        <div className={`mt-12 pt-8 border-t ${
+          isDarkMode ? 'border-slate-800/50' : 'border-violet-200/50'
+        }`}>
+          <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Share this article:</p>
           <div className="flex gap-3">
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://shrp.app/blog/${params.slug}`)}&via=digi_wares`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogPost.title)}&url=${encodeURIComponent(`https://shrp.app/blog/${slug}`)}&via=digi_wares`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors text-sm"
+              className={`px-4 py-2 rounded-lg transition-colors text-sm ${
+                isDarkMode 
+                  ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' 
+                  : 'bg-violet-100 text-slate-700 hover:bg-violet-200'
+              }`}
             >
               Share on Twitter
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://shrp.app/blog/${params.slug}`)}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://shrp.app/blog/${slug}`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors text-sm"
+              className={`px-4 py-2 rounded-lg transition-colors text-sm ${
+                isDarkMode 
+                  ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' 
+                  : 'bg-violet-100 text-slate-700 hover:bg-violet-200'
+              }`}
             >
               Share on LinkedIn
             </a>
@@ -178,22 +365,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Author Bio */}
-        <div className="mt-12 p-6 bg-slate-900/50 border border-slate-800/50 rounded-xl">
+        <div className={`mt-12 p-6 border rounded-xl ${
+          isDarkMode 
+            ? 'bg-slate-900/50 border-slate-800/50' 
+            : 'bg-white/50 border-violet-200/50'
+        }`}>
           <div className="flex gap-4">
             <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/kam.JPG" 
-                alt={post.author}
+                alt={blogPost.author}
                 className="w-full h-full object-cover pointer-events-none select-none"
                 draggable="false"
               />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-50 mb-1">
-                {post.author}
+              <h3 className={`text-lg font-semibold mb-1 ${
+                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+              }`}>
+                {blogPost.author}
               </h3>
-              <p className="text-slate-400 text-sm mb-3">
+              <p className={`text-sm mb-3 ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+              }`}>
                 Founder of Digiwares, creator of SHRP Notes. Building privacy-first productivity tools.
               </p>
               <a 
@@ -211,7 +406,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <div className="mt-16">
-            <h3 className="text-2xl font-semibold text-slate-50 mb-6">
+            <h3 className={`text-2xl font-semibold mb-6 ${
+              isDarkMode ? 'text-slate-50' : 'text-slate-900'
+            }`}>
               Related Articles
             </h3>
             <div className="grid gap-6">
@@ -219,12 +416,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link 
                   key={relatedPost.slug}
                   href={`/blog/${relatedPost.slug}`}
-                  className="p-6 bg-slate-900/50 border border-slate-800/50 rounded-xl hover:border-violet-500/50 transition-colors group"
+                  className={`p-6 border rounded-xl transition-colors group ${
+                    isDarkMode 
+                      ? 'bg-slate-900/50 border-slate-800/50 hover:border-violet-500/50' 
+                      : 'bg-white/50 border-violet-200/50 hover:border-violet-400/50'
+                  }`}
                 >
-                  <h4 className="text-lg font-semibold text-slate-50 mb-2 group-hover:text-violet-300">
+                  <h4 className={`text-lg font-semibold mb-2 ${
+                    isDarkMode 
+                      ? 'text-slate-50 group-hover:text-violet-300' 
+                      : 'text-slate-900 group-hover:text-violet-600'
+                  }`}>
                     {relatedPost.title} →
                   </h4>
-                  <p className="text-slate-400 text-sm">
+                  <p className={`text-sm ${
+                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  }`}>
                     {relatedPost.description}
                   </p>
                 </Link>
@@ -235,10 +442,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/50 mt-16">
+      <footer className={`border-t mt-16 ${
+        isDarkMode ? 'border-slate-800/50' : 'border-violet-200/50'
+      }`}>
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          <div className="text-center text-slate-500 text-sm">
-            <p className="mb-2">
+          <div className="text-center text-sm">
+            <p className={`mb-2 ${isDarkMode ? 'text-slate-500' : 'text-slate-600'}`}>
               Made with ❤️ by{' '}
               <a 
                 href="https://digiwares.xyz" 
@@ -249,7 +458,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Digiwares
               </a>
             </p>
-            <div className="flex items-center justify-center gap-4 text-xs">
+            <div className={`flex items-center justify-center gap-4 text-xs ${
+              isDarkMode ? 'text-slate-500' : 'text-slate-600'
+            }`}>
               <Link href="/" className="hover:text-violet-400 transition-colors">
                 Home
               </Link>

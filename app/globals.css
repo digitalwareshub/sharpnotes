@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Responsive spacing system - fluid scaling */
+  --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 1vw, 0.75rem);
+  --space-md: clamp(0.75rem, 1.5vw, 1rem);
+  --space-lg: clamp(1rem, 2vw, 1.5rem);
+  --space-xl: clamp(1.5rem, 3vw, 2rem);
+  --space-2xl: clamp(2rem, 4vw, 3rem);
+  --space-3xl: clamp(3rem, 6vw, 4rem);
+  --space-4xl: clamp(4rem, 8vw, 6rem);
+  --space-5xl: clamp(6rem, 10vw, 8rem);
+  
+  /* Fluid typography */
+  --text-xs: clamp(0.75rem, 0.875vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 1vw, 1rem);
+  --text-base: clamp(1rem, 1.125vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.25vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 2vw, 1.875rem);
+  --text-3xl: clamp(1.875rem, 2.5vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 3vw, 3rem);
+  --text-5xl: clamp(3rem, 4vw, 3.75rem);
+  --text-6xl: clamp(3.75rem, 5vw, 4.5rem);
+  --text-7xl: clamp(4.5rem, 6vw, 6rem);
+}
+
+/* Faster animations for snappier feel (Tickk-inspired) */
+* {
+  transition-duration: 200ms !important;
+}
+
 html, body {
   height: 100%;
 }

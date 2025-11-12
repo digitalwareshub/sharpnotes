@@ -26,10 +26,8 @@ export function middleware(request: NextRequest) {
     '/faq': '/blog',
     '/signup': '/',
     
-    // Old legal pages → we don't have these yet, redirect to homepage
-    '/terms': '/',
-    '/privacy': '/',
-    '/data-privacy': '/',
+    // Old legal pages → we have these now, no redirects needed
+    '/data-privacy': '/privacy',
     '/security': '/blog/privacy-cost-of-cloud-note-apps',
     
     // Old API endpoints → redirect to homepage

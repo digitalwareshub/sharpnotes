@@ -1,15 +1,5 @@
 // Analytics helper for tracking user events
 
-// Google Analytics gtag function type
-interface GtagFunction {
-  (command: 'event', eventName: string, eventParams?: Record<string, string | number | boolean>): void;
-  (command: 'config', targetId: string, config?: Record<string, string | number | boolean>): void;
-}
-
-interface WindowWithGtag extends Window {
-  gtag?: GtagFunction;
-}
-
 /**
  * Track custom events in Google Analytics
  */
@@ -17,8 +7,13 @@ export const trackEvent = (
   eventName: string,
   eventParams?: Record<string, string | number | boolean>
 ) => {
-  if (typeof window !== 'undefined' && (window as WindowWithGtag).gtag) {
-    (window as WindowWithGtag).gtag?.('event', eventName, eventParams);
+  if (typeof window !== 'undefined' && (window as {gtag?: (...args: unknown[]) => void}).gtag) {
+    const gtag = (window as unknown as {gtag: (...args: unknown[]) => void}).gtag;
+    if (eventParams) {
+      gtag('event', eventName, eventParams);
+    } else {
+      gtag('event', eventName);
+    }
   }
 };
 
@@ -36,7 +31,7 @@ export const trackNoteTransform = (mode: string, wordCount: number) => {
 /**
  * Track note export
  */
-export const trackNoteExport = (format: 'txt' | 'md' | 'json') => {
+export const trackNoteExport = (format: 'txt' | 'md' | 'json' | 'zip' | 'docx') => {
   trackEvent('note_export', {
     format,
     category: 'engagement',
@@ -116,8 +111,9 @@ export const trackError = (errorType: string, errorMessage: string) => {
  * Track page view (for SPA navigation)
  */
 export const trackPageView = (url: string) => {
-  if (typeof window !== 'undefined' && (window as WindowWithGtag).gtag) {
-    (window as WindowWithGtag).gtag?.('config', 'G-K5WHXKDGE4', {
+  if (typeof window !== 'undefined' && (window as {gtag?: (...args: unknown[]) => void}).gtag) {
+    const gtag = (window as unknown as {gtag: (...args: unknown[]) => void}).gtag;
+    gtag('config', 'G-K5WHXKDGE4', {
       page_path: url,
     });
   }
