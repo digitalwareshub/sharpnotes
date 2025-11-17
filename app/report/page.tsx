@@ -9,9 +9,9 @@ export default function ReportPage() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && true);
+      return savedTheme === 'dark' || (!savedTheme && false);
     }
-    return true;
+    return false;
   });
 
   const [formData, setFormData] = useState({

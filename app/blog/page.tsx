@@ -18,9 +18,9 @@ export default function BlogPage() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && true);
+      return savedTheme === 'dark' || (!savedTheme && false);
     }
-    return true;
+    return false;
   });
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);

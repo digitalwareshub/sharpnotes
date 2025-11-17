@@ -29,9 +29,9 @@ export default function BlogPost() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && true);
+      return savedTheme === 'dark' || (!savedTheme && false);
     }
-    return true;
+    return false;
   });
   const [blogPost, setBlogPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<RelatedPost[]>([]);

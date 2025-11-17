@@ -74,7 +74,7 @@ export default function RootLayout({
               (function() {
                 try {
                   const theme = localStorage.getItem('theme');
-                  const isDark = theme === 'dark' || (!theme && true);
+                  const isDark = theme === 'dark' || (!theme && false);
                   document.documentElement.classList.toggle('dark', isDark);
                   document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
                 } catch (e) {}

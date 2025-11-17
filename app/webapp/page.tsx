@@ -11,9 +11,11 @@ import { useNoteHistory } from '../../hooks/useNoteHistory';
 import { useAutoSave } from '../../hooks/useAutoSave';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition';
+import { useBrowserNotifications } from '../../hooks/useBrowserNotifications';
 import { NoteHistory } from '../../components/notes/NoteHistory';
 import { StorageIndicator } from '../../components/ui/StorageIndicator';
 import { FeedbackModal } from '../../components/ui/FeedbackModal';
+import { TrayNotification } from '../../components/ui/TrayNotification';
 import {
   trackNoteTransform,
   trackNoteExport,
@@ -69,9 +71,9 @@ export default function Page() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && true);
+      return savedTheme === 'dark' || (!savedTheme && false);
     }
-    return true;
+    return false;
   });
   const [activeView, setActiveView] = useState<'input' | 'output'>('input'); // Mobile view toggle
   
@@ -169,6 +171,9 @@ export default function Page() {
       }
     },
   });
+
+  // Browser notifications (PWA install, Web Speech API support)
+  const browserNotifications = useBrowserNotifications();
 
   const handleRun = () => {
     if (!input.trim()) {
@@ -819,6 +824,38 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       <FeedbackModal
         isOpen={isFeedbackOpen}
         onClose={() => setIsFeedbackOpen(false)}
+      />
+
+      {/* PWA Installation Notification */}
+      <TrayNotification
+        isOpen={browserNotifications.pwa.isOpen}
+        onClose={browserNotifications.pwa.onClose}
+        title="Install SHRP Notes"
+        message={
+          browserNotifications.pwa.hasPrompt
+            ? `Install SHRP Notes as a standalone app for offline access, faster loading, and a native app experience. ${browserNotifications.pwa.instructions}`
+            : `You can install SHRP Notes for a better experience. ${browserNotifications.pwa.instructions}`
+        }
+        icon="📲"
+        type="info"
+        actionLabel={browserNotifications.pwa.hasPrompt ? "Install Now" : "Got It"}
+        onAction={browserNotifications.pwa.hasPrompt ? browserNotifications.pwa.onInstall : undefined}
+        isDarkMode={isDarkMode}
+      />
+
+      {/* Web Speech API Not Supported Notification */}
+      <TrayNotification
+        isOpen={browserNotifications.webSpeech.isOpen}
+        onClose={browserNotifications.webSpeech.onClose}
+        title="Voice Input Not Available"
+        message={
+          browserNotifications.webSpeech.browserName === 'firefox'
+            ? 'Voice input is not supported in Firefox. For the best experience with voice dictation, please use Chrome, Edge, or Safari.'
+            : 'Voice input (Web Speech API) is not supported in your browser. For voice dictation, please use Chrome, Edge, or Safari.'
+        }
+        icon="🎤"
+        type="warning"
+        isDarkMode={isDarkMode}
       />
     </div>
   );
