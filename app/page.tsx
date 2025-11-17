@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useBrowserNotifications } from '../hooks/useBrowserNotifications';
-import { TrayNotification } from '../components/ui/TrayNotification';
+import PWAInstallPrompt from '../components/ui/PWAInstallPrompt';
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -24,9 +23,6 @@ export default function LandingPage() {
     document.documentElement.classList.toggle('dark', newTheme);
     document.documentElement.style.colorScheme = newTheme ? 'dark' : 'light';
   };
-
-  // Browser notifications (PWA install, Web Speech API support)
-  const browserNotifications = useBrowserNotifications();
 
   const faqs = [
     {
@@ -1507,38 +1503,6 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
-
-      {/* PWA Installation Notification */}
-      <TrayNotification
-        isOpen={browserNotifications.pwa.isOpen}
-        onClose={browserNotifications.pwa.onClose}
-        title="Install SHRP Notes"
-        message={
-          browserNotifications.pwa.hasPrompt
-            ? `Install SHRP Notes as a standalone app for offline access, faster loading, and a native app experience. ${browserNotifications.pwa.instructions}`
-            : `You can install SHRP Notes for a better experience. ${browserNotifications.pwa.instructions}`
-        }
-        icon="📲"
-        type="info"
-        actionLabel={browserNotifications.pwa.hasPrompt ? "Install Now" : "Got It"}
-        onAction={browserNotifications.pwa.hasPrompt ? browserNotifications.pwa.onInstall : undefined}
-        isDarkMode={isDarkMode}
-      />
-
-      {/* Web Speech API Not Supported Notification */}
-      <TrayNotification
-        isOpen={browserNotifications.webSpeech.isOpen}
-        onClose={browserNotifications.webSpeech.onClose}
-        title="Voice Input Not Available"
-        message={
-          browserNotifications.webSpeech.browserName === 'firefox'
-            ? 'Voice input is not supported in Firefox. For the best experience with voice dictation, please use Chrome, Edge, or Safari.'
-            : 'Voice input (Web Speech API) is not supported in your browser. For voice dictation, please use Chrome, Edge, or Safari.'
-        }
-        icon="🎤"
-        type="warning"
-        isDarkMode={isDarkMode}
-      />
     </div>
   );
 }
