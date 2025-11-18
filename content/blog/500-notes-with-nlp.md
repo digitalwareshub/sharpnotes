@@ -2,13 +2,11 @@
 title: "I Transformed 500 Meeting Notes with NLP: Here's What I Learned"
 description: "Real-world case study: How local NLP saved 79 hours, eliminated missed action items, and taught me patterns in my own work—without sending a single note to the cloud."
 author: "Kam"
-date: "2025-11-05"
+date: "2025-11-02"
 readTime: "9 min read"
 image: "/blog-images/nlp-case-study.jpg"
 tags: ["case study", "NLP", "productivity", "local-first", "meeting notes"]
 ---
-
-# I Transformed 500 Meeting Notes with NLP: Here's What I Learned
 
 ## The Problem: Drowning in Meeting Notes
 

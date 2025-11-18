@@ -2,13 +2,11 @@
 title: "ADHD Note-Taking: How to Actually Remember What You Write Down"
 description: "Why traditional note systems fail for ADHD brains, and the 4-mode system that actually works for executive dysfunction and working memory issues."
 author: "Kam"
-date: "2025-11-04"
+date: "2025-10-18"
 readTime: "10 min read"
 image: "/blog-images/adhd-notes.jpg"
 tags: ["ADHD", "productivity", "neurodivergent", "note-taking", "executive-dysfunction"]
 ---
-
-# ADHD Note-Taking: How to Actually Remember What You Write Down
 
 ## The ADHD Note-Taking Struggle Is Real
 

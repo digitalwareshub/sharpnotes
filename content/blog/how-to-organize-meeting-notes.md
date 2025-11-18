@@ -2,13 +2,11 @@
 title: "How to Organize Meeting Notes: 7 Systems That Actually Work (2025)"
 description: "Stop losing track of meeting notes. Compare 7 proven organization systems including Cornell Method, PARA, and automated NLP transformation."
 author: "Kam"
-date: "2025-11-02"
+date: "2025-09-18"
 readTime: "12 min read"
 image: "/blog-images/meeting-notes-hero.jpg"
 tags: ["productivity", "meeting notes", "organization", "note-taking"]
 ---
-
-# How to Organize Meeting Notes: 7 Systems That Actually Work (2025)
 
 ## The Meeting Notes Crisis
 

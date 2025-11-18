@@ -2,13 +2,11 @@
 title: "The Privacy Cost of Cloud Note Apps: What They're Really Collecting (2025)"
 description: "I read the privacy policies of 10 popular note apps. Here's what Notion, Evernote, and others collect about you—and why local-first alternatives matter."
 author: "Kam"
-date: "2025-11-03"
+date: "2025-10-03"
 readTime: "11 min read"
 image: "/blog-images/privacy-cloud-apps.jpg"
 tags: ["privacy", "security", "local-first", "note-taking"]
 ---
-
-# The Privacy Cost of Cloud Note Apps: What They're Really Collecting (2025)
 
 ## Your Notes Are Being Read
 

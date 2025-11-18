@@ -2,13 +2,11 @@
 title: "SHRP Notes vs Notion vs Obsidian: Privacy-First Note Taking Compared (2025)"
 description: "Detailed comparison of privacy, features, speed, and pricing. Which note app is right for you: SHRP's instant NLP, Notion's databases, or Obsidian's local-first approach?"
 author: "Kam"
-date: "2025-11-09"
+date: "2025-11-17"
 readTime: "13 min read"
 image: "/blog-images/comparison-chart.jpg"
 tags: ["comparison", "privacy", "tools", "note-taking", "obsidian", "notion"]
 ---
-
-# SHRP Notes vs Notion vs Obsidian: Privacy-First Note Taking Compared (2025)
 
 ## The Note App Decision Matrix
 
