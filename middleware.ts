@@ -49,6 +49,10 @@ export function middleware(request: NextRequest) {
     '/documentation': '/blog',
     '/pricing': '/',
     '/api-docs': '/blog',
+    
+    // Additional old URLs
+    '/restore': '/',
+    '/examples': '/',
   };
 
   // Check if current path should be redirected

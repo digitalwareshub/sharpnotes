@@ -25,6 +25,171 @@ const nextConfig = {
   //   optimizePackageImports: ['react-hot-toast', '@vercel/analytics'],
   // },
   
+  // Redirects for old website URLs
+  async redirects() {
+    return [
+      // Old feature/service pages to homepage
+      {
+        source: '/features',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/start',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/digitize/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/remove-background',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/colorize',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/decode',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/product-photography',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/transform',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/how-it-works',
+        destination: '/',
+        permanent: true,
+      },
+      // Old utility/info pages
+      {
+        source: '/migration-guide',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/comparison-checklist',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/comparison-sheet',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/implementation',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/security-guide',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/test-data',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/roi-calculator',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/api',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/search',
+        destination: '/',
+        permanent: true,
+      },
+      // Search with query parameter
+      {
+        source: '/search\\?:query*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/browserconfig.xml',
+        destination: '/',
+        permanent: true,
+      },
+      // Old blog posts to main blog page
+      {
+        source: '/blog/free-vs-paid-ocr',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/extract-text-pdf',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/digitization-guide',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/ocr-security',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/ocr-accuracy-standards',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/complete-guide-to-photo-restoration',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/photo-restoration-tips',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/damaged-photo-repair-techniques',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/restore-old-family-photos',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/ai-vs-traditional-photo-restoration',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/wedding-photo-restoration-guide',
+        destination: '/blog',
+        permanent: true,
+      },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [

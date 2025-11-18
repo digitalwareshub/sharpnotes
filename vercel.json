@@ -1,0 +1,30 @@
+{
+  "redirects": [
+    {
+      "source": "/browserconfig.xml",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/restore",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/examples",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ]
+}
