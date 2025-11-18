@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'Transform messy notes into sharp, structured documents with natural language processing. Extract tasks, summarize content, fix grammar, and organize information—all client-side with complete privacy.',
   metadataBase: new URL('https://shrp.app'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://shrp.app',
   },
   icons: {
     icon: [

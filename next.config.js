@@ -28,6 +28,18 @@ const nextConfig = {
   // Redirects for old website URLs
   async redirects() {
     return [
+      // Redirect www to non-www (canonical domain)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.shrp.app',
+          },
+        ],
+        destination: 'https://shrp.app/:path*',
+        permanent: true,
+      },
       // Old feature/service pages to homepage
       {
         source: '/features',
