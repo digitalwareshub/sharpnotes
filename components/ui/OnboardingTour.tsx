@@ -114,27 +114,27 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div 
-          className={`pointer-events-auto relative w-full max-w-2xl transform transition-all duration-300 ${
+          className={`pointer-events-auto relative w-full max-w-2xl h-[85vh] sm:h-[80vh] flex flex-col transform transition-all duration-300 ${
             isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Card */}
-          <div className={`relative rounded-3xl border shadow-2xl overflow-hidden ${
+          <div className={`relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden ${
             isDarkMode
               ? 'border-slate-700/70 bg-slate-900/95 backdrop-blur-xl'
               : 'border-violet-200/60 bg-white/95 backdrop-blur-xl'
           }`}>
             {/* Progress Bar */}
-            <div className={`h-1.5 ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>
+            <div className={`h-1.5 flex-shrink-0 ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>
               <div 
                 className="h-full bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
-            {/* Content */}
-            <div className="p-6 sm:p-8 md:p-10">
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto p-6 sm:p-8 md:p-10">
               {/* Icon & Step Counter */}
               <div className="flex items-start justify-between mb-6">
                 <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-4xl ${
@@ -231,7 +231,12 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   ))}
                 </div>
               )}
+            </div>
 
+            {/* Fixed Footer with Checkbox and Buttons */}
+            <div className={`flex-shrink-0 border-t p-6 sm:p-8 md:p-10 pt-6 ${
+              isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'
+            }`}>
               {/* Don't Show Again Checkbox */}
               <div className="mb-4">
                 <label className="flex items-center gap-2 cursor-pointer">
