@@ -29,9 +29,14 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
     }
 
     // Check if user has dismissed the prompt before
-    const dismissed = localStorage.getItem('shrp_pwa_install_dismissed');
-    if (dismissed) {
-      return; // User previously dismissed, don't show again
+    try {
+      const dismissed = localStorage.getItem('shrp_pwa_install_dismissed');
+      if (dismissed) {
+        return; // User previously dismissed, don't show again
+      }
+    } catch (error) {
+      console.error('Error reading dismissal preference:', error);
+      // Continue showing prompt if localStorage fails
     }
 
     // Detect browser type
@@ -83,26 +88,37 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   const handleInstall = async () => {
     if (!deferredPrompt) return;
 
-    // Show the install prompt
-    await deferredPrompt.prompt();
+    try {
+      // Show the install prompt
+      await deferredPrompt.prompt();
 
-    // Wait for the user's response
-    const { outcome } = await deferredPrompt.userChoice;
-    
-    if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
+      // Wait for the user's response
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      // Clear the prompt
+      setDeferredPrompt(null);
+      setShowPrompt(false);
+    } catch (error) {
+      console.error('Error showing install prompt:', error);
+      // Gracefully hide the prompt on error
+      setShowPrompt(false);
     }
-
-    // Clear the prompt
-    setDeferredPrompt(null);
-    setShowPrompt(false);
   };
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    localStorage.setItem('shrp_pwa_install_dismissed', 'true');
+    try {
+      localStorage.setItem('shrp_pwa_install_dismissed', 'true');
+    } catch (error) {
+      console.error('Error saving dismissal preference:', error);
+      // Continue anyway - not critical if localStorage fails
+    }
   };
 
   if (!showPrompt) return null;
