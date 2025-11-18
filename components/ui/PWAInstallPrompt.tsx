@@ -47,7 +47,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
     if (isSafariBrowser) {
       setBrowserType('safari');
-      // For Safari, show instructions after delay
+      // For Safari, show instructions after 5 second delay
       setTimeout(() => {
         setShowPrompt(true);
       }, 5000); // 5 seconds delay
@@ -86,7 +86,9 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   }, []);
 
   const handleInstall = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      return;
+    }
 
     try {
       // Show the install prompt
@@ -96,16 +98,15 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
       const { outcome } = await deferredPrompt.userChoice;
       
       if (outcome === 'accepted') {
-        console.log('User accepted the install prompt');
+        // User accepted - no need to log in production
       } else {
-        console.log('User dismissed the install prompt');
+        // User dismissed - no need to log in production
       }
 
       // Clear the prompt
       setDeferredPrompt(null);
       setShowPrompt(false);
-    } catch (error) {
-      console.error('Error showing install prompt:', error);
+    } catch (_error) {
       // Gracefully hide the prompt on error
       setShowPrompt(false);
     }
@@ -115,13 +116,14 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
     setShowPrompt(false);
     try {
       localStorage.setItem('shrp_pwa_install_dismissed', 'true');
-    } catch (error) {
-      console.error('Error saving dismissal preference:', error);
+    } catch (_error) {
       // Continue anyway - not critical if localStorage fails
     }
   };
 
-  if (!showPrompt) return null;
+  if (!showPrompt) {
+    return null;
+  }
 
   // Safari-specific instructions
   if (browserType === 'safari') {

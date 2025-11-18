@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { trackError } from '../lib/analytics';
 
 export default function Error({
   error,
@@ -12,6 +13,7 @@ export default function Error({
   useEffect(() => {
     // Log the error to an error reporting service
     console.error('Application error:', error);
+    trackError('app_error', error.message);
   }, [error]);
 
   return (

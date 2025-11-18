@@ -76,7 +76,7 @@ export function NoteHistory({
         />
       )}
 
-      {/* Sidebar - collapsible on desktop, toggle on mobile */}
+      {/* Sidebar - full width on mobile (w-80), fixed width on desktop */}
       <aside
         className={`fixed top-0 right-0 h-screen backdrop-blur-xl z-50 flex flex-col transition-all duration-300 border-l ${
           isDarkMode 
@@ -84,7 +84,7 @@ export function NoteHistory({
             : 'bg-white/95 border-violet-200/60'
         } ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        } lg:translate-x-0 ${isPinned ? 'w-80' : 'w-12'}`}
+        } lg:translate-x-0 w-80 ${isPinned ? 'lg:w-80' : 'lg:w-12'}`}
       >
         {/* Collapse/Expand Button - Desktop only */}
         {!isPinned && (
@@ -116,8 +116,8 @@ export function NoteHistory({
           </div>
         )}
 
-        {/* Expanded content */}
-        <div className={`flex-1 flex flex-col overflow-hidden ${!isPinned ? 'hidden lg:hidden' : ''}`}>
+        {/* Expanded content - Always visible on mobile (sidebar handles show/hide), respects isPinned on desktop */}
+        <div className={`flex-1 flex flex-col overflow-hidden lg:flex ${isPinned ? 'lg:flex' : 'lg:hidden'}`}>
         {/* Header */}
         <div className={`p-4 border-b flex-shrink-0 ${
           isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'

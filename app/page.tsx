@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import PWAInstallPrompt from '../components/ui/PWAInstallPrompt';
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);

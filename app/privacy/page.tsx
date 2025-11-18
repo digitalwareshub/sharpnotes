@@ -76,7 +76,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
-                What We Don't Collect
+                What We Don&apos;t Collect
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Your notes content</li>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
                 Local Storage
               </h2>
               <p className="mb-4">
-                Your notes are stored exclusively in your browser's local storage. This means:
+                Your notes are stored exclusively in your browser&apos;s local storage. This means:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Data stays on your device</li>

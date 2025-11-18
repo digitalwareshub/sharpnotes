@@ -35,10 +35,15 @@ export function detectBrowser(): BrowserInfo {
   const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
 
   let name = 'unknown';
-  if (isFirefox) name = 'firefox';
-  else if (isEdge) name = 'edge';
-  else if (isChrome) name = 'chrome';
-  else if (isSafari) name = 'safari';
+  if (isFirefox) {
+    name = 'firefox';
+  } else if (isEdge) {
+    name = 'edge';
+  } else if (isChrome) {
+    name = 'chrome';
+  } else if (isSafari) {
+    name = 'safari';
+  }
 
   return {
     name,
@@ -54,7 +59,9 @@ export function detectBrowser(): BrowserInfo {
  * Check if Web Speech API is supported
  */
 export function isWebSpeechSupported(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') {
+    return false;
+  }
 
   return 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 }
@@ -63,7 +70,9 @@ export function isWebSpeechSupported(): boolean {
  * Check if PWA is installable
  */
 export function isPWAInstallable(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') {
+    return false;
+  }
 
   // Check if app is already installed
   if (window.matchMedia('(display-mode: standalone)').matches) {
@@ -77,7 +86,9 @@ export function isPWAInstallable(): boolean {
  * Check if PWA is already installed
  */
 export function isPWAInstalled(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') {
+    return false;
+  }
 
   return window.matchMedia('(display-mode: standalone)').matches;
 }

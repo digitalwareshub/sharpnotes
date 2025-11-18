@@ -1,5 +1,6 @@
 import toast from 'react-hot-toast';
 import type { Note, UserPreferences, StorageInfo } from '../../types';
+import { trackError } from '../analytics';
 
 const NOTES_KEY = 'shrp_notes';
 const PREFERENCES_KEY = 'shrp_preferences';
@@ -20,6 +21,8 @@ export function getAllNotes(): Note[] {
     return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
     console.error('Failed to load notes:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    trackError('storage_load_failed', errorMessage);
     
     if (error instanceof SyntaxError) {
       toast.error('Notes data corrupted. Starting fresh.');
@@ -54,8 +57,10 @@ export function saveNote(note: Note): boolean {
     return true;
   } catch (error: unknown) {
     console.error('Failed to save note:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
     if (error instanceof Error && error.name === 'QuotaExceededError') {
+      trackError('storage_quota_exceeded', errorMessage);
       toast.error('Storage full! Please delete old notes.', {
         duration: 5000,
         icon: '💾',
@@ -63,6 +68,7 @@ export function saveNote(note: Note): boolean {
       return false;
     }
     
+    trackError('storage_save_failed', errorMessage);
     toast.error('Failed to save note. Check browser settings.');
     return false;
   }

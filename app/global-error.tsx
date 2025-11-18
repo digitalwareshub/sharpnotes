@@ -1,12 +1,20 @@
 'use client';
 
+import { useEffect } from 'react';
+import { trackError } from '../lib/analytics';
+
 export default function GlobalError({
-  error: _error,
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    console.error('Global error:', error);
+    trackError('global_error', error.message);
+  }, [error]);
+
   return (
     <html>
       <body>

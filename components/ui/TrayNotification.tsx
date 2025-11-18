@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export interface TrayNotificationProps {
   isOpen: boolean;
@@ -29,6 +29,12 @@ export function TrayNotification({
 }: TrayNotificationProps) {
   const [isVisible, setIsVisible] = useState(false);
 
+  const handleClose = useCallback(() => {
+    setIsVisible(false);
+    // Wait for animation to finish before calling onClose
+    setTimeout(onClose, 300);
+  }, [onClose]);
+
   useEffect(() => {
     if (isOpen) {
       // Small delay to trigger the animation
@@ -44,13 +50,7 @@ export function TrayNotification({
     } else {
       setIsVisible(false);
     }
-  }, [isOpen, autoHideDuration]);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    // Wait for animation to finish before calling onClose
-    setTimeout(onClose, 300);
-  };
+  }, [isOpen, autoHideDuration, handleClose]);
 
   const handleAction = () => {
     if (onAction) {
@@ -59,7 +59,9 @@ export function TrayNotification({
     handleClose();
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   // Color schemes based on type
   const getColorClasses = () => {

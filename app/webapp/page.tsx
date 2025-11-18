@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import type { Mode, Note } from '../../types';
 import { transform } from '../../lib/transformers';
 import { saveNote } from '../../lib/storage/localStorage';
 import { exportNoteAsZip, copyToClipboard } from '../../lib/export';
+import { validateAndSanitize, shouldWarnAboutTimeout } from '../../lib/validation';
 import { useNoteHistory } from '../../hooks/useNoteHistory';
 import { useAutoSave } from '../../hooks/useAutoSave';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
@@ -14,6 +15,8 @@ import { useSpeechRecognition } from '../../hooks/useSpeechRecognition';
 import { NoteHistory } from '../../components/notes/NoteHistory';
 import { StorageIndicator } from '../../components/ui/StorageIndicator';
 import { FeedbackModal } from '../../components/ui/FeedbackModal';
+import { OnboardingTour } from '../../components/ui/OnboardingTour';
+import { Tooltip } from '../../components/ui/Tooltip';
 import PWAInstallPrompt from '../../components/ui/PWAInstallPrompt';
 import {
   trackNoteTransform,
@@ -22,6 +25,7 @@ import {
   trackCopyToClipboard,
   trackNoteDelete,
   trackKeyboardShortcut,
+  trackError,
 } from '../../lib/analytics';
 
 // Helper functions
@@ -65,6 +69,7 @@ export default function Page() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isHistoryPinned, setIsHistoryPinned] = useState(true); // Desktop: pinned by default
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState('');
   // Initialize from localStorage immediately to prevent flash
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -75,6 +80,24 @@ export default function Page() {
     return false;
   });
   const [activeView, setActiveView] = useState<'input' | 'output'>('input'); // Mobile view toggle
+  
+  // Check if this is the user's first visit
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const dontShowAgain = localStorage.getItem('shrp_onboarding_dont_show');
+      
+      // Only show if user hasn't checked "don't show again"
+      if (!dontShowAgain) {
+        setIsOnboardingOpen(true);
+      }
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setIsOnboardingOpen(false);
+    // Note: We don't set anything here - the OnboardingTour component
+    // handles saving the "don't show again" preference if user checked it
+  };
   
   // Save theme to localStorage whenever it changes
   const toggleTheme = () => {
@@ -172,14 +195,35 @@ export default function Page() {
   });
 
   const handleRun = () => {
-    if (!input.trim()) {
-      toast.error('Please enter some text first');
+    // Validate and sanitize input
+    const validation = validateAndSanitize(input);
+    
+    if (!validation.valid) {
+      toast.error(validation.error || 'Invalid input');
+      trackError('validation_failed', validation.error || 'Invalid input');
       return;
     }
+
+    // Show warning if text is very long
+    if (validation.warning) {
+      toast(validation.warning, {
+        icon: '⚠️',
+        duration: 3000,
+      });
+    }
+
+    // Warn about potential timeout
+    if (shouldWarnAboutTimeout(validation.sanitized)) {
+      toast('Processing large text... This may take a few seconds', {
+        icon: '⏱️',
+        duration: 2000,
+      });
+    }
+
     setIsProcessing(true);
     setTimeout(() => {
       try {
-        const result = transform(input, mode);
+        const result = transform(validation.sanitized, mode);
         setOutput(result.output);
         setIsProcessing(false);
         
@@ -187,7 +231,7 @@ export default function Page() {
         setActiveView('output');
         
         // Track transformation
-        const wordCount = input.split(/\s+/).filter(Boolean).length;
+        const wordCount = validation.sanitized.split(/\s+/).filter(Boolean).length;
         trackNoteTransform(mode, wordCount);
         
         // Show metadata if available
@@ -206,6 +250,8 @@ export default function Page() {
       } catch (error) {
         console.error('Transform error:', error);
         setIsProcessing(false);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        trackError('transform_failed', errorMessage);
         toast.error(
           error instanceof Error 
             ? `Transformation failed: ${error.message}` 
@@ -233,6 +279,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       }
     } catch (error) {
       console.error('Copy error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      trackError('copy_failed', errorMessage);
       toast.error('Failed to copy to clipboard. Please try again.');
     }
   };
@@ -245,8 +293,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
   };
 
   const handleSaveManually = () => {
-    if (!input.trim()) {
-      toast.error('Please enter some text first');
+    // Validate input
+    const validation = validateAndSanitize(input);
+    
+    if (!validation.valid) {
+      toast.error(validation.error || 'Invalid input');
       return;
     }
 
@@ -254,13 +305,13 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       const note: Note = {
         // Always keep the same ID if we have a currentNote (update mode)
         id: currentNote?.id || `note-${Date.now()}`,
-        title: generateTitle(input),
-        input,
-        output: output || input, // Use input as output if not transformed yet
+        title: generateTitle(validation.sanitized),
+        input: validation.sanitized,
+        output: output || validation.sanitized, // Use input as output if not transformed yet
         mode,
         createdAt: currentNote?.createdAt || Date.now(),
         updatedAt: Date.now(),
-        wordCount: input.split(/\s+/).filter(Boolean).length,
+        wordCount: validation.sanitized.split(/\s+/).filter(Boolean).length,
         isFavorite: currentNote?.isFavorite || false,
       };
 
@@ -268,15 +319,20 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       
       if (saved) {
         setCurrentNote(note);
+        // Update input with sanitized version
+        setInput(validation.sanitized);
         trackNoteSave(false); // Manual save
         toast.success(currentNote ? 'Note updated!' : 'Note saved!');
         refreshHistory();
       } else {
         console.error('Failed to save note');
+        trackError('save_failed', 'saveNote returned false');
         toast.error('Failed to save note. Please try again.');
       }
     } catch (error) {
       console.error('Save error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      trackError('save_failed', errorMessage);
       toast.error(
         error instanceof Error
           ? `Save failed: ${error.message}`
@@ -308,6 +364,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       trackNoteExport('zip');
     } catch (error) {
       console.error('Export error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      trackError('export_failed', errorMessage);
       toast.error(
         error instanceof Error
           ? `Export failed: ${error.message}`
@@ -392,53 +450,65 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             {/* Action Buttons */}
             <div className="flex items-center gap-2">
               {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm transition-colors min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
-                  isDarkMode
-                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                    : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
-                }`}
-                title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              <Tooltip 
+                content={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                position="bottom"
+                isDarkMode={isDarkMode}
               >
-                {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
-                <svg 
-                  className="w-5 h-5" 
-                  fill={isDarkMode ? "none" : "currentColor"} 
-                  stroke="currentColor" 
-                  strokeWidth={isDarkMode ? "2" : "1.5"}
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={toggleTheme}
+                  className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm transition-colors min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
+                    isDarkMode
+                      ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                      : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                  }`}
+                  aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 >
-                  {/* Bulb shape */}
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    opacity={isDarkMode ? "0.4" : "1"}
-                  />
-                  {/* Bulb base */}
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M9 17v1a2 2 0 002 2h2a2 2 0 002-2v-1"
-                  />
-                </svg>
-              </button>
+                  {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
+                  <svg 
+                    className="w-5 h-5" 
+                    fill={isDarkMode ? "none" : "currentColor"} 
+                    stroke="currentColor" 
+                    strokeWidth={isDarkMode ? "2" : "1.5"}
+                    viewBox="0 0 24 24"
+                  >
+                    {/* Bulb shape */}
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                      opacity={isDarkMode ? "0.4" : "1"}
+                    />
+                    {/* Bulb base */}
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      d="M9 17v1a2 2 0 002 2h2a2 2 0 002-2v-1"
+                    />
+                  </svg>
+                </button>
+              </Tooltip>
               
               {/* History Toggle - Mobile Only */}
-              <button
-                onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-                className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm lg:hidden min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
-                  isDarkMode
-                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                    : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
-                }`}
-                title="View history"
+              <Tooltip 
+                content="View your saved notes"
+                position="bottom"
+                isDarkMode={isDarkMode}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </button>
+                <button
+                  onClick={() => setIsHistoryOpen(!isHistoryOpen)}
+                  className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm lg:hidden min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
+                    isDarkMode
+                      ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                      : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                  }`}
+                  aria-label="View history"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
+              </Tooltip>
             </div>
           </div>
         </header>
@@ -476,11 +546,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         </div>
 
         {/* main grid */}
-        <section className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] h-[calc(100vh-280px)] overflow-hidden">
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] min-h-[calc(100vh-280px)] lg:h-[calc(100vh-280px)] lg:overflow-hidden">
           {/* input + controls */}
           <div
             id="notes-input"
-            className={`flex flex-col rounded-2xl border p-4 shadow-xl backdrop-blur h-full overflow-hidden min-h-0 ${
+            className={`flex flex-col rounded-2xl border p-4 pb-6 shadow-xl backdrop-blur lg:h-full lg:overflow-hidden min-h-0 ${
               activeView === 'output' ? 'hidden lg:flex' : 'flex'
             } ${
               isDarkMode
@@ -510,7 +580,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               </button>
             </div>
 
-            <div className="relative flex-1 mb-3 min-h-[280px] sm:min-h-[320px]">
+            <div className="relative flex-1 mb-3 min-h-[200px] lg:min-h-[280px] overflow-hidden">
               <textarea
                 className={`h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 ${
                   isDarkMode
@@ -561,68 +631,73 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               )}
             </div>
 
-            {/* mode selector */}
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center">
-              {(['summarize', 'structure', 'polish', 'tasks'] as Mode[]).map((m) => (
+            {/* Mode selector and action buttons */}
+            <div className="space-y-3 flex-shrink-0">
+              {/* Mode Description - Always visible, centered, above buttons */}
+              <p className={`text-center text-xs leading-relaxed px-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                {modeDescription(mode)}
+              </p>
+              
+              {/* Mode buttons - Full width on mobile */}
+              <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:justify-center lg:gap-2">
+                {(['summarize', 'structure', 'polish', 'tasks'] as Mode[]).map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setMode(m)}
+                    className={`rounded-lg px-3 py-2.5 text-sm font-medium capitalize transition lg:rounded-xl lg:px-4 lg:py-2 lg:text-xs ${
+                      mode === m
+                        ? isDarkMode
+                          ? 'bg-violet-500 text-white shadow-md shadow-violet-900/70'
+                          : 'bg-violet-500 text-white shadow-md shadow-violet-500/40'
+                        : isDarkMode
+                          ? 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
+                          : 'border border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                    }`}
+                  >
+                    {modeLabel(m)}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Mobile action buttons - Full width below mode buttons */}
+              <div className="flex flex-col gap-2 lg:hidden">
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium ${
+                      isDarkMode
+                        ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
+                        : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                    }`}
+                  >
+                    Clear
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSaveManually}
+                    disabled={!input.trim()}
+                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
+                      isDarkMode
+                        ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
+                        : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                    }`}
+                  >
+                    Save
+                  </button>
+                </div>
                 <button
-                  key={m}
-                  type="button"
-                  onClick={() => setMode(m)}
-                  className={`rounded-xl px-4 py-2.5 text-xs sm:text-[11px] font-medium capitalize transition min-h-[44px] sm:min-h-0 ${
-                    mode === m
-                      ? isDarkMode
-                        ? 'bg-violet-500 text-white shadow-lg shadow-violet-900/70'
-                        : 'bg-violet-500 text-white shadow-lg shadow-violet-500/40'
-                      : isDarkMode
-                        ? 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
-                        : 'border border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
-                  }`}
-                >
-                  {modeLabel(m)}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-2 flex items-center justify-between gap-3">
-              <StorageIndicator isDarkMode={isDarkMode} />
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleSaveManually}
-                  disabled={!input.trim()}
-                  className={`rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    isDarkMode
-                      ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                      : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
-                  }`}
-                  title="Cmd/Ctrl + S"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleClear}
-                  className={`rounded-full border px-3 py-1 text-xs ${
-                    isDarkMode
-                      ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                      : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
-                  }`}
-                  title="Cmd/Ctrl + K"
-                >
-                  Clear
-                </button>
-                                <button
                   type="button"
                   onClick={handleRun}
                   disabled={!input.trim() || isProcessing}
-                  className={`inline-flex items-center gap-1.5 rounded-full bg-violet-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
-                    isDarkMode ? 'shadow-lg shadow-violet-900/50' : 'shadow-lg shadow-violet-500/30'
+                  className={`w-full inline-flex items-center justify-center gap-2 rounded-lg bg-violet-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
+                    isDarkMode ? 'shadow-md shadow-violet-900/50' : 'shadow-md shadow-violet-500/30'
                   }`}
-                  title="Cmd/Ctrl + Enter"
                 >
                   {isProcessing ? (
                     <>
-                      <span className="h-3 w-3 animate-spin rounded-full border-[2px] border-slate-900 border-t-slate-50" />
+                      <span className="h-3.5 w-3.5 animate-spin rounded-full border-[2px] border-slate-900 border-t-slate-50" />
                       Processing…
                     </>
                   ) : (
@@ -634,11 +709,67 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 </button>
               </div>
             </div>
+            
+            {/* Mobile storage indicator - below mode description */}
+            <div className="lg:hidden flex-shrink-0">
+              <StorageIndicator isDarkMode={isDarkMode} />
+            </div>
 
-            {/* Mode Description - Centered below storage */}
-            <p className={`mt-2 text-center text-[11px] ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              {modeDescription(mode)}
-            </p>
+            {/* Desktop action buttons and storage indicator */}
+            <div className="hidden lg:flex items-center justify-between gap-3 flex-shrink-0 mt-3">
+              <StorageIndicator isDarkMode={isDarkMode} />
+              <div className="flex items-center gap-2">
+                <Tooltip content="Save note (Cmd/Ctrl+S)" position="top" isDarkMode={isDarkMode}>
+                  <button
+                    type="button"
+                    onClick={handleSaveManually}
+                    disabled={!input.trim()}
+                    className={`rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
+                      isDarkMode
+                        ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
+                        : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                    }`}
+                  >
+                    Save
+                  </button>
+                </Tooltip>
+                <Tooltip content="Clear all text (Cmd/Ctrl+K)" position="top" isDarkMode={isDarkMode}>
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className={`rounded-full border px-3 py-1 text-xs ${
+                      isDarkMode
+                        ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
+                        : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                    }`}
+                  >
+                    Clear
+                  </button>
+                </Tooltip>
+                <Tooltip content="Transform your notes (Cmd/Ctrl+Enter)" position="top" isDarkMode={isDarkMode}>
+                  <button
+                    type="button"
+                    onClick={handleRun}
+                    disabled={!input.trim() || isProcessing}
+                    className={`inline-flex items-center gap-1.5 rounded-full bg-violet-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
+                      isDarkMode ? 'shadow-lg shadow-violet-900/50' : 'shadow-lg shadow-violet-500/30'
+                    }`}
+                  >
+                    {isProcessing ? (
+                      <>
+                        <span className="h-3 w-3 animate-spin rounded-full border-[2px] border-slate-900 border-t-slate-50" />
+                        Processing…
+                      </>
+                    ) : (
+                      <>
+                        <span>Make it sharp</span>
+                        <span>➜</span>
+                      </>
+                    )}
+                  </button>
+                </Tooltip>
+              </div>
+            </div>
           </div>
 
           {/* output */}
@@ -668,31 +799,34 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 </div>
                 {output && (
                   <div className="flex items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={handleCopyOutput}
-                      className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
-                        isDarkMode
-                          ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                          : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
-                      }`}
-                    >
-                      <span>📋</span>
-                      <span>Copy</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleExport}
-                      className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
-                        isDarkMode
-                          ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                          : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
-                      }`}
-                      title="Cmd/Ctrl + E - Download ZIP with TXT, MD, and DOCX"
-                    >
-                      <span>📦</span>
-                      <span>Export</span>
-                    </button>
+                    <Tooltip content="Copy to clipboard" position="bottom" isDarkMode={isDarkMode}>
+                      <button
+                        type="button"
+                        onClick={handleCopyOutput}
+                        className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
+                          isDarkMode
+                            ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
+                            : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                        }`}
+                      >
+                        <span>📋</span>
+                        <span>Copy</span>
+                      </button>
+                    </Tooltip>
+                    <Tooltip content="Export as ZIP (TXT, MD, DOCX) - Cmd/Ctrl+E" position="bottom" isDarkMode={isDarkMode}>
+                      <button
+                        type="button"
+                        onClick={handleExport}
+                        className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
+                          isDarkMode
+                            ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
+                            : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                        }`}
+                      >
+                        <span>📦</span>
+                        <span>Export</span>
+                      </button>
+                    </Tooltip>
                   </div>
                 )}
               </div>
@@ -791,6 +925,19 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             >
               ✉️ Feedback
             </button>
+            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <button
+              onClick={() => {
+                localStorage.removeItem('hasSeenOnboarding');
+                localStorage.removeItem('shrp_onboarding_dont_show');
+                setIsOnboardingOpen(true);
+              }}
+              className={`transition-colors py-2 px-1 ${
+                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+              }`}
+            >
+              🎓 Tutorial
+            </button>
           </div>
           <p className={`text-xs ${isDarkMode ? 'text-slate-600' : 'text-slate-500'}`}>
             Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-violet-400 hover:underline' : 'text-violet-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
@@ -821,6 +968,14 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         isOpen={isFeedbackOpen}
         onClose={() => setIsFeedbackOpen(false)}
       />
+
+      {/* Onboarding Tour */}
+      {isOnboardingOpen && (
+        <OnboardingTour
+          isDarkMode={isDarkMode}
+          onComplete={handleOnboardingComplete}
+        />
+      )}
 
       {/* PWA Installation Prompt */}
       <PWAInstallPrompt isDarkMode={isDarkMode} />
