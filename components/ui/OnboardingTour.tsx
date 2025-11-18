@@ -30,9 +30,16 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
   const steps = [
     {
       title: "Welcome to SHRP Notes! ✏️",
-      description: "Transform your messy notes into structured, actionable content—all processed locally on your device. No cloud, no tracking, 100% private.",
+      description: "Transform your messy notes into structured, actionable content with these guarantees:",
       icon: "🔒",
-      highlight: "Your data never leaves your browser"
+      highlight: "Your data never leaves your browser",
+      features: [
+        { icon: "🚫", text: "No AI", subtext: "No ChatGPT or cloud AI services" },
+        { icon: "☁️", text: "No Cloud", subtext: "Everything stays on your device" },
+        { icon: "🧠", text: "Uses NLP", subtext: "Local natural language processing" },
+        { icon: "💻", text: "Works Locally", subtext: "Offline-ready, instant processing" },
+        { icon: "🔐", text: "100% Private", subtext: "Zero tracking, zero data collection" }
+      ]
     },
     {
       title: "Try It Out 📝",
@@ -162,6 +169,36 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               }`}>
                 {step.description}
               </p>
+
+              {/* Features List (shown on step 1) */}
+              {currentStep === 0 && (step as any).features && (
+                <div className="mb-6 space-y-3">
+                  {(step as any).features.map((feature: any, index: number) => (
+                    <div 
+                      key={index}
+                      className={`flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] ${
+                        isDarkMode
+                          ? 'bg-slate-800/50 border border-slate-700/50'
+                          : 'bg-violet-50/50 border border-violet-200/50'
+                      }`}
+                    >
+                      <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                      <div className="flex-1">
+                        <p className={`font-semibold text-base ${
+                          isDarkMode ? 'text-slate-100' : 'text-slate-900'
+                        }`}>
+                          {feature.text}
+                        </p>
+                        <p className={`text-sm ${
+                          isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                        }`}>
+                          {feature.subtext}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Highlight Box */}
               <div className={`mb-8 rounded-xl border-l-4 p-4 ${
