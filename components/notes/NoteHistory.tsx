@@ -39,6 +39,12 @@ export function NoteHistory({
 }: NoteHistoryProps) {
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
 
+  // Detect Chrome Android - show permanent hint
+  const isChromeAndroid = typeof navigator !== 'undefined' && 
+    /Android/i.test(navigator.userAgent) && 
+    /Chrome/i.test(navigator.userAgent) && 
+    !/Edge|Edg/i.test(navigator.userAgent);
+
   const getModeLabel = (mode: Mode) => {
     const labels: Record<Mode, string> = {
       summarize: '📝 Summary',
@@ -123,7 +129,14 @@ export function NoteHistory({
           isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'
         }`}>
           <div className="flex items-center justify-between mb-3">
-            <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>Note History</h2>
+            <div>
+              <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>Note History</h2>
+              {isChromeAndroid && isOpen && (
+                <p className={`text-xs font-bold mt-1 ${isDarkMode ? 'text-violet-400' : 'text-violet-600'}`}>
+                  Tap anywhere on the history<br />pane if the pane doesn&apos;t<br />load completely
+                </p>
+              )}
+            </div>
             <div className="flex items-center gap-1">
               {/* Pin button - Desktop only */}
               <button

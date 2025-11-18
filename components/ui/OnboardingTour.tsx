@@ -3,6 +3,20 @@
 import { useState, useEffect } from 'react';
 import { trackEvent } from '../../lib/analytics';
 
+interface Feature {
+  icon: string;
+  text: string;
+  subtext: string;
+}
+
+interface Step {
+  title: string;
+  description: string;
+  icon: string;
+  highlight: string;
+  features?: Feature[];
+}
+
 interface OnboardingTourProps {
   isDarkMode?: boolean;
   onComplete: () => void;
@@ -171,9 +185,9 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               </p>
 
               {/* Features List (shown on step 1) */}
-              {currentStep === 0 && (step as any).features && (
+              {currentStep === 0 && (steps[currentStep] as Step).features && (
                 <div className="mb-6 space-y-3">
-                  {(step as any).features.map((feature: any, index: number) => (
+                  {(steps[currentStep] as Step).features?.map((feature: Feature, index: number) => (
                     <div 
                       key={index}
                       className={`flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] ${
