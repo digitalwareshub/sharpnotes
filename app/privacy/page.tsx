@@ -6,65 +6,41 @@ import Header from '../../components/ui/Header';
 import Footer from '../../components/ui/Footer';
 
 export default function PrivacyPage() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && false);
-    }
-    return false;
-  });
 
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', newTheme);
-    document.documentElement.style.colorScheme = newTheme ? 'dark' : 'light';
-  };
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 to-orange-900 text-slate-50' 
-        : 'bg-gradient-to-br from-orange-50 to-orange-50 text-slate-900'
-    }`}>
-      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <div className="min-h-screen transition-colors duration-200 ">
+      <Header />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumbs */}
         <nav className="mb-8" aria-label="Breadcrumb">
-          <ol className={`flex items-center gap-2 text-sm ${
-            isDarkMode ? 'text-slate-400' : 'text-slate-600'
-          }`}>
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
             <li>
-              <Link href="/" className={`hover:underline ${
-                isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'
-              }`}>
+              <Link href="/" className="hover:underline hover:text-orange-600">
                 Home
               </Link>
             </li>
             <li>/</li>
-            <li className={isDarkMode ? 'text-slate-300' : 'text-slate-900'} aria-current="page">
+            <li className='text-slate-900' aria-current="page">
               Privacy Policy
             </li>
           </ol>
         </nav>
 
         {/* Content */}
-        <article className={`prose prose-lg ${isDarkMode ? 'prose-invert' : ''} max-w-none`}>
-          <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${
-            isDarkMode ? 'text-slate-50' : 'text-slate-900'
-          }`}>
+        <article className={`prose prose-lg $'' max-w-none`}>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
             Privacy Policy
           </h1>
           
-          <p className={`text-lg mb-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+          <p className={`text-lg mb-8 $'text-slate-600'`}>
             Last updated: November 12, 2025
           </p>
 
-          <div className={`space-y-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+          <div className={`space-y-8 $'text-slate-700'`}>
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Core Promise: Your Data Stays Private
               </h2>
               <p className="mb-4">
@@ -75,7 +51,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 What We Don&apos;t Collect
               </h2>
               <ul className="list-disc pl-6 space-y-2">
@@ -88,7 +64,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Local Storage
               </h2>
               <p className="mb-4">
@@ -103,7 +79,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Analytics
               </h2>
               <p className="mb-4">
@@ -125,7 +101,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Third-Party Services
               </h2>
               <p className="mb-4">
@@ -142,7 +118,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Cookies
               </h2>
               <p>
@@ -155,7 +131,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 HIPAA and Professional Use
               </h2>
               <p className="mb-4">
@@ -170,7 +146,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Data Deletion
               </h2>
               <p>
@@ -184,7 +160,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Changes to This Policy
               </h2>
               <p>
@@ -194,7 +170,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 $'text-orange-600'`}>
                 Contact Us
               </h2>
               <p>
@@ -210,7 +186,7 @@ export default function PrivacyPage() {
         </article>
       </main>
 
-      <Footer isDarkMode={isDarkMode} />
+      <Footer />
     </div>
   );
 }

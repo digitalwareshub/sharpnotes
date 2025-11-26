@@ -7,7 +7,6 @@ import { formatFileSize } from '../../lib/export';
 import { trackStorageWarning } from '../../lib/analytics';
 import type { StorageInfo } from '../../types';
 
-export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }) {
   const [storageInfo, setStorageInfo] = useState<StorageInfo | null>(null);
   const hasShownWarning = useRef(false);
   const hasShownCritical = useRef(false);
@@ -47,9 +46,6 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
           duration: 8000,
           position: 'bottom-center',
           style: {
-            background: isDarkMode ? '#1e293b' : '#ffffff',
-            color: isDarkMode ? '#f1f5f9' : '#0f172a',
-            border: isDarkMode ? '1px solid #334155' : '1px solid #e2e8f0',
             maxWidth: '400px',
           },
         }
@@ -95,7 +91,6 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
       hasShownWarning.current = false;
       hasShownCritical.current = false;
     }
-  }, [isDarkMode]);
 
   useEffect(() => {
     updateStorageInfo();
@@ -113,15 +108,7 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
 
   return (
     <div className="flex flex-col gap-1">
-      <div className={`text-xs flex items-center gap-2 ${
-        isCritical 
-          ? 'text-red-400' 
-          : isNearFull 
-            ? 'text-yellow-400' 
-            : isDarkMode 
-              ? 'text-gray-500' 
-              : 'text-gray-600'
-      }`}>
+      <div className="text-xs flex items-center gap-2 ">
         {isCritical && <span className="animate-pulse">🔴</span>}
         {isNearFull && !isCritical && <span>⚠️</span>}
         {!isNearFull && <span>💾</span>}
@@ -137,9 +124,7 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
       </div>
       
       {/* Progress bar */}
-      <div className={`h-1.5 w-full rounded-full overflow-hidden ${
-        isDarkMode ? 'bg-slate-800' : 'bg-slate-200'
-      }`}>
+      <div className="h-1.5 w-full rounded-full overflow-hidden bg-slate-200">
         <div
           className={`h-full transition-all duration-500 ${
             isCritical

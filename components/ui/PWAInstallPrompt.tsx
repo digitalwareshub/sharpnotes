@@ -14,10 +14,8 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 interface PWAInstallPromptProps {
-  isDarkMode?: boolean;
 }
 
-export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromptProps) {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [browserType, setBrowserType] = useState<'safari' | 'firefox' | 'chrome' | 'unknown'>('unknown');
@@ -129,11 +127,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   if (browserType === 'safari') {
     return (
       <div className="fixed bottom-4 right-4 z-50 max-w-sm animate-slide-up">
-        <div className={`rounded-lg shadow-2xl border p-4 ${
-          isDarkMode 
-            ? 'bg-slate-800 border-slate-700' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className="rounded-lg shadow-2xl border p-4 ">
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
@@ -144,35 +138,23 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
             {/* Content */}
             <div className="flex-1">
-              <h3 className={`text-sm font-semibold mb-1 ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <h3 className="text-sm font-semibold mb-1 text-gray-900">
                 Install SHRP Notes?
               </h3>
-              <p className={`text-xs mb-3 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
+              <p className="text-xs mb-3 text-gray-600">
                 Add to your Home Screen or Dock
               </p>
 
               {/* Safari Instructions */}
-              <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
-              }`}>
-                <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
-                }`}>
+              <div className="rounded-md p-2 mb-3 bg-orange-50">
+                <p className="text-xs mb-1 font-medium text-orange-900">
                   📱 On Safari:
                 </p>
-                <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
-                }`}>
+                <ol className="text-xs space-y-0.5 list-decimal list-inside text-orange-800">
                   <li>Tap the Share button <span className="inline-block">🔼</span></li>
                   <li>Select &ldquo;Add to Home Screen&rdquo;</li>
                 </ol>
-                <p className={`text-xs mt-1.5 ${
-                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
-                }`}>
+                <p className="text-xs mt-1.5 text-orange-800">
                   💻 On Mac: File → Add to Dock
                 </p>
               </div>
@@ -180,11 +162,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
               {/* Dismiss Button */}
               <button
                 onClick={handleDismiss}
-                className={`w-full px-3 py-2 text-xs font-medium rounded-md transition-colors ${
-                  isDarkMode
-                    ? 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                className="w-full px-3 py-2 text-xs font-medium rounded-md transition-colors "
               >
                 Got it
               </button>
@@ -192,26 +170,18 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           </div>
 
           {/* Benefits */}
-          <div className={`mt-3 pt-3 border-t ${
-            isDarkMode ? 'border-slate-700' : 'border-gray-100'
-          }`}>
+          <div className="mt-3 pt-3 border-t border-gray-100">
             <ul className="space-y-1">
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Works offline
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Faster access
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Native app experience
               </li>
             </ul>
@@ -225,11 +195,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   if (browserType === 'firefox') {
     return (
       <div className="fixed bottom-4 right-4 z-50 max-w-sm animate-slide-up">
-        <div className={`rounded-lg shadow-2xl border p-4 ${
-          isDarkMode 
-            ? 'bg-slate-800 border-slate-700' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className="rounded-lg shadow-2xl border p-4 ">
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
@@ -240,29 +206,19 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
             {/* Content */}
             <div className="flex-1">
-              <h3 className={`text-sm font-semibold mb-1 ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <h3 className="text-sm font-semibold mb-1 text-gray-900">
                 Install SHRP Notes?
               </h3>
-              <p className={`text-xs mb-3 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
+              <p className="text-xs mb-3 text-gray-600">
                 Add to home screen for quick access
               </p>
 
               {/* Firefox Instructions */}
-              <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
-              }`}>
-                <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
-                }`}>
+              <div className="rounded-md p-2 mb-3 bg-orange-50">
+                <p className="text-xs mb-1 font-medium text-orange-900">
                   🦊 On Firefox:
                 </p>
-                <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
-                }`}>
+                <ol className="text-xs space-y-0.5 list-decimal list-inside text-orange-800">
                   <li>Click the menu (☰) in the top-right</li>
                   <li>Select &ldquo;Install&rdquo; or &ldquo;Install this site as an app&rdquo;</li>
                 </ol>
@@ -271,11 +227,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
               {/* Dismiss Button */}
               <button
                 onClick={handleDismiss}
-                className={`w-full px-3 py-2 text-xs font-medium rounded-md transition-colors ${
-                  isDarkMode
-                    ? 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                className="w-full px-3 py-2 text-xs font-medium rounded-md transition-colors "
               >
                 Got it
               </button>
@@ -283,26 +235,18 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           </div>
 
           {/* Benefits */}
-          <div className={`mt-3 pt-3 border-t ${
-            isDarkMode ? 'border-slate-700' : 'border-gray-100'
-          }`}>
+          <div className="mt-3 pt-3 border-t border-gray-100">
             <ul className="space-y-1">
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Works offline
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Faster access
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Native app experience
               </li>
             </ul>
@@ -316,11 +260,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   if (deferredPrompt) {
     return (
       <div className="fixed bottom-4 right-4 z-50 max-w-sm animate-slide-up">
-        <div className={`rounded-lg shadow-2xl border p-4 ${
-          isDarkMode 
-            ? 'bg-slate-800 border-slate-700' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className="rounded-lg shadow-2xl border p-4 ">
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
@@ -331,14 +271,10 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
             {/* Content */}
             <div className="flex-1">
-              <h3 className={`text-sm font-semibold mb-1 ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <h3 className="text-sm font-semibold mb-1 text-gray-900">
                 Install SHRP Notes?
               </h3>
-              <p className={`text-xs mb-3 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
+              <p className="text-xs mb-3 text-gray-600">
                 Add to home screen for quick access
               </p>
 
@@ -352,11 +288,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
                 </button>
                 <button
                   onClick={handleDismiss}
-                  className={`px-3 py-2 text-xs font-medium rounded-md transition-colors ${
-                    isDarkMode
-                      ? 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-                      : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                  }`}
+                  className="px-3 py-2 text-xs font-medium rounded-md transition-colors "
                 >
                   ✕
                 </button>
@@ -365,26 +297,18 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           </div>
 
           {/* Benefits */}
-          <div className={`mt-3 pt-3 border-t ${
-            isDarkMode ? 'border-slate-700' : 'border-gray-100'
-          }`}>
+          <div className="mt-3 pt-3 border-t border-gray-100">
             <ul className="space-y-1">
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Works offline
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Faster access
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Native app experience
               </li>
             </ul>
@@ -398,11 +322,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
   if (browserType === 'chrome') {
     return (
       <div className="fixed bottom-4 right-4 z-50 max-w-sm animate-slide-up">
-        <div className={`rounded-lg shadow-2xl border p-4 ${
-          isDarkMode 
-            ? 'bg-slate-800 border-slate-700' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className="rounded-lg shadow-2xl border p-4 ">
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
@@ -413,29 +333,19 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
             {/* Content */}
             <div className="flex-1">
-              <h3 className={`text-sm font-semibold mb-1 ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <h3 className="text-sm font-semibold mb-1 text-gray-900">
                 Install SHRP Notes?
               </h3>
-              <p className={`text-xs mb-3 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
+              <p className="text-xs mb-3 text-gray-600">
                 Add to home screen for quick access
               </p>
 
               {/* Chrome Instructions */}
-              <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
-              }`}>
-                <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
-                }`}>
+              <div className="rounded-md p-2 mb-3 bg-orange-50">
+                <p className="text-xs mb-1 font-medium text-orange-900">
                   🌐 On Chrome/Edge:
                 </p>
-                <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
-                }`}>
+                <ol className="text-xs space-y-0.5 list-decimal list-inside text-orange-800">
                   <li>Click the install icon (⊕) in the address bar</li>
                   <li>Or use Menu → Install SHRP Notes</li>
                 </ol>
@@ -444,11 +354,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
               {/* Dismiss Button */}
               <button
                 onClick={handleDismiss}
-                className={`w-full px-3 py-2 text-xs font-medium rounded-md transition-colors ${
-                  isDarkMode
-                    ? 'bg-slate-700 hover:bg-slate-600 text-slate-300'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                className="w-full px-3 py-2 text-xs font-medium rounded-md transition-colors "
               >
                 Got it
               </button>
@@ -456,26 +362,18 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           </div>
 
           {/* Benefits */}
-          <div className={`mt-3 pt-3 border-t ${
-            isDarkMode ? 'border-slate-700' : 'border-gray-100'
-          }`}>
+          <div className="mt-3 pt-3 border-t border-gray-100">
             <ul className="space-y-1">
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Works offline
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Faster access
               </li>
-              <li className={`text-xs flex items-center gap-2 ${
-                isDarkMode ? 'text-slate-400' : 'text-gray-600'
-              }`}>
-                <span className={isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}>✓</span>
+              <li className="text-xs flex items-center gap-2 text-gray-600">
+                <span className='text-emerald-600'>✓</span>
                 Native app experience
               </li>
             </ul>

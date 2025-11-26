@@ -15,25 +15,9 @@ interface BlogPost {
 }
 
 export default function BlogPage() {
-  // Initialize from localStorage immediately to prevent flash
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && false);
-    }
-    return false;
-  });
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Toggle theme and save to localStorage
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', newTheme);
-    document.documentElement.style.colorScheme = newTheme ? 'dark' : 'light';
-  };
 
   // Load blog posts
   useEffect(() => {
@@ -61,17 +45,9 @@ export default function BlogPage() {
   };
 
   return (
-    <div className={`min-h-screen ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900' 
-        : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
-    }`}>
+    <div className="min-h-screen ">
       {/* Header */}
-      <header className={`border-b sticky top-0 z-10 backdrop-blur-sm ${
-        isDarkMode 
-          ? 'border-slate-800/50 bg-slate-900/50' 
-          : 'border-orange-200/50 bg-white/50'
-      }`}>
+      <header className="border-b sticky top-0 z-10 backdrop-blur-sm ">
         <div className="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link 
@@ -85,20 +61,16 @@ export default function BlogPage() {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
-                  isDarkMode
-                    ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
-                    : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
-                }`}
-                title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                className="rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors "
+                title="Switch to Dark Mode"
                 aria-label="Toggle theme"
               >
                 {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
                 <svg 
                   className="w-5 h-5" 
-                  fill={isDarkMode ? "none" : "currentColor"} 
+                  fill="currentColor" 
                   stroke="currentColor" 
-                  strokeWidth={isDarkMode ? "2" : "1.5"}
+                  strokeWidth="1.5"
                   viewBox="0 0 24 24"
                 >
                   {/* Bulb shape */}
@@ -106,7 +78,7 @@ export default function BlogPage() {
                     strokeLinecap="round" 
                     strokeLinejoin="round" 
                     d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    opacity={isDarkMode ? "0.4" : "1"}
+                    opacity="1"
                   />
                   {/* Bulb base */}
                   <path 
@@ -129,45 +101,25 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-        <h1 className={`text-5xl sm:text-6xl font-bold mb-6 ${
-          isDarkMode ? 'text-slate-50' : 'text-gray-900'
-        }`}>
+        <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-gray-900">
           SHRP Notes Blog
         </h1>
-        <p className={`text-xl mb-8 max-w-2xl mx-auto ${
-          isDarkMode ? 'text-slate-300' : 'text-gray-700'
-        }`}>
+        <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
           Proven strategies for organizing meeting notes, boosting productivity, and building privacy-first workflows.
         </p>
         
         {/* Categories/Tags */}
         <div className="flex flex-wrap justify-center gap-2 mt-8">
-          <span className={`px-4 py-2 rounded-full text-sm border ${
-            isDarkMode 
-              ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
-          }`}>
+          <span className="px-4 py-2 rounded-full text-sm border ">
             📝 Note-Taking
           </span>
-          <span className={`px-4 py-2 rounded-full text-sm border ${
-            isDarkMode 
-              ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
-          }`}>
+          <span className="px-4 py-2 rounded-full text-sm border ">
             ⚡ Productivity
           </span>
-          <span className={`px-4 py-2 rounded-full text-sm border ${
-            isDarkMode 
-              ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
-          }`}>
+          <span className="px-4 py-2 rounded-full text-sm border ">
             🔒 Privacy
           </span>
-          <span className={`px-4 py-2 rounded-full text-sm border ${
-            isDarkMode 
-              ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
-          }`}>
+          <span className="px-4 py-2 rounded-full text-sm border ">
             🚀 Tutorials
           </span>
         </div>
@@ -181,7 +133,7 @@ export default function BlogPage() {
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-16">
-            <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
+            <p className={`text-lg $'text-gray-600'`}>
               No blog posts yet. Check back soon!
             </p>
           </div>
@@ -193,21 +145,13 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group"
               >
-                <article className={`h-full p-6 border rounded-2xl transition-all duration-300 ${
-                  isDarkMode 
-                    ? 'bg-slate-900/50 border-slate-800/50 hover:border-orange-500/50 hover:bg-slate-900/70' 
-                    : 'bg-white/50 border-orange-200/50 hover:border-orange-400/50 hover:bg-white/70'
-                }`}>
+                <article className="h-full p-6 border rounded-2xl transition-all duration-300 ">
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {post.tags.slice(0, 2).map((tag) => (
                       <span 
                         key={tag}
-                        className={`px-2 py-1 text-xs rounded-full border ${
-                          isDarkMode 
-                            ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' 
-                            : 'bg-orange-100/50 text-orange-600 border-orange-400/30'
-                        }`}
+                        className="px-2 py-1 text-xs rounded-full border "
                       >
                         #{tag}
                       </span>
@@ -215,23 +159,17 @@ export default function BlogPage() {
                   </div>
 
                   {/* Title */}
-                  <h2 className={`text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors line-clamp-2 ${
-                    isDarkMode ? 'text-slate-50' : 'text-gray-900'
-                  }`}>
+                  <h2 className="text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors line-clamp-2 text-gray-900">
                     {post.title}
                   </h2>
 
                   {/* Description */}
-                  <p className={`text-sm mb-4 line-clamp-3 ${
-                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                  }`}>
+                  <p className="text-sm mb-4 line-clamp-3 text-gray-600">
                     {post.description}
                   </p>
 
                   {/* Meta */}
-                  <div className={`flex items-center gap-3 text-xs mt-auto pt-4 border-t ${
-                    isDarkMode ? 'text-gray-500 border-slate-800/50' : 'text-gray-500 border-orange-200/50'
-                  }`}>
+                  <div className="flex items-center gap-3 text-xs mt-auto pt-4 border-t text-gray-500 border-orange-200/50">
                     <time>{formatDate(post.date)}</time>
                     <span>•</span>
                     <span>{post.readTime}</span>
@@ -251,19 +189,11 @@ export default function BlogPage() {
 
       {/* Newsletter CTA */}
       <section className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className={`border rounded-2xl p-8 text-center ${
-          isDarkMode 
-            ? 'bg-gradient-to-r from-orange-900/30 to-blue-900/30 border-orange-500/30' 
-            : 'bg-gradient-to-r from-orange-100/50 to-blue-100/50 border-orange-400/30'
-        }`}>
-          <h2 className={`text-2xl font-bold mb-3 ${
-            isDarkMode ? 'text-slate-50' : 'text-gray-900'
-          }`}>
+        <div className="border rounded-2xl p-8 text-center ">
+          <h2 className="text-2xl font-bold mb-3 text-gray-900">
             Ready to transform your notes?
           </h2>
-          <p className={`mb-6 max-w-lg mx-auto ${
-            isDarkMode ? 'text-slate-300' : 'text-gray-700'
-          }`}>
+          <p className="mb-6 max-w-lg mx-auto text-gray-700">
             Try SHRP Notes free - no signup required. Transform messy meeting notes into organized, actionable summaries in seconds.
           </p>
           <Link 
@@ -272,16 +202,14 @@ export default function BlogPage() {
           >
             Try SHRP Notes Free →
           </Link>
-          <p className={`text-sm mt-4 ${
-            isDarkMode ? 'text-gray-500' : 'text-gray-600'
-          }`}>
+          <p className="text-sm mt-4 text-gray-600">
             100% private • No account needed • Unlimited usage
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <Footer isDarkMode={isDarkMode} />
+      <Footer />
     </div>
   );
 }

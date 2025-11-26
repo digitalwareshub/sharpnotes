@@ -11,7 +11,6 @@ export interface TrayNotificationProps {
   type?: 'info' | 'warning' | 'success' | 'error';
   actionLabel?: string;
   onAction?: () => void;
-  isDarkMode?: boolean;
   autoHideDuration?: number; // in milliseconds, 0 means no auto-hide
 }
 
@@ -24,7 +23,6 @@ export function TrayNotification({
   type = 'info',
   actionLabel,
   onAction,
-  isDarkMode = false,
   autoHideDuration = 0,
 }: TrayNotificationProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -65,15 +63,9 @@ export function TrayNotification({
 
   // Color schemes based on type
   const getColorClasses = () => {
-    const baseClasses = isDarkMode
-      ? 'bg-slate-900/95 border-slate-700/70'
-      : 'bg-white/95 border-orange-200/60';
+    const baseClasses = 'bg-white/95 border-orange-200/60';
 
     const iconClasses = {
-      info: isDarkMode ? 'text-blue-400' : 'text-blue-600',
-      warning: isDarkMode ? 'text-amber-400' : 'text-amber-600',
-      success: isDarkMode ? 'text-emerald-400' : 'text-emerald-600',
-      error: isDarkMode ? 'text-red-400' : 'text-red-600',
     };
 
     return {
@@ -116,16 +108,12 @@ export function TrayNotification({
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <h3
-                  className={`text-lg font-semibold mb-2 ${
-                    isDarkMode ? 'text-slate-50' : 'text-gray-900'
-                  }`}
+                  className="text-lg font-semibold mb-2 text-gray-900"
                 >
                   {title}
                 </h3>
                 <p
-                  className={`text-sm leading-relaxed ${
-                    isDarkMode ? 'text-slate-300' : 'text-gray-700'
-                  }`}
+                  className="text-sm leading-relaxed text-gray-700"
                 >
                   {message}
                 </p>
@@ -135,22 +123,14 @@ export function TrayNotification({
                   {actionLabel && onAction && (
                     <button
                       onClick={handleAction}
-                      className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
-                        isDarkMode
-                          ? 'bg-orange-500 text-white hover:bg-orange-400'
-                          : 'bg-orange-600 text-white hover:bg-orange-500'
-                      }`}
+                      className="px-4 py-2 rounded-lg font-medium text-sm transition-colors "
                     >
                       {actionLabel}
                     </button>
                   )}
                   <button
                     onClick={handleClose}
-                    className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
-                      isDarkMode
-                        ? 'border border-slate-600 text-slate-300 hover:bg-slate-800'
-                        : 'border border-orange-400 text-gray-700 hover:bg-orange-50'
-                    }`}
+                    className="px-4 py-2 rounded-lg font-medium text-sm transition-colors "
                   >
                     {actionLabel ? 'Not Now' : 'Dismiss'}
                   </button>
@@ -160,11 +140,7 @@ export function TrayNotification({
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className={`flex-shrink-0 p-1 rounded-lg transition-colors ${
-                  isDarkMode
-                    ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-orange-100'
-                }`}
+                className="flex-shrink-0 p-1 rounded-lg transition-colors "
                 aria-label="Close notification"
               >
                 <svg

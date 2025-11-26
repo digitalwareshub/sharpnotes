@@ -18,7 +18,6 @@ interface Step {
 }
 
 interface OnboardingTourProps {
-  isDarkMode?: boolean;
   onComplete: () => void;
 }
 
@@ -27,7 +26,6 @@ Met with the product team today. I need to send them a follow-up email with the 
 Also have to prepare slides for Friday's review. I'm worried about timelines but excited about the new launch.
 Remember to check in with marketing about the launch campaign and schedule a call with the design team.`;
 
-export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
@@ -141,13 +139,9 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
           onClick={(e) => e.stopPropagation()}
         >
           {/* Card */}
-          <div className={`relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden ${
-            isDarkMode
-              ? 'border-slate-700/70 bg-slate-900/95 backdrop-blur-xl'
-              : 'border-orange-200/60 bg-white/95 backdrop-blur-xl'
-          }`}>
+          <div className="relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden ">
             {/* Progress Bar */}
-            <div className={`h-1.5 flex-shrink-0 ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>
+            <div className={`h-1.5 flex-shrink-0 $'bg-orange-100'`}>
               <div 
                 className="h-full bg-gradient-to-r from-orange-500 to-orange-500 transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
@@ -158,29 +152,21 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
             <div className="flex-1 overflow-y-auto p-6 sm:p-8 md:p-10">
               {/* Icon & Step Counter */}
               <div className="flex items-start justify-between mb-6">
-                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-4xl ${
-                  isDarkMode ? 'bg-orange-500/20' : 'bg-orange-100'
-                }`}>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl text-4xl bg-orange-100">
                   {step.icon}
                 </div>
-                <span className={`text-sm font-medium ${
-                  isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                }`}>
+                <span className="text-sm font-medium text-gray-600">
                   {currentStep + 1} of {steps.length}
                 </span>
               </div>
 
               {/* Title */}
-              <h2 className={`mb-4 text-2xl sm:text-3xl font-bold leading-tight ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <h2 className="mb-4 text-2xl sm:text-3xl font-bold leading-tight text-gray-900">
                 {step.title}
               </h2>
 
               {/* Description */}
-              <p className={`mb-6 text-base sm:text-lg leading-relaxed whitespace-pre-line ${
-                isDarkMode ? 'text-slate-300' : 'text-gray-700'
-              }`}>
+              <p className="mb-6 text-base sm:text-lg leading-relaxed whitespace-pre-line text-gray-700">
                 {step.description}
               </p>
 
@@ -190,22 +176,14 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   {(steps[currentStep] as Step).features?.map((feature: Feature, index: number) => (
                     <div 
                       key={index}
-                      className={`flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] ${
-                        isDarkMode
-                          ? 'bg-slate-800/50 border border-slate-700/50'
-                          : 'bg-orange-50/50 border border-orange-200/50'
-                      }`}
+                      className="flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] "
                     >
                       <span className="text-2xl flex-shrink-0">{feature.icon}</span>
                       <div className="flex-1">
-                        <p className={`font-semibold text-base ${
-                          isDarkMode ? 'text-slate-100' : 'text-gray-900'
-                        }`}>
+                        <p className="font-semibold text-base text-gray-900">
                           {feature.text}
                         </p>
-                        <p className={`text-sm ${
-                          isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                        }`}>
+                        <p className="text-sm text-gray-600">
                           {feature.subtext}
                         </p>
                       </div>
@@ -215,14 +193,8 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               )}
 
               {/* Highlight Box */}
-              <div className={`mb-8 rounded-xl border-l-4 p-4 ${
-                isDarkMode
-                  ? 'border-orange-500 bg-orange-500/10'
-                  : 'border-orange-500 bg-orange-50'
-              }`}>
-                <p className={`text-sm font-medium flex items-center gap-2 ${
-                  isDarkMode ? 'text-orange-400' : 'text-orange-900'
-                }`}>
+              <div className="mb-8 rounded-xl border-l-4 p-4 ">
+                <p className="text-sm font-medium flex items-center gap-2 text-orange-900">
                   <span>💡</span>
                   {step.highlight}
                 </p>
@@ -230,19 +202,11 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
 
               {/* Sample Note (shown on step 2) */}
               {currentStep === 1 && (
-                <div className={`mb-6 rounded-xl border p-4 ${
-                  isDarkMode
-                    ? 'border-slate-700 bg-slate-950/50'
-                    : 'border-orange-200 bg-orange-50/50'
-                }`}>
-                  <p className={`mb-2 text-xs font-semibold uppercase tracking-wide ${
-                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                  }`}>
+                <div className="mb-6 rounded-xl border p-4 ">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-600">
                     Sample Note
                   </p>
-                  <pre className={`text-sm leading-relaxed whitespace-pre-wrap ${
-                    isDarkMode ? 'text-slate-300' : 'text-gray-700'
-                  }`}>
+                  <pre className="text-sm leading-relaxed whitespace-pre-wrap text-gray-700">
                     {SAMPLE_NOTE}
                   </pre>
                 </div>
@@ -259,23 +223,15 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   ].map((mode) => (
                     <div 
                       key={mode.name}
-                      className={`rounded-xl border p-3 transition-all hover:scale-105 ${
-                        isDarkMode
-                          ? 'border-slate-700 bg-slate-800/50'
-                          : 'border-orange-200 bg-white'
-                      }`}
+                      className="rounded-xl border p-3 transition-all hover:scale-105 "
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xl">{mode.emoji}</span>
-                        <span className={`font-medium text-sm ${
-                          isDarkMode ? 'text-slate-200' : 'text-gray-900'
-                        }`}>
+                        <span className="font-medium text-sm text-gray-900">
                           {mode.name}
                         </span>
                       </div>
-                      <p className={`text-xs ${
-                        isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                      }`}>
+                      <p className="text-xs text-gray-600">
                         {mode.desc}
                       </p>
                     </div>
@@ -285,9 +241,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
             </div>
 
             {/* Fixed Footer with Checkbox and Buttons */}
-            <div className={`flex-shrink-0 border-t p-6 sm:p-8 md:p-10 pt-6 ${
-              isDarkMode ? 'border-slate-700/70' : 'border-orange-200/60'
-            }`}>
+            <div className="flex-shrink-0 border-t p-6 sm:p-8 md:p-10 pt-6 border-orange-200/60">
               {/* Don't Show Again Checkbox */}
               <div className="mb-4">
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -297,12 +251,9 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                     onChange={(e) => setDontShowAgain(e.target.checked)}
                     className="w-4 h-4 rounded border-2 cursor-pointer"
                     style={{
-                      accentColor: isDarkMode ? '#8b5cf6' : '#7c3aed'
                     }}
                   />
-                  <span className={`text-sm ${
-                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                  }`}>
+                  <span className="text-sm text-gray-600">
                     Don&apos;t show this again
                   </span>
                 </label>
@@ -313,11 +264,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                 {/* Skip/Back Button */}
                 <button
                   onClick={currentStep === 0 ? handleSkip : () => setCurrentStep(currentStep - 1)}
-                  className={`flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] ${
-                    isDarkMode
-                      ? 'border border-slate-700 text-slate-300 hover:bg-slate-800/50'
-                      : 'border border-orange-400 text-gray-700 hover:bg-orange-50'
-                  }`}
+                  className="flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] "
                 >
                   {currentStep === 0 ? 'Skip Tour' : 'Back'}
                 </button>
@@ -325,11 +272,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                 {/* Next/Finish Button */}
                 <button
                   onClick={handleNext}
-                  className={`flex-1 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 min-h-[48px] ${
-                    isDarkMode
-                      ? 'bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-900/50'
-                      : 'bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/30'
-                  }`}
+                  className="flex-1 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 min-h-[48px] "
                 >
                   {currentStep === steps.length - 1 ? "Let's Go! 🚀" : 'Next'}
                 </button>
@@ -337,12 +280,8 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
 
               {/* Keyboard Hint */}
               {currentStep === steps.length - 1 && (
-                <p className={`mt-4 text-center text-xs ${
-                  isDarkMode ? 'text-gray-500' : 'text-gray-600'
-                }`}>
-                  💡 Tip: Press <kbd className={`px-2 py-0.5 rounded ${
-                    isDarkMode ? 'bg-slate-800' : 'bg-orange-100'
-                  }`}>Cmd/Ctrl+Enter</kbd> to transform notes quickly
+                <p className="mt-4 text-center text-xs text-gray-600">
+                  💡 Tip: Press <kbd className="px-2 py-0.5 rounded bg-orange-100">Cmd/Ctrl+Enter</kbd> to transform notes quickly
                 </p>
               )}
             </div>
@@ -354,15 +293,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               <button
                 key={index}
                 onClick={() => setCurrentStep(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentStep
-                    ? 'w-8 bg-orange-500'
-                    : index < currentStep
-                      ? 'w-2 bg-orange-400/50'
-                      : isDarkMode
-                        ? 'w-2 bg-slate-700'
-                        : 'w-2 bg-orange-200'
-                }`}
+                className="h-2 rounded-full transition-all "
                 aria-label={`Go to step ${index + 1}`}
               />
             ))}

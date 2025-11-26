@@ -71,14 +71,6 @@ export default function Page() {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState('');
-  // Initialize from localStorage immediately to prevent flash
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' || (!savedTheme && false);
-    }
-    return false;
-  });
   const [activeView, setActiveView] = useState<'input' | 'output'>('input'); // Mobile view toggle
   
   // Check if this is the user's first visit
@@ -99,14 +91,6 @@ export default function Page() {
     // handles saving the "don't show again" preference if user checked it
   };
   
-  // Save theme to localStorage whenever it changes
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', newTheme);
-    document.documentElement.style.colorScheme = newTheme ? 'dark' : 'light';
-  };
 
   const {
     notes,
@@ -392,19 +376,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900 text-slate-50' 
-        : 'bg-gradient-to-br from-orange-50 via-orange-50 to-blue-50 text-gray-900'
-    }`}>
+    <div className="min-h-screen transition-colors duration-300 ">
       {/* glowing blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className={`absolute -top-24 -left-24 h-64 w-64 rounded-full blur-3xl ${
-          isDarkMode ? 'bg-orange-500/30' : 'bg-orange-400/40'
-        }`} />
-        <div className={`absolute bottom-0 right-0 h-72 w-72 rounded-full blur-3xl ${
-          isDarkMode ? 'bg-sky-500/30' : 'bg-blue-300/40'
-        }`} />
+        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full blur-3xl bg-orange-400/40" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full blur-3xl bg-blue-300/40" />
       </div>
 
       {/* Main Content */}
@@ -418,30 +394,20 @@ Remember to check in with marketing about the launch campaign and schedule a cal
           <div className="flex items-center justify-between gap-4">
             {/* App Logo/Name */}
             <div className="flex items-center gap-3">
-              <Link href="/" className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${
-                isDarkMode ? 'text-slate-50' : 'text-gray-900'
-              }`}>
+              <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity text-gray-900">
                 <span className="text-2xl">✏️</span>
                 <div>
-                  <h1 className={`text-xl sm:text-2xl font-bold tracking-tight ${
-                    isDarkMode ? 'text-orange-400' : 'text-orange-600'
-                  }`}>
+                  <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-orange-600">
                     SHRP
                   </h1>
-                  <p className={`text-[10px] sm:text-xs ${
-                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
-                  }`}>
+                  <p className="text-[10px] sm:text-xs text-gray-600">
                     NLP-Powered Notes
                   </p>
                 </div>
               </Link>
               
               {/* Privacy Badge - Compact */}
-              <div className={`hidden sm:inline-flex items-center gap-1.5 rounded-full border backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium ${
-                isDarkMode
-                  ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
-                  : 'border-emerald-600/40 bg-emerald-100/70 text-emerald-800'
-              }`}>
+              <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium ">
                 <svg className="h-3 w-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -453,25 +419,20 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <div className="flex items-center gap-2">
               {/* Theme Toggle */}
               <Tooltip 
-                content={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                content="Switch to Dark Mode"
                 position="bottom"
-                isDarkMode={isDarkMode}
               >
                 <button
                   onClick={toggleTheme}
-                  className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm transition-colors min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
-                    isDarkMode
-                      ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
-                      : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
-                  }`}
-                  aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                  className="rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm transition-colors min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center "
+                  aria-label="Switch to Dark Mode"
                 >
                   {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
                   <svg 
                     className="w-5 h-5" 
-                    fill={isDarkMode ? "none" : "currentColor"} 
+                    fill="currentColor" 
                     stroke="currentColor" 
-                    strokeWidth={isDarkMode ? "2" : "1.5"}
+                    strokeWidth="1.5"
                     viewBox="0 0 24 24"
                   >
                     {/* Bulb shape */}
@@ -479,7 +440,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                       strokeLinecap="round" 
                       strokeLinejoin="round" 
                       d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                      opacity={isDarkMode ? "0.4" : "1"}
+                      opacity="1"
                     />
                     {/* Bulb base */}
                     <path 
@@ -495,15 +456,10 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               <Tooltip 
                 content="View your saved notes"
                 position="bottom"
-                isDarkMode={isDarkMode}
               >
                 <button
                   onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-                  className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm lg:hidden min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
-                    isDarkMode
-                      ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
-                      : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
-                  }`}
+                  className="rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm lg:hidden min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center "
                   aria-label="View history"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -519,29 +475,13 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         <div className="mb-4 flex gap-2 lg:hidden">
           <button
             onClick={() => setActiveView('input')}
-            className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
-              activeView === 'input'
-                ? isDarkMode
-                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/50'
-                  : 'bg-orange-600 text-white shadow-lg shadow-orange-400/50'
-                : isDarkMode
-                  ? 'border border-slate-600/80 bg-slate-900/60 text-slate-300 hover:bg-slate-800'
-                  : 'border border-orange-400/60 bg-white/60 text-orange-900 hover:bg-white/80'
-            }`}
+            className="flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all "
           >
             📝 Input
           </button>
           <button
             onClick={() => setActiveView('output')}
-            className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
-              activeView === 'output'
-                ? isDarkMode
-                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/50'
-                  : 'bg-orange-600 text-white shadow-lg shadow-orange-400/50'
-                : isDarkMode
-                  ? 'border border-slate-600/80 bg-slate-900/60 text-slate-300 hover:bg-slate-800'
-                  : 'border border-orange-400/60 bg-white/60 text-orange-900 hover:bg-white/80'
-            }`}
+            className="flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all "
           >
             ✨ Output {output && <span className="ml-1">●</span>}
           </button>
@@ -552,31 +492,21 @@ Remember to check in with marketing about the launch campaign and schedule a cal
           {/* input + controls */}
           <div
             id="notes-input"
-            className={`flex flex-col rounded-2xl border p-4 pb-6 shadow-xl backdrop-blur lg:h-full lg:overflow-hidden min-h-0 ${
-              activeView === 'output' ? 'hidden lg:flex' : 'flex'
-            } ${
-              isDarkMode
-                ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
-                : 'border-orange-200/60 bg-white/80 shadow-orange-200/40'
-            }`}
+            className="flex flex-col rounded-2xl border p-4 pb-6 shadow-xl backdrop-blur lg:h-full lg:overflow-hidden min-h-0 "
           >
             <div className="mb-2 flex items-center justify-between gap-2">
               <div>
-                <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>
+                <h2 className={`text-sm font-semibold $'text-gray-900'`}>
                   Raw notes
                 </h2>
-                <p className={`text-xs ${isDarkMode ? 'text-slate-300/70' : 'text-gray-600/70'}`}>
+                <p className={`text-xs $'text-gray-600/70'`}>
                   Paste anything — meeting minutes, planning notes, or a messy braindump.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={handleSample}
-                className={`rounded-full border px-3 py-1 text-[11px] ${
-                  isDarkMode
-                    ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                    : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                }`}
+                className="rounded-full border px-3 py-1 text-[11px] "
               >
                 Fill with sample
               </button>
@@ -584,11 +514,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
 
             <div className="relative flex-1 mb-3 min-h-[200px] lg:min-h-[280px] overflow-hidden">
               <textarea
-                className={`h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 ${
-                  isDarkMode
-                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-gray-500 focus:border-orange-400 focus:ring-1 focus:ring-orange-500'
-                    : 'border-orange-200 bg-white/90 text-gray-900 placeholder:text-slate-400 focus:border-orange-500 focus:ring-1 focus:ring-orange-400'
-                }`}
+                className="h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 "
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
                 value={input + (interimTranscript ? ` ${  interimTranscript}` : '')}
                 onChange={(e) => {
@@ -610,13 +536,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 <button
                   type="button"
                   onClick={isListening ? stopListening : startListening}
-                  className={`absolute right-3 top-3 rounded-full p-2 sm:p-2.5 transition-all min-w-[48px] min-h-[48px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
-                    isListening
-                      ? 'bg-red-500 text-white animate-pulse'
-                      : isDarkMode
-                        ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-slate-100'
-                        : 'bg-orange-100 text-orange-700 hover:bg-orange-200'
-                  }`}
+                  className="absolute right-3 top-3 rounded-full p-2 sm:p-2.5 transition-all min-w-[48px] min-h-[48px] sm:min-w-0 sm:min-h-0 flex items-center justify-center "
                   aria-label={isListening ? 'Stop recording' : 'Start voice input'}
                   title={isListening ? 'Stop recording' : 'Start voice input'}
                 >
@@ -636,7 +556,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             {/* Mode selector and action buttons */}
             <div className="space-y-3 flex-shrink-0">
               {/* Mode Description - Always visible, centered, above buttons */}
-              <p className={`text-center text-xs leading-relaxed px-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
+              <p className={`text-center text-xs leading-relaxed px-2 $'text-gray-600'`}>
                 {modeDescription(mode)}
               </p>
               
@@ -647,15 +567,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     key={m}
                     type="button"
                     onClick={() => setMode(m)}
-                    className={`rounded-lg px-3 py-2.5 text-sm font-medium capitalize transition lg:rounded-xl lg:px-4 lg:py-2 lg:text-xs ${
-                      mode === m
-                        ? isDarkMode
-                          ? 'bg-orange-500 text-white shadow-md shadow-orange-900/70'
-                          : 'bg-orange-500 text-white shadow-md shadow-orange-500/40'
-                        : isDarkMode
-                          ? 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
-                          : 'border border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                    }`}
+                    className="rounded-lg px-3 py-2.5 text-sm font-medium capitalize transition lg:rounded-xl lg:px-4 lg:py-2 lg:text-xs "
                   >
                     {modeLabel(m)}
                   </button>
@@ -668,11 +580,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   <button
                     type="button"
                     onClick={handleClear}
-                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium ${
-                      isDarkMode
-                        ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
-                        : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                    }`}
+                    className="flex-1 rounded-lg border px-3 py-2 text-sm font-medium "
                   >
                     Clear
                   </button>
@@ -680,11 +588,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     type="button"
                     onClick={handleSaveManually}
                     disabled={!input.trim()}
-                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
-                      isDarkMode
-                        ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
-                        : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                    }`}
+                    className="flex-1 rounded-lg border px-3 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed "
                   >
                     Save
                   </button>
@@ -693,9 +597,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   type="button"
                   onClick={handleRun}
                   disabled={!input.trim() || isProcessing}
-                  className={`w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
-                    isDarkMode ? 'shadow-md shadow-orange-900/50' : 'shadow-md shadow-orange-500/30'
-                  }`}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 shadow-md shadow-orange-500/30"
                 >
                   {isProcessing ? (
                     <>
@@ -714,48 +616,38 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             
             {/* Mobile storage indicator - below mode description */}
             <div className="lg:hidden flex-shrink-0">
-              <StorageIndicator isDarkMode={isDarkMode} />
+              <StorageIndicator />
             </div>
 
             {/* Desktop action buttons and storage indicator */}
             <div className="hidden lg:flex items-center justify-between gap-3 flex-shrink-0 mt-3">
-              <StorageIndicator isDarkMode={isDarkMode} />
+              <StorageIndicator />
               <div className="flex items-center gap-2">
-                <Tooltip content="Save note (Cmd/Ctrl+S)" position="top" isDarkMode={isDarkMode}>
+                <Tooltip content="Save note (Cmd/Ctrl+S)" position="top">
                   <button
                     type="button"
                     onClick={handleSaveManually}
                     disabled={!input.trim()}
-                    className={`rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
-                      isDarkMode
-                        ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                        : 'border-orange-400/60 text-orange-900 hover:bg-orange-50/70'
-                    }`}
+                    className="rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed "
                   >
                     Save
                   </button>
                 </Tooltip>
-                <Tooltip content="Clear all text (Cmd/Ctrl+K)" position="top" isDarkMode={isDarkMode}>
+                <Tooltip content="Clear all text (Cmd/Ctrl+K)" position="top">
                   <button
                     type="button"
                     onClick={handleClear}
-                    className={`rounded-full border px-3 py-1 text-xs ${
-                      isDarkMode
-                        ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                        : 'border-orange-400/60 text-orange-900 hover:bg-orange-50/70'
-                    }`}
+                    className="rounded-full border px-3 py-1 text-xs "
                   >
                     Clear
                   </button>
                 </Tooltip>
-                <Tooltip content="Transform your notes (Cmd/Ctrl+Enter)" position="top" isDarkMode={isDarkMode}>
+                <Tooltip content="Transform your notes (Cmd/Ctrl+Enter)" position="top">
                   <button
                     type="button"
                     onClick={handleRun}
                     disabled={!input.trim() || isProcessing}
-                    className={`inline-flex items-center gap-1.5 rounded-full bg-orange-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
-                      isDarkMode ? 'shadow-lg shadow-orange-900/50' : 'shadow-lg shadow-orange-500/30'
-                    }`}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 shadow-lg shadow-orange-500/30"
                   >
                     {isProcessing ? (
                       <>
@@ -778,52 +670,36 @@ Remember to check in with marketing about the launch campaign and schedule a cal
           <div className={`flex flex-col gap-4 h-full overflow-hidden ${
             activeView === 'input' ? 'hidden lg:flex' : 'flex'
           }`}>
-            <div className={`flex flex-col rounded-2xl border p-4 shadow-xl backdrop-blur flex-1 min-h-0 ${
-              isDarkMode
-                ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
-                : 'border-orange-200/60 bg-white/80 shadow-orange-200/40'
-            }`}>
+            <div className="flex flex-col rounded-2xl border p-4 shadow-xl backdrop-blur flex-1 min-h-0 ">
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>
+                  <h2 className={`text-sm font-semibold $'text-gray-900'`}>
                     {mode === 'summarize' && 'Sharp summary'}
                     {mode === 'structure' && 'Structured outline'}
                     {mode === 'polish' && 'Polished draft'}
                     {mode === 'tasks' && 'Actionable task list'}
                   </h2>
-                  <span className={`rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wide ${
-                    isDarkMode 
-                      ? 'bg-slate-900/80 text-slate-400' 
-                      : 'bg-orange-100/70 text-orange-700'
-                  }`}>
+                  <span className="rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wide ">
                     {modeLabel(mode)}
                   </span>
                 </div>
                 {output && (
                   <div className="flex items-center gap-1">
-                    <Tooltip content="Copy to clipboard" position="bottom" isDarkMode={isDarkMode}>
+                    <Tooltip content="Copy to clipboard" position="bottom">
                       <button
                         type="button"
                         onClick={handleCopyOutput}
-                        className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
-                          isDarkMode
-                            ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                            : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                        }`}
+                        className="rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 "
                       >
                         <span>📋</span>
                         <span>Copy</span>
                       </button>
                     </Tooltip>
-                    <Tooltip content="Export as ZIP (TXT, MD, DOCX) - Cmd/Ctrl+E" position="bottom" isDarkMode={isDarkMode}>
+                    <Tooltip content="Export as ZIP (TXT, MD, DOCX) - Cmd/Ctrl+E" position="bottom">
                       <button
                         type="button"
                         onClick={handleExport}
-                        className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
-                          isDarkMode
-                            ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                            : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
-                        }`}
+                        className="rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 "
                       >
                         <span>📦</span>
                         <span>Export</span>
@@ -834,21 +710,13 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               </div>
 
               {output ? (
-                <pre className={`mt-1 flex-1 whitespace-pre-wrap rounded-xl p-3 text-xs leading-relaxed overflow-y-auto overflow-x-hidden ${
-                  isDarkMode 
-                    ? 'bg-slate-950/70 text-slate-100' 
-                    : 'bg-orange-50/50 text-gray-900'
-                }`}>
+                <pre className="mt-1 flex-1 whitespace-pre-wrap rounded-xl p-3 text-xs leading-relaxed overflow-y-auto overflow-x-hidden ">
                   {output}
                 </pre>
               ) : (
                 <div className="flex flex-1 flex-col items-center justify-center gap-3 py-8 text-center">
-                  <div className={`h-14 w-14 rounded-xl border border-dashed ${
-                    isDarkMode 
-                      ? 'border-slate-600/80 bg-slate-900/60' 
-                      : 'border-orange-400/60 bg-orange-50/50'
-                  }`} />
-                  <p className={`max-w-xs text-xs ${isDarkMode ? 'text-slate-300/80' : 'text-gray-600/80'}`}>
+                  <div className="h-14 w-14 rounded-xl border border-dashed " />
+                  <p className={`max-w-xs text-xs $'text-gray-600/80'`}>
                     Your transformed notes will show up here. Paste something on the left,
                     pick a mode, and hit &ldquo;Make it sharp&rdquo;.
                   </p>
@@ -856,26 +724,22 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               )}
             </div>
 
-            <div className={`rounded-2xl border p-4 text-[11px] shadow-xl backdrop-blur ${
-              isDarkMode
-                ? 'border-slate-700/70 bg-slate-900/80 text-slate-300/80 shadow-slate-950/60'
-                : 'border-orange-200/60 bg-white/80 text-gray-600/80 shadow-orange-200/40'
-            }`}>
-              <p className={`mb-1 font-semibold ${isDarkMode ? 'text-slate-100' : 'text-gray-900'}`}>
+            <div className="rounded-2xl border p-4 text-[11px] shadow-xl backdrop-blur ">
+              <p className={`mb-1 font-semibold $'text-gray-900'`}>
                 ⌨️ Keyboard Shortcuts
               </p>
               <div className="space-y-1 text-[10px]">
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+Enter</kbd> Transform</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+S</kbd> Save</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+E</kbd> Export</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+K</kbd> Clear</p>
+                <p><kbd className={`px-1 py-0.5 rounded $'bg-orange-100'`}>Cmd/Ctrl+Enter</kbd> Transform</p>
+                <p><kbd className={`px-1 py-0.5 rounded $'bg-orange-100'`}>Cmd/Ctrl+S</kbd> Save</p>
+                <p><kbd className={`px-1 py-0.5 rounded $'bg-orange-100'`}>Cmd/Ctrl+E</kbd> Export</p>
+                <p><kbd className={`px-1 py-0.5 rounded $'bg-orange-100'`}>Cmd/Ctrl+K</kbd> Clear</p>
               </div>
             </div>
           </div>
         </section>
 
-        <footer className={`mt-8 text-center space-y-3 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
-          <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
+        <footer className={`mt-8 text-center space-y-3 $'text-gray-600'`}>
+          <p className={`text-xs sm:text-sm $'text-gray-600'`}>
             Built for builders, writers, and overthinkers. SHRP Notes stores everything locally — unlimited & private.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-sm sm:text-xs">
@@ -883,66 +747,54 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               href="https://github.com/digitalwareshub/sharpnotes" 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               ⭐ Star on GitHub
             </a>
-            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
+            <span className={`$'text-slate-400'`}>•</span>
             <Link 
               href="/blog"
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               📝 Blog
             </Link>
-            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
+            <span className={`$'text-slate-400'`}>•</span>
             <Link 
               href="/privacy"
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               � Privacy
             </Link>
-            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
+            <span className={`$'text-slate-400'`}>•</span>
             <a 
               href="https://x.com/digi_wares" 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               🐦 Follow Updates
             </a>
-            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
+            <span className={`$'text-slate-400'`}>•</span>
             <button
               onClick={() => setIsFeedbackOpen(true)}
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               ✉️ Feedback
             </button>
-            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
+            <span className={`$'text-slate-400'`}>•</span>
             <button
               onClick={() => {
                 localStorage.removeItem('hasSeenOnboarding');
                 localStorage.removeItem('shrp_onboarding_dont_show');
                 setIsOnboardingOpen(true);
               }}
-              className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
-              }`}
+              className="transition-colors py-2 px-1 text-gray-700 hover:text-orange-600"
             >
               🎓 Tutorial
             </button>
           </div>
-          <p className={`text-xs ${isDarkMode ? 'text-gray-600' : 'text-gray-500'}`}>
-            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-orange-400 hover:underline' : 'text-orange-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
+          <p className={`text-xs $'text-gray-500'`}>
+            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className='text-orange-600 hover:underline'>Digiwares</a> • Open Source (MIT License)
           </p>
         </footer>
       </main>
@@ -962,7 +814,6 @@ Remember to check in with marketing about the launch campaign and schedule a cal
         onClose={() => setIsHistoryOpen(false)}
         isPinned={isHistoryPinned}
         onTogglePin={() => setIsHistoryPinned(!isHistoryPinned)}
-        isDarkMode={isDarkMode}
       />
 
       {/* Feedback Modal */}
@@ -974,13 +825,12 @@ Remember to check in with marketing about the launch campaign and schedule a cal
       {/* Onboarding Tour */}
       {isOnboardingOpen && (
         <OnboardingTour
-          isDarkMode={isDarkMode}
           onComplete={handleOnboardingComplete}
         />
       )}
 
       {/* PWA Installation Prompt */}
-      <PWAInstallPrompt isDarkMode={isDarkMode} />
+      <PWAInstallPrompt />
     </div>
   );
 }

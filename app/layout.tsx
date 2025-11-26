@@ -67,22 +67,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Prevent theme flash - must run before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme');
-                  const isDark = theme === 'dark' || (!theme && false);
-                  document.documentElement.classList.toggle('dark', isDark);
-                  document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-        
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K5WHXKDGE4"
@@ -151,7 +135,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      <body className="bg-gradient-to-br from-orange-50 via-white to-slate-50 min-h-screen">
         {children}
         <Toaster
           position="bottom-right"

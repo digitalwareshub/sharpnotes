@@ -7,14 +7,12 @@ interface TooltipProps {
   content: string;
   children: ReactNode;
   position?: 'top' | 'bottom' | 'left' | 'right';
-  isDarkMode?: boolean;
 }
 
 export function Tooltip({ 
   content, 
   children, 
   position = 'top',
-  isDarkMode = true 
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -113,13 +111,7 @@ export function Tooltip({
           className={`absolute z-50 ${getPositionClasses()}`}
           role="tooltip"
         >
-          <div className={`rounded-lg px-3 py-2 text-xs font-medium shadow-xl ${
-            isMobile ? 'w-[200px] max-w-[calc(100vw-2rem)]' : 'whitespace-nowrap max-w-xs'
-          } ${
-            isDarkMode
-              ? 'bg-slate-800 text-slate-100 border border-slate-700'
-              : 'bg-slate-900 text-white'
-          }`}>
+          <div className="rounded-lg px-3 py-2 text-xs font-medium shadow-xl ">
             {content}
             
             {isMobile && (
@@ -128,11 +120,7 @@ export function Tooltip({
                   e.stopPropagation();
                   setIsVisible(false);
                 }}
-                className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold ${
-                  isDarkMode
-                    ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-                    : 'bg-slate-700 text-white hover:bg-slate-600'
-                }`}
+                className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold "
                 aria-label="Close tooltip"
               >
                 ×
