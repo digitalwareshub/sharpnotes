@@ -248,9 +248,9 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className={`text-2xl sm:text-3xl font-bold ${
-              isDarkMode 
-                ? 'text-orange-400' 
+            <Link href="/" className={`text-xl sm:text-2xl font-bold ${
+              isDarkMode
+                ? 'text-orange-400'
                 : 'text-orange-600'
             }`}>
               SHRP
@@ -303,11 +303,11 @@ export default function LandingPage() {
                   />
                 </svg>
               </button>
-              <Link 
+              <Link
                 href="/webapp"
-                className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
-                  isDarkMode 
-                    ? 'bg-orange-500 text-white hover:bg-orange-600' 
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                  isDarkMode
+                    ? 'bg-orange-500 text-white hover:bg-orange-600'
                     : 'bg-orange-600 text-white hover:bg-orange-700'
                 }`}
               >
@@ -335,7 +335,7 @@ export default function LandingPage() {
             </div>
 
             {/* Main Headline - SEO Optimized */}
-            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${
+            <h1 className={`heading-primary mb-6 ${
               isDarkMode ? 'text-slate-50' : 'text-gray-900'
             }`}>
               Transform Messy Notes<br />
@@ -345,20 +345,20 @@ export default function LandingPage() {
             </h1>
 
             {/* Sub-headline with Long-Tail Keywords */}
-            <p className={`text-xl sm:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed ${
-              isDarkMode ? 'text-slate-300' : 'text-gray-900'
+            <p className={`text-responsive mb-8 max-w-4xl mx-auto ${
+              isDarkMode ? 'text-slate-300' : 'text-gray-600'
             }`}>
-              Transform messy notes into sharp, structured docs in 0.3 seconds. Extract action items automatically, 
+              Transform messy notes into sharp, structured docs in 0.3 seconds. Extract action items automatically,
               organize unstructured text, and fix grammar - all processed locally in your browser. Forever free.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Link 
+              <Link
                 href="/webapp"
-                className={`w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-lg shadow-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 ${
-                  isDarkMode 
-                    ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-orange-900/50' 
+                className={`w-full sm:w-auto px-6 py-3 rounded-lg font-medium text-base shadow-lg flex items-center justify-center gap-2 transition-all transform hover:scale-105 ${
+                  isDarkMode
+                    ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-orange-900/50'
                     : 'bg-orange-600 text-white hover:bg-orange-700 shadow-orange-500/30'
                 }`}
               >
@@ -393,7 +393,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className={`text-4xl sm:text-5xl font-bold mb-2 ${
+                <div className={`text-2xl sm:text-3xl font-bold mb-2 ${
                   isDarkMode ? 'text-slate-50' : 'text-gray-900'
                 }`}>
                   {stat.number}
@@ -411,7 +411,7 @@ export default function LandingPage() {
       <section className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Tired of This? 😓
             </h2>
             <p className={`text-xl max-w-3xl mx-auto ${
@@ -495,7 +495,7 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               4 Magic Modes. 0.3 Seconds. ✨
             </h2>
             <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -514,7 +514,7 @@ export default function LandingPage() {
                     : 'border-slate-200 bg-white'
                 }`}
               >
-                <div className="text-5xl mb-4">{feature.icon}</div>
+                <div className="text-3xl mb-4">{feature.icon}</div>
                 <h3 className={`text-xl font-semibold mb-3 ${
                   isDarkMode ? 'text-slate-50' : 'text-gray-900'
                 }`}>
@@ -553,7 +553,7 @@ export default function LandingPage() {
       <section id="how-it-works" className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Simple as 1-2-3
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -614,7 +614,7 @@ export default function LandingPage() {
               : 'border-orange-200 bg-orange-50'
           }`}>
             <div className="flex items-start gap-4">
-              <div className="text-4xl">🎥</div>
+              <div className="text-3xl">🎥</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Watch 60-Second Demo</h3>
                 <p className={`mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -642,7 +642,7 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Who Uses SHRP Notes?
             </h2>
             <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -660,7 +660,7 @@ export default function LandingPage() {
                     : 'border-slate-200 bg-white'
                 }`}
               >
-                <div className="text-5xl mb-4">{useCase.icon}</div>
+                <div className="text-3xl mb-4">{useCase.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
                 <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                   {useCase.description}
@@ -699,7 +699,7 @@ export default function LandingPage() {
               : 'border-emerald-400/30 bg-emerald-50/50'
           }`}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <h2 className="heading-secondary mb-6">
                 Your Notes. Your Device. Your Privacy. 🔒
               </h2>
               <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -796,7 +796,7 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               SHRP Notes vs. The Rest
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -1052,7 +1052,7 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Free Forever
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -1169,7 +1169,7 @@ export default function LandingPage() {
       <section id="faq" className="relative py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Frequently Asked Questions
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -1235,7 +1235,7 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Learn More About Note-Taking 📚
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
@@ -1302,7 +1302,7 @@ export default function LandingPage() {
       <section className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-secondary mb-6">
               Use SHRP Notes Everywhere
             </h2>
             <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
