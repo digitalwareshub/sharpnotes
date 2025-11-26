@@ -234,7 +234,7 @@ export default function LandingPage() {
               'text-gray-900'
             }`}>
               Transform Messy Notes<br />
-              <span className={'text-orange-600'}>
+              <span className="text-orange-600">
                 Into Sharp, Structured Docs
               </span>
             </h1>
@@ -448,7 +448,7 @@ export default function LandingPage() {
                 1
               </div>
               <h3 className="text-xl font-semibold mb-3">Paste Your Messy Notes</h3>
-              <p className={'text-gray-900'}>
+              <p className="text-gray-900">
                 Meeting brain dump, voice transcription, stream-of-consciousness typing, 
                 or quick voice dictation. No need to format while capturing.
               </p>
@@ -461,7 +461,7 @@ export default function LandingPage() {
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">Pick a Transformation Mode</h3>
-              <p className={'text-gray-900'}>
+              <p className="text-gray-900">
                 Summarize (extract key points), Structure (organize into sections), 
                 Polish (fix grammar), or Tasks (extract action items automatically).
               </p>
@@ -474,7 +474,7 @@ export default function LandingPage() {
                 3
               </div>
               <h3 className="text-xl font-semibold mb-3">Get Sharp Output Instantly</h3>
-              <p className={'text-gray-900'}>
+              <p className="text-gray-900">
                 Copy to clipboard, export as Markdown or text file, or save to note history. 
                 Transformation happens in 0.3 seconds locally.
               </p>
@@ -670,7 +670,7 @@ export default function LandingPage() {
               'border-slate-200'
             }`}>
               <thead>
-                <tr className={'bg-slate-100'}>
+                <tr className="bg-slate-100">
                   <th className={`p-4 text-left text-sm font-semibold border-b ${
                     'border-slate-200'
                   }`}>Feature</th>
@@ -688,7 +688,7 @@ export default function LandingPage() {
                   }`}>Evernote</th>
                 </tr>
               </thead>
-              <tbody className={'bg-white'}>
+              <tbody className="bg-white">
                 {comparisonData.map((row, index) => (
                   <tr key={index} className={`border-b last:border-b-0 ${
                     'border-slate-200'
@@ -936,49 +936,49 @@ export default function LandingPage() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>All 4 transformation modes</strong> (Summarize, Structure, Polish, Tasks)
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Unlimited transformations</strong> — no daily caps or quotas
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Local storage</strong> with note history & search
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Voice input</strong> for hands-free note capture
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Export to TXT/MD/DOCX</strong> — your data, your format
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Works offline</strong> — no internet required
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>100% private & local</strong> — zero data sent to servers
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={'text-gray-900'}>
+                  <span className="text-gray-900">
                     <strong>Open source</strong> — verify the code yourself
                   </span>
                 </div>
@@ -997,7 +997,7 @@ export default function LandingPage() {
             'bg-white/50'
           }`}>
             <p className={`text-sm ${'text-gray-600'}`}>
-              <strong className={'text-gray-900'}>
+              <strong className="text-gray-900">
                 How is this sustainable?
               </strong> SHRP runs 100% locally in your browser using open-source NLP libraries. No servers, no cloud computing costs, no AI API fees. 
               Your browser does all the work, so we can offer everything free forever. If you love SHRP and want to support development, consider{' '}

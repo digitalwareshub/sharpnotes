@@ -29,7 +29,7 @@ export function NoteHistory({
   onDeleteNote,
   onToggleFavorite,
   onToggleNotePin,
-  selectedNoteId,
+  selectedNoteId: _selectedNoteId,
   isOpen,
   onClose,
   isPinned = true,

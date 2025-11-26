@@ -13,10 +13,7 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
-interface PWAInstallPromptProps {
-}
-
-export default function PWAInstallPrompt({}: PWAInstallPromptProps) {
+export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [browserType, setBrowserType] = useState<'safari' | 'firefox' | 'chrome' | 'unknown'>('unknown');
