@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Footer from '@/components/ui/Footer';
 
 interface BlogPost {
   slug: string;
@@ -280,54 +281,7 @@ export default function BlogPage() {
       </section>
 
       {/* Footer */}
-      <footer className={`border-t mt-16 ${
-        isDarkMode ? 'border-slate-800/50' : 'border-orange-200/50'
-      }`}>
-        <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          <div className={`text-center text-sm ${
-            isDarkMode ? 'text-gray-500' : 'text-gray-600'
-          }`}>
-            <p className="mb-2">
-              Made with ❤️ by{' '}
-              <a 
-                href="https://digiwares.xyz" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-orange-400 hover:underline"
-              >
-                Digiwares
-              </a>
-            </p>
-            <div className="flex items-center justify-center gap-4 text-xs">
-              <Link href="/" className="hover:text-orange-400 transition-colors">
-                Home
-              </Link>
-              <span>•</span>
-              <Link href="/blog" className="hover:text-orange-400 transition-colors">
-                Blog
-              </Link>
-              <span>•</span>
-              <a 
-                href="https://github.com/digitalwareshub/sharpnotes" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-orange-400 transition-colors"
-              >
-                GitHub
-              </a>
-              <span>•</span>
-              <a 
-                href="https://twitter.com/digi_wares" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-orange-400 transition-colors"
-              >
-                Twitter
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }
