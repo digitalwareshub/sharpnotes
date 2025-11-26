@@ -129,12 +129,12 @@ export default function BlogPage() {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
         <h1 className={`text-5xl sm:text-6xl font-bold mb-6 ${
-          isDarkMode ? 'text-slate-50' : 'text-slate-900'
+          isDarkMode ? 'text-slate-50' : 'text-gray-900'
         }`}>
           SHRP Notes Blog
         </h1>
         <p className={`text-xl mb-8 max-w-2xl mx-auto ${
-          isDarkMode ? 'text-slate-300' : 'text-slate-700'
+          isDarkMode ? 'text-slate-300' : 'text-gray-700'
         }`}>
           Proven strategies for organizing meeting notes, boosting productivity, and building privacy-first workflows.
         </p>
@@ -144,28 +144,28 @@ export default function BlogPage() {
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
+              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
           }`}>
             📝 Note-Taking
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
+              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
           }`}>
             ⚡ Productivity
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
+              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
           }`}>
             🔒 Privacy
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
+              : 'bg-orange-100/50 text-gray-700 border-orange-200/50'
           }`}>
             🚀 Tutorials
           </span>
@@ -180,7 +180,7 @@ export default function BlogPage() {
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-16">
-            <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
               No blog posts yet. Check back soon!
             </p>
           </div>
@@ -215,21 +215,21 @@ export default function BlogPage() {
 
                   {/* Title */}
                   <h2 className={`text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors line-clamp-2 ${
-                    isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                    isDarkMode ? 'text-slate-50' : 'text-gray-900'
                   }`}>
                     {post.title}
                   </h2>
 
                   {/* Description */}
                   <p className={`text-sm mb-4 line-clamp-3 ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     {post.description}
                   </p>
 
                   {/* Meta */}
                   <div className={`flex items-center gap-3 text-xs mt-auto pt-4 border-t ${
-                    isDarkMode ? 'text-slate-500 border-slate-800/50' : 'text-slate-500 border-orange-200/50'
+                    isDarkMode ? 'text-gray-500 border-slate-800/50' : 'text-gray-500 border-orange-200/50'
                   }`}>
                     <time>{formatDate(post.date)}</time>
                     <span>•</span>
@@ -256,12 +256,12 @@ export default function BlogPage() {
             : 'bg-gradient-to-r from-orange-100/50 to-blue-100/50 border-orange-400/30'
         }`}>
           <h2 className={`text-2xl font-bold mb-3 ${
-            isDarkMode ? 'text-slate-50' : 'text-slate-900'
+            isDarkMode ? 'text-slate-50' : 'text-gray-900'
           }`}>
             Ready to transform your notes?
           </h2>
           <p className={`mb-6 max-w-lg mx-auto ${
-            isDarkMode ? 'text-slate-300' : 'text-slate-700'
+            isDarkMode ? 'text-slate-300' : 'text-gray-700'
           }`}>
             Try SHRP Notes free - no signup required. Transform messy meeting notes into organized, actionable summaries in seconds.
           </p>
@@ -272,7 +272,7 @@ export default function BlogPage() {
             Try SHRP Notes Free →
           </Link>
           <p className={`text-sm mt-4 ${
-            isDarkMode ? 'text-slate-500' : 'text-slate-600'
+            isDarkMode ? 'text-gray-500' : 'text-gray-600'
           }`}>
             100% private • No account needed • Unlimited usage
           </p>
@@ -285,7 +285,7 @@ export default function BlogPage() {
       }`}>
         <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className={`text-center text-sm ${
-            isDarkMode ? 'text-slate-500' : 'text-slate-600'
+            isDarkMode ? 'text-gray-500' : 'text-gray-600'
           }`}>
             <p className="mb-2">
               Made with ❤️ by{' '}

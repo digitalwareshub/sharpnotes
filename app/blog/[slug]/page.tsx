@@ -93,7 +93,7 @@ export default function BlogPost() {
           : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
       }`}>
         <div className="text-center">
-          <h1 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
+          <h1 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>
             Post not found
           </h1>
           <Link href="/blog" className="text-orange-400 hover:text-orange-400">
@@ -162,22 +162,22 @@ export default function BlogPost() {
               <Link 
                 href="/"
                 className={`hover:text-orange-400 transition-colors ${
-                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
                 }`}
               >
                 Home
               </Link>
-              <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>/</span>
+              <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>/</span>
               <Link 
                 href="/blog"
                 className={`hover:text-orange-400 transition-colors ${
-                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
                 }`}
               >
                 Blog
               </Link>
-              <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>/</span>
-              <span className={`${isDarkMode ? 'text-slate-300' : 'text-slate-900'}`}>
+              <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>/</span>
+              <span className={`${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
                 {blogPost?.title.substring(0, 30)}{blogPost?.title && blogPost.title.length > 30 ? '...' : ''}
               </span>
             </nav>
@@ -219,7 +219,7 @@ export default function BlogPost() {
               <Link 
                 href="/webapp"
                 className={`transition-colors text-sm ${
-                  isDarkMode ? 'text-slate-400 hover:text-slate-300' : 'text-slate-600 hover:text-slate-800'
+                  isDarkMode ? 'text-gray-400 hover:text-slate-300' : 'text-gray-600 hover:text-slate-800'
                 }`}
               >
                 Try SHRP Notes
@@ -233,16 +233,16 @@ export default function BlogPost() {
       <article className="max-w-3xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Meta */}
         <div className="flex items-center gap-3 mb-6 text-sm">
-          <time className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>{formatDate(blogPost.date)}</time>
-          <span className={isDarkMode ? 'text-slate-700' : 'text-slate-400'}>•</span>
-          <span className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>{blogPost.readTime}</span>
-          <span className={isDarkMode ? 'text-slate-700' : 'text-slate-400'}>•</span>
-          <span className={isDarkMode ? 'text-slate-400' : 'text-slate-600'}>By {blogPost.author}</span>
+          <time className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{formatDate(blogPost.date)}</time>
+          <span className={isDarkMode ? 'text-slate-700' : 'text-gray-400'}>•</span>
+          <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{blogPost.readTime}</span>
+          <span className={isDarkMode ? 'text-slate-700' : 'text-gray-400'}>•</span>
+          <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>By {blogPost.author}</span>
         </div>
 
         {/* Title */}
         <h1 className={`text-4xl sm:text-5xl font-bold mb-6 leading-tight ${
-          isDarkMode ? 'text-slate-50' : 'text-slate-900'
+          isDarkMode ? 'text-slate-50' : 'text-gray-900'
         }`}>
           {blogPost.title}
         </h1>
@@ -261,7 +261,7 @@ export default function BlogPost() {
               key={tag}
               className={`px-3 py-1 text-xs rounded-full border ${
                 isDarkMode 
-                  ? 'bg-slate-800/50 text-slate-400 border-slate-700/50' 
+                  ? 'bg-slate-800/50 text-gray-400 border-slate-700/50' 
                   : 'bg-orange-100/50 text-orange-600 border-orange-200/50'
               }`}
             >
@@ -286,11 +286,11 @@ export default function BlogPost() {
                 prose-ul:text-slate-300 prose-ul:my-6
                 prose-ol:text-slate-300 prose-ol:my-6
                 prose-li:my-2
-                prose-blockquote:border-l-orange-500 prose-blockquote:text-slate-400 prose-blockquote:italic
+                prose-blockquote:border-l-orange-500 prose-blockquote:text-gray-400 prose-blockquote:italic
                 prose-img:rounded-xl prose-img:shadow-lg
                 prose-hr:border-slate-800 prose-hr:my-12
                 prose-table:text-slate-300`
-              : `prose-headings:text-slate-900 prose-headings:font-semibold
+              : `prose-headings:text-gray-900 prose-headings:font-semibold
                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-orange-200 prose-h2:pb-3
                 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
                 prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6
@@ -301,7 +301,7 @@ export default function BlogPost() {
                 prose-ul:text-slate-700 prose-ul:my-6
                 prose-ol:text-slate-700 prose-ol:my-6
                 prose-li:my-2
-                prose-blockquote:border-l-orange-500 prose-blockquote:text-slate-600 prose-blockquote:italic
+                prose-blockquote:border-l-orange-500 prose-blockquote:text-gray-600 prose-blockquote:italic
                 prose-img:rounded-xl prose-img:shadow-lg
                 prose-hr:border-orange-200 prose-hr:my-12
                 prose-table:text-slate-700`
@@ -316,7 +316,7 @@ export default function BlogPost() {
             : 'bg-gradient-to-r from-orange-100/50 to-blue-100/50 border-orange-400/30'
         }`}>
           <h3 className={`text-xl font-semibold mb-3 ${
-            isDarkMode ? 'text-slate-50' : 'text-slate-900'
+            isDarkMode ? 'text-slate-50' : 'text-gray-900'
           }`}>
             Ready to organize your notes?
           </h3>
@@ -335,7 +335,7 @@ export default function BlogPost() {
         <div className={`mt-12 pt-8 border-t ${
           isDarkMode ? 'border-slate-800/50' : 'border-orange-200/50'
         }`}>
-          <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Share this article:</p>
+          <p className={`mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Share this article:</p>
           <div className="flex gap-3">
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogPost.title)}&url=${encodeURIComponent(`https://shrp.app/blog/${slug}`)}&via=digi_wares`}
@@ -382,12 +382,12 @@ export default function BlogPost() {
             </div>
             <div>
               <h3 className={`text-lg font-semibold mb-1 ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 {blogPost.author}
               </h3>
               <p className={`text-sm mb-3 ${
-                isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
               }`}>
                 Founder of Digiwares, creator of SHRP Notes. Building privacy-first productivity tools.
               </p>
@@ -407,7 +407,7 @@ export default function BlogPost() {
         {relatedPosts.length > 0 && (
           <div className="mt-16">
             <h3 className={`text-2xl font-semibold mb-6 ${
-              isDarkMode ? 'text-slate-50' : 'text-slate-900'
+              isDarkMode ? 'text-slate-50' : 'text-gray-900'
             }`}>
               Related Articles
             </h3>
@@ -425,12 +425,12 @@ export default function BlogPost() {
                   <h4 className={`text-lg font-semibold mb-2 ${
                     isDarkMode 
                       ? 'text-slate-50 group-hover:text-orange-400' 
-                      : 'text-slate-900 group-hover:text-orange-600'
+                      : 'text-gray-900 group-hover:text-orange-600'
                   }`}>
                     {relatedPost.title} →
                   </h4>
                   <p className={`text-sm ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
                   }`}>
                     {relatedPost.description}
                   </p>
@@ -447,7 +447,7 @@ export default function BlogPost() {
       }`}>
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center text-sm">
-            <p className={`mb-2 ${isDarkMode ? 'text-slate-500' : 'text-slate-600'}`}>
+            <p className={`mb-2 ${isDarkMode ? 'text-slate-500' : 'text-gray-600'}`}>
               Made with ❤️ by{' '}
               <a 
                 href="https://digiwares.xyz" 
@@ -459,7 +459,7 @@ export default function BlogPost() {
               </a>
             </p>
             <div className={`flex items-center justify-center gap-4 text-xs ${
-              isDarkMode ? 'text-slate-500' : 'text-slate-600'
+              isDarkMode ? 'text-slate-500' : 'text-gray-600'
             }`}>
               <Link href="/" className="hover:text-orange-400 transition-colors">
                 Home

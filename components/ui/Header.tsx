@@ -27,7 +27,7 @@ export default function Header({ isDarkMode, toggleTheme }: HeaderProps) {
 
           {/* Centered Navigation Links */}
           <div className={`hidden md:flex items-center gap-6 text-sm absolute left-1/2 transform -translate-x-1/2 ${
-            isDarkMode ? 'text-slate-300' : 'text-slate-700'
+            isDarkMode ? 'text-slate-300' : 'text-gray-900'
           }`}>
             <a href="/#features" className={isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'}>Features</a>
             <a href="/#how-it-works" className={isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'}>How It Works</a>

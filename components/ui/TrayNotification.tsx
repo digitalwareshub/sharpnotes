@@ -117,14 +117,14 @@ export function TrayNotification({
               <div className="flex-1 min-w-0">
                 <h3
                   className={`text-lg font-semibold mb-2 ${
-                    isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                    isDarkMode ? 'text-slate-50' : 'text-gray-900'
                   }`}
                 >
                   {title}
                 </h3>
                 <p
                   className={`text-sm leading-relaxed ${
-                    isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                    isDarkMode ? 'text-slate-300' : 'text-gray-700'
                   }`}
                 >
                   {message}
@@ -149,7 +149,7 @@ export function TrayNotification({
                     className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                       isDarkMode
                         ? 'border border-slate-600 text-slate-300 hover:bg-slate-800'
-                        : 'border border-orange-400 text-slate-700 hover:bg-orange-50'
+                        : 'border border-orange-400 text-gray-700 hover:bg-orange-50'
                     }`}
                   >
                     {actionLabel ? 'Not Now' : 'Dismiss'}
@@ -163,7 +163,7 @@ export function TrayNotification({
                 className={`flex-shrink-0 p-1 rounded-lg transition-colors ${
                   isDarkMode
                     ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-                    : 'text-slate-500 hover:text-slate-900 hover:bg-orange-100'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-orange-100'
                 }`}
                 aria-label="Close notification"
               >

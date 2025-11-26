@@ -236,7 +236,7 @@ export default function LandingPage() {
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode 
         ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900 text-slate-50' 
-        : 'bg-white text-slate-900'
+        : 'bg-white text-gray-900'
     }`}>
 
       {/* Navigation */}
@@ -275,7 +275,7 @@ export default function LandingPage() {
                 className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
                   isDarkMode
                     ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
-                    : 'border-slate-300 bg-white text-slate-900 shadow-slate-200 hover:bg-slate-50'
+                    : 'border-slate-300 bg-white text-gray-900 shadow-slate-200 hover:bg-slate-50'
                 }`}
                 title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 aria-label="Toggle theme"
@@ -516,7 +516,7 @@ export default function LandingPage() {
               >
                 <div className="text-5xl mb-4">{feature.icon}</div>
                 <h3 className={`text-xl font-semibold mb-3 ${
-                  isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                  isDarkMode ? 'text-slate-50' : 'text-gray-900'
                 }`}>
                   {feature.title}
                 </h3>
@@ -526,7 +526,7 @@ export default function LandingPage() {
                   {feature.description}
                 </p>
                 <div className={`text-xs italic ${
-                  isDarkMode ? 'text-slate-500' : 'text-gray-900'
+                  isDarkMode ? 'text-gray-500' : 'text-gray-900'
                 }`}>
                   {feature.longTailKeywords}
                 </div>
@@ -662,7 +662,7 @@ export default function LandingPage() {
               >
                 <div className="text-5xl mb-4">{useCase.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-                <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                   {useCase.description}
                 </p>
                 <ul className="space-y-2">
@@ -775,7 +775,7 @@ export default function LandingPage() {
             </div>
 
             <div className="text-center">
-              <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 Perfect for sensitive notes: medical records, legal documents, therapy sessions, 
                 business strategy, financial planning, and personal journals.
               </p>
@@ -865,7 +865,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${
-              isDarkMode ? 'text-slate-50' : 'text-slate-900'
+              isDarkMode ? 'text-slate-50' : 'text-gray-900'
             }`}>
               Trusted by Privacy-Conscious Professionals
             </h2>
@@ -891,14 +891,14 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className={`text-xl font-bold mb-3 ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 Healthcare Professionals
               </h3>
               <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
                 Keep therapy session notes, patient consultations, and medical records completely private. No cloud transmission means HIPAA compliance is easier to maintain on your end.
               </p>
-              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-orange-500">→</span>
                   <span>Session notes stay on your device</span>
@@ -930,14 +930,14 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className={`text-xl font-bold mb-3 ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 Legal Professionals
               </h3>
               <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
                 Maintain attorney-client privilege with case notes that never leave your device. Organize depositions, client meetings, and legal research without cloud exposure.
               </p>
-              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-orange-500">→</span>
                   <span>Privileged communications stay private</span>
@@ -969,14 +969,14 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className={`text-xl font-bold mb-3 ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 Business Consultants
               </h3>
               <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
                 Transform client meeting notes in seconds, not minutes. Keep sensitive business strategies and competitive information off cloud servers entirely.
               </p>
-              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-orange-500">→</span>
                   <span>Client discussions stay confidential</span>
@@ -1008,14 +1008,14 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className={`text-xl font-bold mb-3 ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 Students & Researchers
               </h3>
               <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
                 Organize lecture notes instantly, extract assignment deadlines, and structure research interviews. Completely free—no student budget required.
               </p>
-              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <div className="flex items-center gap-2">
                   <span className="text-orange-500">→</span>
                   <span>Transform messy notes into study guides</span>
@@ -1074,12 +1074,12 @@ export default function LandingPage() {
                   <span className="text-sm font-medium">100% FREE</span>
                 </div>
                 <h3 className={`text-2xl font-bold mb-2 ${
-                  isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                  isDarkMode ? 'text-slate-50' : 'text-gray-900'
                 }`}>Everything Included</h3>
                 <div className={`text-5xl font-bold mb-2 ${
                   isDarkMode ? 'text-orange-400' : 'text-orange-600'
                 }`}>$0</div>
-                <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                   Forever • No credit card • No limits
                 </p>
               </div>
@@ -1147,7 +1147,7 @@ export default function LandingPage() {
           <div className={`mt-12 max-w-2xl mx-auto p-6 rounded-xl text-center ${
             isDarkMode ? 'bg-slate-900/50' : 'bg-white/50'
           }`}>
-            <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
               <strong className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
                 How is this sustainable?
               </strong> SHRP runs 100% locally in your browser using open-source NLP libraries. No servers, no cloud computing costs, no AI API fees. 
@@ -1194,7 +1194,7 @@ export default function LandingPage() {
                   }`}
                 >
                   <span className={`font-semibold pr-8 ${
-                    isDarkMode ? 'text-slate-100' : 'text-slate-900'
+                    isDarkMode ? 'text-slate-100' : 'text-gray-900'
                   }`}>
                     {faq.question}
                   </span>
@@ -1216,7 +1216,7 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
               Still have questions?
             </p>
             <Link 
@@ -1261,7 +1261,7 @@ export default function LandingPage() {
                       className={`px-2 py-1 text-xs rounded-full border ${
                         isDarkMode 
                           ? 'bg-orange-500/10 text-orange-300 border-orange-500/30' 
-                          : 'bg-slate-100 text-slate-700 border-slate-300'
+                          : 'bg-slate-100 text-gray-700 border-slate-300'
                       }`}
                     >
                       #{tag}
@@ -1273,10 +1273,10 @@ export default function LandingPage() {
                 }`}>
                   {post.title}
                 </h3>
-                <p className={`text-sm mb-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className={`text-sm mb-3 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                   {post.description}
                 </p>
-                <div className={`text-xs ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+                <div className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-slate-400'}`}>
                   {post.readTime}
                 </div>
               </Link>
@@ -1289,7 +1289,7 @@ export default function LandingPage() {
               className={`inline-block px-6 py-3 border rounded-xl transition-colors font-medium ${
                 isDarkMode 
                   ? 'border-slate-700 text-slate-200 hover:bg-slate-800/50' 
-                  : 'border-slate-300 text-slate-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-500'
+                  : 'border-slate-300 text-gray-700 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-500'
               }`}
             >
               Read All Articles →
@@ -1318,7 +1318,7 @@ export default function LandingPage() {
             }`}>
               <div className="text-5xl mb-4">🌐</div>
               <h3 className="text-lg font-semibold mb-2">Web App</h3>
-              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 Works in any modern browser. No installation needed.
               </p>
               <Link 
@@ -1341,7 +1341,7 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold mb-2">iOS App</h3>
-              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 Native iPhone and iPad experience
               </p>
               <button 
@@ -1349,7 +1349,7 @@ export default function LandingPage() {
                 className={`inline-block px-4 py-2 rounded-lg font-medium text-sm cursor-not-allowed ${
                   isDarkMode 
                     ? 'bg-slate-700 text-slate-400' 
-                    : 'bg-slate-200 text-slate-500'
+                    : 'bg-slate-200 text-gray-500'
                 }`}
               >
                 Coming Soon
@@ -1368,7 +1368,7 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold mb-2">Android App</h3>
-              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 Native Android experience
               </p>
               <button 
@@ -1376,7 +1376,7 @@ export default function LandingPage() {
                 className={`inline-block px-4 py-2 rounded-lg font-medium text-sm cursor-not-allowed ${
                   isDarkMode 
                     ? 'bg-slate-700 text-slate-400' 
-                    : 'bg-slate-200 text-slate-500'
+                    : 'bg-slate-200 text-gray-500'
                 }`}
               >
                 Coming Soon
@@ -1390,7 +1390,7 @@ export default function LandingPage() {
             }`}>
               <div className="text-5xl mb-4">💻</div>
               <h3 className="text-lg font-semibold mb-2">Desktop App</h3>
-              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 Chrome extension for quick access
               </p>
               <button 
@@ -1398,7 +1398,7 @@ export default function LandingPage() {
                 className={`inline-block px-4 py-2 rounded-lg font-medium text-sm cursor-not-allowed ${
                   isDarkMode 
                     ? 'bg-slate-700 text-slate-400' 
-                    : 'bg-slate-200 text-slate-500'
+                    : 'bg-slate-200 text-gray-500'
                 }`}
               >
                 Coming Soon
@@ -1461,7 +1461,7 @@ export default function LandingPage() {
               <h3 className={`font-semibold mb-4 ${
                 isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Product</h3>
-              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <li><Link href="/webapp" className="hover:text-orange-400 transition-colors">Web App</Link></li>
                 <li><a href="#features" className="hover:text-orange-400 transition-colors">Features</a></li>
                 <li><a href="#how-it-works" className="hover:text-orange-400 transition-colors">How It Works</a></li>
@@ -1473,7 +1473,7 @@ export default function LandingPage() {
               <h3 className={`font-semibold mb-4 ${
                 isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Company</h3>
-              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <li><Link href="/blog" className="hover:text-orange-400 transition-colors">Blog</Link></li>
                 <li><a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">About Digiwares</a></li>
                 <li><a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">Twitter</a></li>
@@ -1485,7 +1485,7 @@ export default function LandingPage() {
               <h3 className={`font-semibold mb-4 ${
                 isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Resources</h3>
-              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <li><a href="#faq" className="hover:text-orange-400 transition-colors">FAQ</a></li>
                 <li><Link href="/blog/how-to-organize-meeting-notes" className="hover:text-orange-400 transition-colors">Meeting Notes Guide</Link></li>
                 <li><Link href="/blog/privacy-cost-of-cloud-note-apps" className="hover:text-orange-400 transition-colors">Privacy Guide</Link></li>
@@ -1497,7 +1497,7 @@ export default function LandingPage() {
               <h3 className={`font-semibold mb-4 ${
                 isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Legal</h3>
-              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 <li><Link href="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-orange-400 transition-colors">Terms of Service</Link></li>
                 <li><Link href="/report" className="hover:text-orange-400 transition-colors">Report Bug/Feature</Link></li>
@@ -1507,7 +1507,7 @@ export default function LandingPage() {
           </div>
 
           <div className={`pt-8 border-t text-center text-sm ${
-            isDarkMode ? 'border-slate-800/50 text-slate-500' : 'border-orange-200/50 text-slate-600'
+            isDarkMode ? 'border-slate-800/50 text-gray-500' : 'border-orange-200/50 text-gray-600'
           }`}>
             <p className="mb-2">
               Made with ❤️ by{' '}

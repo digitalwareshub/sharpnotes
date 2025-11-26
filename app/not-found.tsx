@@ -45,7 +45,7 @@ export default function NotFound() {
             new privacy-first note transformation tool that helps you organize meeting notes, extract 
             tasks, and structure information—all locally in your browser.
           </p>
-          <p className="text-slate-500 text-xs">
+          <p className="text-gray-500 text-xs">
             Our previous PDF/OCR services have been discontinued as we focus on building the best 
             note-taking experience.
           </p>
@@ -78,7 +78,7 @@ export default function NotFound() {
         </div>
 
         {/* Help Text */}
-        <p className="mt-8 text-slate-500 text-sm">
+        <p className="mt-8 text-gray-500 text-sm">
           If you believe this page should exist, please{' '}
           <a
             href="https://twitter.com/digi_wares"

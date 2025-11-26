@@ -130,7 +130,7 @@ export function NoteHistory({
         }`}>
           <div className="flex items-center justify-between mb-3">
             <div>
-              <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>Note History</h2>
+              <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>Note History</h2>
               {isChromeAndroid && isOpen && (
                 <p className={`text-xs font-bold mt-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                   Tap anywhere on the history<br />pane if the pane doesn&apos;t<br />load completely
@@ -174,8 +174,8 @@ export function NoteHistory({
             onChange={(e) => onSearchChange(e.target.value)}
             className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 ${
               isDarkMode
-                ? 'bg-slate-950/80 border-slate-700 text-slate-50 placeholder:text-slate-500 focus:border-orange-500'
-                : 'bg-white border-orange-200 text-slate-900 placeholder:text-slate-400 focus:border-orange-500'
+                ? 'bg-slate-950/80 border-slate-700 text-slate-50 placeholder:text-gray-500 focus:border-orange-500'
+                : 'bg-white border-orange-200 text-gray-900 placeholder:text-slate-400 focus:border-orange-500'
             }`}
           />
         </div>
@@ -183,16 +183,16 @@ export function NoteHistory({
         {/* Notes List */}
         <div className="flex-1 overflow-y-auto">
           {isLoading ? (
-            <div className={`p-4 text-center text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            <div className={`p-4 text-center text-sm ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
               Loading notes...
             </div>
           ) : notes.length === 0 ? (
             <div className="p-4 text-center">
-              <div className={`text-sm mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <div className={`text-sm mb-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 {searchQuery ? 'No notes found' : 'No notes yet'}
               </div>
               {!searchQuery && (
-                <p className={`text-xs ${isDarkMode ? 'text-slate-500' : 'text-slate-500'}`}>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
                   Your notes will appear here as you create them
                 </p>
               )}
@@ -211,7 +211,7 @@ export function NoteHistory({
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h3 className={`text-sm font-medium line-clamp-1 flex-1 ${
-                      isDarkMode ? 'text-slate-100' : 'text-slate-900'
+                      isDarkMode ? 'text-slate-100' : 'text-gray-900'
                     }`}>
                       {note.isPinned && <span className="mr-1">📌</span>}
                       {note.title}
@@ -246,12 +246,12 @@ export function NoteHistory({
                   </p>
 
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500">{getModeLabel(note.mode)}</span>
-                    <span className="text-slate-500">{formatDate(note.createdAt)}</span>
+                    <span className="text-gray-500">{getModeLabel(note.mode)}</span>
+                    <span className="text-gray-500">{formatDate(note.createdAt)}</span>
                   </div>
 
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-slate-600">
+                    <span className="text-xs text-gray-600">
                       {note.wordCount} words
                     </span>
                     <button
@@ -271,7 +271,7 @@ export function NoteHistory({
         </div>
 
         {/* Footer */}
-        <div className="p-3 border-t border-slate-700/70 text-xs text-slate-500 flex-shrink-0">
+        <div className="p-3 border-t border-slate-700/70 text-xs text-gray-500 flex-shrink-0">
           {notes.length} note{notes.length !== 1 ? 's' : ''} • Unlimited local storage
         </div>
         </div>

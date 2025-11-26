@@ -27,12 +27,12 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
               <span className="text-xl">⚠️</span>
               <div>
                 <p className="font-semibold">Storage Almost Full</p>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-gray-600 dark:text-slate-400">
                   You&apos;re using {info.percentage}% of available storage
                 </p>
               </div>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+            <p className="text-xs text-gray-600 dark:text-slate-400">
               Consider deleting old notes to free up space
             </p>
             <button
@@ -119,8 +119,8 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
           : isNearFull 
             ? 'text-yellow-400' 
             : isDarkMode 
-              ? 'text-slate-500' 
-              : 'text-slate-600'
+              ? 'text-gray-500' 
+              : 'text-gray-600'
       }`}>
         {isCritical && <span className="animate-pulse">🔴</span>}
         {isNearFull && !isCritical && <span>⚠️</span>}

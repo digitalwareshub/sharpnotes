@@ -132,14 +132,14 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               {/* Name (Optional) */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">
-                  Name <span className="text-slate-500">(optional)</span>
+                  Name <span className="text-gray-500">(optional)</span>
                 </label>
                 <input
                   type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   placeholder="Your name"
                 />
               </div>
@@ -147,14 +147,14 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               {/* Email (Optional) */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">
-                  Email <span className="text-slate-500">(optional, for follow-up)</span>
+                  Email <span className="text-gray-500">(optional, for follow-up)</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -170,7 +170,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   onChange={(e) => setMessage(e.target.value)}
                   required
                   rows={5}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none"
                   placeholder="Tell us what you think, report a bug, or suggest a feature..."
                 />
               </div>

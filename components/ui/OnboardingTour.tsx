@@ -164,7 +164,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   {step.icon}
                 </div>
                 <span className={`text-sm font-medium ${
-                  isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  isDarkMode ? 'text-slate-400' : 'text-gray-600'
                 }`}>
                   {currentStep + 1} of {steps.length}
                 </span>
@@ -172,14 +172,14 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
 
               {/* Title */}
               <h2 className={`mb-4 text-2xl sm:text-3xl font-bold leading-tight ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 {step.title}
               </h2>
 
               {/* Description */}
               <p className={`mb-6 text-base sm:text-lg leading-relaxed whitespace-pre-line ${
-                isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                isDarkMode ? 'text-slate-300' : 'text-gray-700'
               }`}>
                 {step.description}
               </p>
@@ -199,12 +199,12 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                       <span className="text-2xl flex-shrink-0">{feature.icon}</span>
                       <div className="flex-1">
                         <p className={`font-semibold text-base ${
-                          isDarkMode ? 'text-slate-100' : 'text-slate-900'
+                          isDarkMode ? 'text-slate-100' : 'text-gray-900'
                         }`}>
                           {feature.text}
                         </p>
                         <p className={`text-sm ${
-                          isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                          isDarkMode ? 'text-slate-400' : 'text-gray-600'
                         }`}>
                           {feature.subtext}
                         </p>
@@ -236,12 +236,12 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                     : 'border-orange-200 bg-orange-50/50'
                 }`}>
                   <p className={`mb-2 text-xs font-semibold uppercase tracking-wide ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     Sample Note
                   </p>
                   <pre className={`text-sm leading-relaxed whitespace-pre-wrap ${
-                    isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                    isDarkMode ? 'text-slate-300' : 'text-gray-700'
                   }`}>
                     {SAMPLE_NOTE}
                   </pre>
@@ -268,13 +268,13 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-xl">{mode.emoji}</span>
                         <span className={`font-medium text-sm ${
-                          isDarkMode ? 'text-slate-200' : 'text-slate-900'
+                          isDarkMode ? 'text-slate-200' : 'text-gray-900'
                         }`}>
                           {mode.name}
                         </span>
                       </div>
                       <p className={`text-xs ${
-                        isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                        isDarkMode ? 'text-slate-400' : 'text-gray-600'
                       }`}>
                         {mode.desc}
                       </p>
@@ -301,7 +301,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                     }}
                   />
                   <span className={`text-sm ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     Don&apos;t show this again
                   </span>
@@ -316,7 +316,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   className={`flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] ${
                     isDarkMode
                       ? 'border border-slate-700 text-slate-300 hover:bg-slate-800/50'
-                      : 'border border-orange-400 text-slate-700 hover:bg-orange-50'
+                      : 'border border-orange-400 text-gray-700 hover:bg-orange-50'
                   }`}
                 >
                   {currentStep === 0 ? 'Skip Tour' : 'Back'}
@@ -338,7 +338,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               {/* Keyboard Hint */}
               {currentStep === steps.length - 1 && (
                 <p className={`mt-4 text-center text-xs ${
-                  isDarkMode ? 'text-slate-500' : 'text-slate-600'
+                  isDarkMode ? 'text-gray-500' : 'text-gray-600'
                 }`}>
                   💡 Tip: Press <kbd className={`px-2 py-0.5 rounded ${
                     isDarkMode ? 'bg-slate-800' : 'bg-orange-100'

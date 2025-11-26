@@ -395,7 +395,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
     <div className={`min-h-screen transition-colors duration-300 ${
       isDarkMode 
         ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900 text-slate-50' 
-        : 'bg-gradient-to-br from-orange-50 via-orange-50 to-blue-50 text-slate-900'
+        : 'bg-gradient-to-br from-orange-50 via-orange-50 to-blue-50 text-gray-900'
     }`}>
       {/* glowing blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
@@ -419,7 +419,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             {/* App Logo/Name */}
             <div className="flex items-center gap-3">
               <Link href="/" className={`flex items-center gap-2 hover:opacity-80 transition-opacity ${
-                isDarkMode ? 'text-slate-50' : 'text-slate-900'
+                isDarkMode ? 'text-slate-50' : 'text-gray-900'
               }`}>
                 <span className="text-2xl">✏️</span>
                 <div>
@@ -429,7 +429,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     SHRP
                   </h1>
                   <p className={`text-[10px] sm:text-xs ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    isDarkMode ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     NLP-Powered Notes
                   </p>
@@ -562,10 +562,10 @@ Remember to check in with marketing about the launch campaign and schedule a cal
           >
             <div className="mb-2 flex items-center justify-between gap-2">
               <div>
-                <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
+                <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>
                   Raw notes
                 </h2>
-                <p className={`text-xs ${isDarkMode ? 'text-slate-300/70' : 'text-slate-600/70'}`}>
+                <p className={`text-xs ${isDarkMode ? 'text-slate-300/70' : 'text-gray-600/70'}`}>
                   Paste anything — meeting minutes, planning notes, or a messy braindump.
                 </p>
               </div>
@@ -586,8 +586,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               <textarea
                 className={`h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 ${
                   isDarkMode
-                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-slate-500 focus:border-orange-400 focus:ring-1 focus:ring-orange-500'
-                    : 'border-orange-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:ring-1 focus:ring-orange-400'
+                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-gray-500 focus:border-orange-400 focus:ring-1 focus:ring-orange-500'
+                    : 'border-orange-200 bg-white/90 text-gray-900 placeholder:text-slate-400 focus:border-orange-500 focus:ring-1 focus:ring-orange-400'
                 }`}
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
                 value={input + (interimTranscript ? ` ${  interimTranscript}` : '')}
@@ -636,7 +636,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             {/* Mode selector and action buttons */}
             <div className="space-y-3 flex-shrink-0">
               {/* Mode Description - Always visible, centered, above buttons */}
-              <p className={`text-center text-xs leading-relaxed px-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-center text-xs leading-relaxed px-2 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
                 {modeDescription(mode)}
               </p>
               
@@ -785,7 +785,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             }`}>
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
+                  <h2 className={`text-sm font-semibold ${isDarkMode ? 'text-slate-50' : 'text-gray-900'}`}>
                     {mode === 'summarize' && 'Sharp summary'}
                     {mode === 'structure' && 'Structured outline'}
                     {mode === 'polish' && 'Polished draft'}
@@ -837,7 +837,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 <pre className={`mt-1 flex-1 whitespace-pre-wrap rounded-xl p-3 text-xs leading-relaxed overflow-y-auto overflow-x-hidden ${
                   isDarkMode 
                     ? 'bg-slate-950/70 text-slate-100' 
-                    : 'bg-orange-50/50 text-slate-900'
+                    : 'bg-orange-50/50 text-gray-900'
                 }`}>
                   {output}
                 </pre>
@@ -848,7 +848,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                       ? 'border-slate-600/80 bg-slate-900/60' 
                       : 'border-orange-400/60 bg-orange-50/50'
                   }`} />
-                  <p className={`max-w-xs text-xs ${isDarkMode ? 'text-slate-300/80' : 'text-slate-600/80'}`}>
+                  <p className={`max-w-xs text-xs ${isDarkMode ? 'text-slate-300/80' : 'text-gray-600/80'}`}>
                     Your transformed notes will show up here. Paste something on the left,
                     pick a mode, and hit &ldquo;Make it sharp&rdquo;.
                   </p>
@@ -859,9 +859,9 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <div className={`rounded-2xl border p-4 text-[11px] shadow-xl backdrop-blur ${
               isDarkMode
                 ? 'border-slate-700/70 bg-slate-900/80 text-slate-300/80 shadow-slate-950/60'
-                : 'border-orange-200/60 bg-white/80 text-slate-600/80 shadow-orange-200/40'
+                : 'border-orange-200/60 bg-white/80 text-gray-600/80 shadow-orange-200/40'
             }`}>
-              <p className={`mb-1 font-semibold ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>
+              <p className={`mb-1 font-semibold ${isDarkMode ? 'text-slate-100' : 'text-gray-900'}`}>
                 ⌨️ Keyboard Shortcuts
               </p>
               <div className="space-y-1 text-[10px]">
@@ -874,8 +874,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
           </div>
         </section>
 
-        <footer className={`mt-8 text-center space-y-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-          <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-slate-500' : 'text-slate-600'}`}>
+        <footer className={`mt-8 text-center space-y-3 ${isDarkMode ? 'text-slate-400' : 'text-gray-600'}`}>
+          <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
             Built for builders, writers, and overthinkers. SHRP Notes stores everything locally — unlimited & private.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-sm sm:text-xs">
@@ -884,50 +884,50 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               target="_blank" 
               rel="noopener noreferrer"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               ⭐ Star on GitHub
             </a>
-            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
             <Link 
               href="/blog"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               📝 Blog
             </Link>
-            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
             <Link 
               href="/privacy"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               � Privacy
             </Link>
-            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
             <a 
               href="https://x.com/digi_wares" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               🐦 Follow Updates
             </a>
-            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
             <button
               onClick={() => setIsFeedbackOpen(true)}
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               ✉️ Feedback
             </button>
-            <span className={`${isDarkMode ? 'text-slate-600' : 'text-slate-400'}`}>•</span>
+            <span className={`${isDarkMode ? 'text-gray-600' : 'text-slate-400'}`}>•</span>
             <button
               onClick={() => {
                 localStorage.removeItem('hasSeenOnboarding');
@@ -935,13 +935,13 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 setIsOnboardingOpen(true);
               }}
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-gray-700 hover:text-orange-600'
               }`}
             >
               🎓 Tutorial
             </button>
           </div>
-          <p className={`text-xs ${isDarkMode ? 'text-slate-600' : 'text-slate-500'}`}>
+          <p className={`text-xs ${isDarkMode ? 'text-gray-600' : 'text-gray-500'}`}>
             Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-orange-400 hover:underline' : 'text-orange-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
           </p>
         </footer>
