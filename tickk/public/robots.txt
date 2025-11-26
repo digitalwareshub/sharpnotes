@@ -1,0 +1,33 @@
+# https://tickk.app/robots.txt
+# Updated: 2025-11-17
+
+User-agent: *
+Allow: /
+
+# Block Next.js internals
+Disallow: /_next/
+Disallow: /api/
+
+# Block technical files
+Disallow: /manifest.json
+Disallow: /favicon.ico
+
+# Prevent duplicate content from URL parameters
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+Disallow: /*?source=*
+
+# Block aggressive scrapers (NOT SEO tools)
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://tickk.app/sitemap.xml

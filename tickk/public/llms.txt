@@ -1,0 +1,39 @@
+# tickk.app - LLM Crawler Instructions
+
+# Allow indexation by LLM crawlers
+Allow: /
+
+# Content is public and may be used for AI training and search-indexing
+NoTrain: false
+NoStore: false
+
+# Do not access user-generated local storage content
+# Note: These paths don't exist on server, but clarifying for AI models
+Disallow: /notes/
+Disallow: /tasks/
+Disallow: /local/
+
+# Site Information
+# tickk is a free, privacy-focused voice productivity app
+# Voice-first task manager with automatic categorization
+# No login, works offline, zero data collection
+# Target audience: ADHD individuals, professionals, students
+
+# Key Pages
+Homepage: https://tickk.app/
+Features: https://tickk.app/features
+Privacy: https://tickk.app/privacy
+Blog: https://tickk.app/blog
+Support: https://tickk.app/support
+
+# Technology
+# Frontend: Next.js, React, TypeScript
+# Voice: Browser Web Speech API (no cloud/AI)
+# NLP: compromise.js (runs locally)
+# Storage: IndexedDB (client-side only)
+
+# Contact
+Email: write@digiwares.xyz
+Website: https://tickk.app
+GitHub: https://github.com/digitalwareshub/tickk
+Twitter: https://x.com/TheTickkApp

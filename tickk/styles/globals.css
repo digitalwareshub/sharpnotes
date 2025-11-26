@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import accessibility styles */
+@import './accessibility.css';
+
+/* SEO-friendly hidden elements - visible to crawlers but not to users */
+.seo-hidden {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  font-size: 1px;
+  line-height: 1;
+  color: transparent;
+}
+
+/* Hide scrollbars while keeping scroll functionality */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Emoji font support for better flag rendering */
+.emoji {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  font-display: swap; /* Prevent flash of invisible text */
+}
+
+/* Language flag specific styling */
+[role="img"][aria-label*="Flag"] {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', sans-serif;
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 1;
+  vertical-align: middle;
+  font-display: swap; /* Prevent flash of invisible text */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Consistent typography */
+  .heading-primary {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  
+  .heading-secondary {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .text-responsive {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    line-height: 1.6;
+  }
+  
+  /* Mobile-first button sizing */
+  .btn-responsive {
+    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    border-radius: 0.5rem;
+    min-height: 44px;
+  }
+  
+  /* Responsive spacing */
+  .spacing-responsive {
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+  
+  .gap-responsive {
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+}
+
+/* Simple button styling */
+.voice-button {
+  transition: all 0.2s ease;
+  background: #000000;
+  border: 1px solid #e5e5e5;
+}
+
+.voice-button:hover {
+  background: #333333;
+}
+
+.voice-button.recording {
+  background: #666666;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobile-first optimizations */
+@media (max-width: 640px) {
+  /* Consistent font sizing on mobile */
+  html {
+    font-size: 14px;
+  }
+  
+  /* Larger touch targets on mobile */
+  .voice-button, button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 14px;
+  }
+  
+  /* Better spacing on mobile */
+  .hero-section {
+    padding: 1rem;
+  }
+  
+  /* Improved mobile navigation */
+  nav {
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Better mobile text sizing */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  /* Mobile-friendly cards */
+  .card-hover {
+    transform: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+  
+  /* Better mobile button spacing */
+  .mobile-button-spacing {
+    margin: 0.5rem 0;
+  }
+  
+  /* Improved mobile grid */
+  .mobile-grid {
+    gap: 0.75rem;
+  }
+  
+  /* Mobile padding improvements */
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  /* Better mobile form elements */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Medium screen optimizations */
+@media (max-width: 768px) {
+  /* Stack cards vertically on medium screens */
+  .desktop-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Better mobile menu */
+  .hidden\.md\:flex {
+    display: none !important;
+  }
+  
+  /* Improved spacing for tablets */
+  .tablet-spacing {
+    padding: 1rem;
+  }
+  
+  /* Better typography for tablets */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 2.25rem !important;
+  }
+  
+  /* Adjust grid gaps */
+  .grid {
+    gap: 1rem;
+  }
+  
+  /* Better card spacing */
+  .lg\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Waveform animation for recording indicator */
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleY(1.5);
+    opacity: 1;
+  }
+}
+
+.animate-wave {
+  animation: wave 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Pulsing ring animation for first-time user guidance */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* Gentle fade in for the hint text */
+@keyframes fade-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fade-slide-up 0.6s ease-out 0.5s both;
+}
+
+/* Slide up animation for PWA install prompt */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+/* Grid background pattern */
+.bg-grid-gray-100 {
+  background-image: 
+    linear-gradient(rgba(156, 163, 175, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 163, 175, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input[type="checkbox"]:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Green checkboxes for tasks */
+input[type="checkbox"].text-green-600:checked {
+  background-color: #16a34a;
+  border-color: #16a34a;
+}
+
+/* Purple checkboxes for notes */
+input[type="checkbox"].text-purple-600:checked {
+  background-color: #9333ea;
+  border-color: #9333ea;
+}
+
+/* Dark mode support for select dropdowns */
+select option {
+  background-color: white;
+  color: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  select option {
+    background-color: #1e293b;
+    color: #f1f5f9;
+  }
+}
+
+/* Force dark mode styles for options when dark class is present */
+.dark select option,
+:root.dark select option {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}

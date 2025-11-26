@@ -1,0 +1,232 @@
+import Head from 'next/head'
+import Link from 'next/link'
+import Layout from '@/components/Layout'
+import Breadcrumb from '@/components/Breadcrumb'
+
+export default function Blog() {
+  return (
+    <>
+      <Head>
+        <title>Blog | tickk - Voice Productivity Insights</title>
+        <meta name="description" content="Learn about voice productivity, braindump methods, and thought organization. Expert insights on improving productivity without AI dependencies." />
+        <meta name="keywords" content="voice productivity blog, braindump method, productivity insights, voice note taking tips, thought organization, productivity without AI, voice to text productivity" />
+        <link rel="canonical" href="https://tickk.app/blog" />
+      </Head>
+
+      <Layout className="min-h-screen bg-white dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          
+          {/* Breadcrumbs */}
+          <Breadcrumb />
+          
+          {/* Page Header */}
+          <div className="text-center mb-12">
+            <h1 className="heading-primary text-gray-900 dark:text-slate-50 mb-4">
+              Voice Productivity Blog
+            </h1>
+            <p className="text-responsive text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Insights, tips, and methods for better productivity through voice capture and thought organization.
+            </p>
+          </div>
+
+          {/* Latest Article */}
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>October 2025</span>
+              <span>•</span>
+              <span>8 min read</span>
+              <span>•</span>
+              <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full text-xs font-medium">Latest</span>
+            </div>
+            
+            <Link href="/blog/voice-productivity-vs-ai-tools-local-processing-wins" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                Voice Productivity vs AI Tools: Why Local Processing Wins
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                Discover why local voice processing beats AI-dependent productivity tools. Compare privacy, speed, and reliability of voice-first vs AI-powered productivity solutions in the battle for your thoughts.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm">Privacy First</span>
+                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-3 py-1 rounded-full text-sm">Local Processing</span>
+                <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-3 py-1 rounded-full text-sm">Voice Productivity</span>
+                <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-3 py-1 rounded-full text-sm">AI Alternative</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Recent Article - Mobile Voice */}
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>October 2025</span>
+              <span>•</span>
+              <span>7 min read</span>
+            </div>
+            
+            <Link href="/blog/mobile-voice-productivity-capture-ideas-on-the-go" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                Mobile Voice Productivity: Capture Ideas on the Go
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                Master mobile voice productivity for hands-free idea capture anywhere. Learn best practices for voice notes on phones, commuting workflows, and transforming in-between moments into productive time.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-3 py-1 rounded-full text-sm">Mobile Productivity</span>
+                <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm">Voice Notes</span>
+                <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-3 py-1 rounded-full text-sm">Hands-Free</span>
+                <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-3 py-1 rounded-full text-sm">On-the-Go</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Recent Article - ADHD */}
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>October 2025</span>
+              <span>•</span>
+              <span>10 min read</span>
+            </div>
+            
+            <Link href="/blog/adhd-voice-technology-perfect-match" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                ADHD and Voice Technology: A Perfect Match for Scattered Minds
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                Discover why voice technology is revolutionary for ADHD brains. Bypass typing barriers, reduce cognitive load, and capture racing thoughts naturally with voice-first productivity designed for neurodivergent minds.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-3 py-1 rounded-full text-sm">ADHD Productivity</span>
+                <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 px-3 py-1 rounded-full text-sm">Voice Technology</span>
+                <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-sm">Neurodiversity</span>
+                <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-3 py-1 rounded-full text-sm">Focus Tools</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Recent Article - Complete Guide */}
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>October 2025</span>
+              <span>•</span>
+              <span>12 min read</span>
+            </div>
+            
+            <Link href="/blog/complete-guide-tickk-app-voice-productivity-2025" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                Complete Guide to tickk.app: Voice-to-Text Productivity in 2025
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                Master tickk.app&apos;s voice-to-text productivity features: Command Palette, Focus Mode for ADHD, Analytics Dashboard, Streak Tracking & Calendar Export. Complete tutorial with visual guides.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Tutorial</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">ADHD Friendly</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Command Palette</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Voice Productivity</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>October 2025</span>
+              <span>•</span>
+              <span>8 min read</span>
+            </div>
+            
+            <Link href="/blog/hidden-cost-of-typing" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                The Hidden Cost of Typing: How Your Keyboard Slows Down Your Mind
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                The average person thinks at 400 WPM, speaks at 150 WPM, but types at just 40 WPM. Discover why voice-first capture transforms productivity and aligns with natural cognition.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Voice Productivity</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Cognitive Science</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Voice vs Typing</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Productivity</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Featured Post */}
+          <div className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-8 mb-8 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-4">
+              <span>September 2025</span>
+              <span>•</span>
+              <span>5 min read</span>
+              <span>•</span>
+              <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-1 rounded-full text-xs font-medium">Featured</span>
+            </div>
+            
+            <Link href="/blog/braindump-first-organize-later-productivity" className="block group">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors">
+                Why Your Best Ideas Die in Your Productivity App
+              </h2>
+              <p className="text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                Discover why forcing thoughts into categories while having them kills creativity. Learn the braindump-first approach that captures everything, then organizes later using voice technology.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Voice Notes</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Braindump Method</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">Productivity</span>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm">No AI</span>
+              </div>
+              <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium group-hover:text-orange-700 dark:group-hover:text-orange-400">
+                Read article
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Coming Soon */}
+          <div className="text-center py-12 bg-gray-50 dark:bg-slate-800 rounded-lg">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">More Articles Coming Soon</h3>
+            <p className="text-gray-600 dark:text-slate-400 mb-6">
+              We&apos;re working on more insights about voice productivity, thought capture, and distraction-free workflows.
+            </p>
+            <Link href="/" className="inline-flex items-center bg-gray-900 dark:bg-slate-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-slate-600 transition-colors">
+              Try tickk Now
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </Link>
+          </div>
+
+        </div>
+      </Layout>
+    </>
+  )
+}

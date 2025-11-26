@@ -423,7 +423,9 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               }`}>
                 <span className="text-2xl">✏️</span>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                  <h1 className={`text-2xl sm:text-3xl font-bold tracking-tight ${
+                    isDarkMode ? 'text-orange-400' : 'text-orange-600'
+                  }`}>
                     SHRP
                   </h1>
                   <p className={`text-[10px] sm:text-xs ${

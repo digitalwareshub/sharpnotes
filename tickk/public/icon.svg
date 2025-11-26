@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Simple green circle background -->
+  <circle cx="256" cy="256" r="240" fill="#22c55e"/>
+  
+  <!-- White checkmark -->
+  <path d="M180 256 L230 306 L340 196" 
+        stroke="#ffffff" 
+        stroke-width="32" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+</svg>

@@ -668,7 +668,7 @@ export default function LandingPage() {
                 <ul className="space-y-2">
                   {useCase.benefits.map((benefit, idx) => (
                     <li key={idx} className={`flex items-start gap-2 text-sm ${
-                      isDarkMode ? 'text-slate-300' : 'text-gray-900'
+                      isDarkMode ? 'text-slate-300' : 'text-slate-700'
                     }`}>
                       <span className="text-emerald-400 mt-0.5">✓</span>
                       <span>{benefit}</span>
@@ -702,7 +702,7 @@ export default function LandingPage() {
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                 Your Notes. Your Device. Your Privacy. 🔒
               </h2>
-              <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+              <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                 Unlike cloud note apps, SHRP Notes processes everything locally in your browser. 
                 Zero data transmission. Zero AI training on your content. Zero privacy compromise.
               </p>
@@ -718,23 +718,23 @@ export default function LandingPage() {
                   isDarkMode ? 'text-emerald-300' : 'text-emerald-600'
                 }`}>✅ What SHRP Does</h3>
                 <ul className="space-y-2 text-sm">
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-emerald-400">•</span>
                     <span>Processes notes 100% in your browser</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-emerald-400">•</span>
                     <span>Stores notes in local browser storage</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-emerald-400">•</span>
                     <span>Works completely offline</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-emerald-400">•</span>
                     <span>Open source code (audit it yourself)</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-emerald-400">•</span>
                     <span>No account creation required</span>
                   </li>
@@ -750,23 +750,23 @@ export default function LandingPage() {
                   isDarkMode ? 'text-red-300' : 'text-red-600'
                 }`}>❌ What SHRP Never Does</h3>
                 <ul className="space-y-2 text-sm">
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-red-400">•</span>
                     <span>Send notes to cloud servers</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-red-400">•</span>
                     <span>Use notes for AI training</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-red-400">•</span>
                     <span>Collect personal information</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-red-400">•</span>
                     <span>Track your usage patterns</span>
                   </li>
-                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                  <li className={`flex items-start gap-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-red-400">•</span>
                     <span>Sell data to third parties</span>
                   </li>
@@ -799,7 +799,7 @@ export default function LandingPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               SHRP Notes vs. The Rest
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               See how local NLP stacks up against cloud AI and manual note-taking
             </p>
           </div>
@@ -834,7 +834,7 @@ export default function LandingPage() {
                   <tr key={index} className={`border-b last:border-b-0 ${
                     isDarkMode ? 'border-slate-800/50' : 'border-slate-200'
                   }`}>
-                    <td className={`p-4 text-sm ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+                    <td className={`p-4 text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                       {row.feature}
                     </td>
                     <td className={`p-4 text-left text-sm font-medium ${
@@ -869,7 +869,7 @@ export default function LandingPage() {
             }`}>
               Trusted by Privacy-Conscious Professionals
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Real scenarios where local processing makes all the difference
             </p>
           </div>
@@ -895,7 +895,7 @@ export default function LandingPage() {
               }`}>
                 Healthcare Professionals
               </h3>
-              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                 Keep therapy session notes, patient consultations, and medical records completely private. No cloud transmission means HIPAA compliance is easier to maintain on your end.
               </p>
               <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -934,7 +934,7 @@ export default function LandingPage() {
               }`}>
                 Legal Professionals
               </h3>
-              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                 Maintain attorney-client privilege with case notes that never leave your device. Organize depositions, client meetings, and legal research without cloud exposure.
               </p>
               <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -973,7 +973,7 @@ export default function LandingPage() {
               }`}>
                 Business Consultants
               </h3>
-              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                 Transform client meeting notes in seconds, not minutes. Keep sensitive business strategies and competitive information off cloud servers entirely.
               </p>
               <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -1012,7 +1012,7 @@ export default function LandingPage() {
               }`}>
                 Students & Researchers
               </h3>
-              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+              <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                 Organize lecture notes instantly, extract assignment deadlines, and structure research interviews. Completely free—no student budget required.
               </p>
               <div className={`text-sm space-y-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -1033,7 +1033,7 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className={`text-lg mb-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-lg mb-4 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Works offline. No account required. Your data never leaves your device.
             </p>
             <Link 
@@ -1055,7 +1055,7 @@ export default function LandingPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Free Forever
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               No limits. No subscriptions. Just powerful note transformation.
             </p>
           </div>
@@ -1087,49 +1087,49 @@ export default function LandingPage() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>All 4 transformation modes</strong> (Summarize, Structure, Polish, Tasks)
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Unlimited transformations</strong> — no daily caps or quotas
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Local storage</strong> with note history & search
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Voice input</strong> for hands-free note capture
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Export to TXT/MD/DOCX</strong> — your data, your format
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Works offline</strong> — no internet required
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>100% private & local</strong> — zero data sent to servers
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-emerald-400 text-xl flex-shrink-0">✓</span>
-                  <span className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+                  <span className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                     <strong>Open source</strong> — verify the code yourself
                   </span>
                 </div>
@@ -1148,7 +1148,7 @@ export default function LandingPage() {
             isDarkMode ? 'bg-slate-900/50' : 'bg-white/50'
           }`}>
             <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              <strong className={isDarkMode ? 'text-slate-300' : 'text-gray-900'}>
+              <strong className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
                 How is this sustainable?
               </strong> SHRP runs 100% locally in your browser using open-source NLP libraries. No servers, no cloud computing costs, no AI API fees. 
               Your browser does all the work, so we can offer everything free forever. If you love SHRP and want to support development, consider{' '}
@@ -1172,7 +1172,7 @@ export default function LandingPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Frequently Asked Questions
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Everything you need to know about SHRP Notes
             </p>
           </div>
@@ -1206,7 +1206,7 @@ export default function LandingPage() {
                 </button>
                 {openFaq === index && (
                   <div className={`px-6 pb-6 text-sm leading-relaxed ${
-                    isDarkMode ? 'text-slate-300' : 'text-gray-900'
+                    isDarkMode ? 'text-slate-300' : 'text-slate-700'
                   }`}>
                     {faq.answer}
                   </div>
@@ -1238,7 +1238,7 @@ export default function LandingPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Learn More About Note-Taking 📚
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Guides, comparisons, and productivity tips
             </p>
           </div>
@@ -1305,7 +1305,7 @@ export default function LandingPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Use SHRP Notes Everywhere
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               All versions: 100% private, 100% free
             </p>
           </div>
@@ -1418,7 +1418,7 @@ export default function LandingPage() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Transform Your Notes?
           </h2>
-          <p className={`text-xl mb-8 ${isDarkMode ? 'text-slate-300' : 'text-gray-900'}`}>
+          <p className={`text-xl mb-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             No signup. No credit card. No catch.<br />
             Just paste your messy notes and see the magic happen.
           </p>
