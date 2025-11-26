@@ -140,9 +140,9 @@ export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Card */}
-          <div className="relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden ">
+          <div className="relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden bg-white">
             {/* Progress Bar */}
-            <div className={`h-1.5 flex-shrink-0 $'bg-orange-100'`}>
+            <div className="h-1.5 flex-shrink-0 bg-orange-100">
               <div 
                 className="h-full bg-gradient-to-r from-orange-500 to-orange-500 transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
@@ -250,9 +250,7 @@ export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
                     type="checkbox"
                     checked={dontShowAgain}
                     onChange={(e) => setDontShowAgain(e.target.checked)}
-                    className="w-4 h-4 rounded border-2 cursor-pointer"
-                    style={{
-                    }}
+                    className="w-4 h-4 rounded border-2 cursor-pointer accent-orange-600"
                   />
                   <span className="text-sm text-gray-600">
                     Don&apos;t show this again
@@ -265,7 +263,7 @@ export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
                 {/* Skip/Back Button */}
                 <button
                   onClick={currentStep === 0 ? handleSkip : () => setCurrentStep(currentStep - 1)}
-                  className="flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] "
+                  className="flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] border border-gray-300 text-gray-700 hover:bg-gray-50"
                 >
                   {currentStep === 0 ? 'Skip Tour' : 'Back'}
                 </button>
@@ -273,7 +271,7 @@ export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
                 {/* Next/Finish Button */}
                 <button
                   onClick={handleNext}
-                  className="flex-1 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 min-h-[48px] "
+                  className="flex-1 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 min-h-[48px] bg-orange-600 hover:bg-orange-700"
                 >
                   {currentStep === steps.length - 1 ? "Let's Go! 🚀" : 'Next'}
                 </button>
@@ -294,7 +292,9 @@ export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
               <button
                 key={index}
                 onClick={() => setCurrentStep(index)}
-                className="h-2 rounded-full transition-all "
+                className={`h-2 rounded-full transition-all ${
+                  currentStep === index ? 'w-8 bg-orange-600' : 'w-2 bg-gray-300'
+                }`}
                 aria-label={`Go to step ${index + 1}`}
               />
             ))}
