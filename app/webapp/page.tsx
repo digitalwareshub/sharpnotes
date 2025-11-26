@@ -13,9 +13,9 @@ import { useAutoSave } from '../../hooks/useAutoSave';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition';
 import { NoteHistory } from '../../components/notes/NoteHistory';
-import { StorageIndicator } from '../../components/ui/StorageIndicator';
+import StorageIndicator from '../../components/ui/StorageIndicator';
 import { FeedbackModal } from '../../components/ui/FeedbackModal';
-import { OnboardingTour } from '../../components/ui/OnboardingTour';
+import OnboardingTour from '../../components/ui/OnboardingTour';
 import { Tooltip } from '../../components/ui/Tooltip';
 import PWAInstallPrompt from '../../components/ui/PWAInstallPrompt';
 import {
