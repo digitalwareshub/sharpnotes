@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import Script from 'next/script';
+import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
 interface BlogPost {
@@ -123,38 +124,7 @@ export default function BlogPost() {
       )}
       
       {/* Header */}
-      <header className="border-b backdrop-blur-sm sticky top-0 z-10 ">
-        <div className="max-w-4xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
-              <Link 
-                href="/"
-                className="hover:text-orange-400 transition-colors text-gray-600"
-              >
-                Home
-              </Link>
-              <span className='text-gray-400'>/</span>
-              <Link 
-                href="/blog"
-                className="hover:text-orange-400 transition-colors text-gray-600"
-              >
-                Blog
-              </Link>
-              <span className='text-gray-400'>/</span>
-              <span className={`$'text-gray-900'`}>
-                {blogPost?.title.substring(0, 30)}{blogPost?.title && blogPost.title.length > 30 ? '...' : ''}
-              </span>
-            </nav>
-            <Link
-              href="/webapp"
-              className="transition-colors text-sm text-gray-600 hover:text-slate-800"
-            >
-              Try SHRP Notes
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Article */}
       <article className="max-w-3xl mx-auto px-4 py-12 sm:px-6 lg:px-8">

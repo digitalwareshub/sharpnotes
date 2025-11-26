@@ -481,7 +481,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               <textarea
                 className="h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 "
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
-                value={input + (interimTranscript ? ` ${  interimTranscript}` : '')}
+                value={input}
                 onChange={(e) => {
                   setInput(e.target.value);
                   setInterimTranscript(''); // Clear interim when user types
@@ -490,9 +490,9 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               
               {/* Interim transcript overlay (grayed out) */}
               {interimTranscript && (
-                <div className="absolute inset-0 px-3 py-3 pr-12 text-sm pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 px-3 py-3 pr-12 text-sm pointer-events-none overflow-hidden whitespace-pre-wrap break-words">
                   <span className="opacity-0">{input}</span>
-                  <span className="text-slate-400"> {interimTranscript}</span>
+                  <span className="text-gray-500 italic">{input ? ' ' : ''}{interimTranscript}</span>
                 </div>
               )}
               

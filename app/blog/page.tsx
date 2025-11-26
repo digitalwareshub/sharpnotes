@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
 interface BlogPost {
@@ -47,30 +48,12 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen ">
       {/* Header */}
-      <header className="border-b sticky top-0 z-10 backdrop-blur-sm ">
-        <div className="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <Link 
-              href="/"
-              className="text-orange-400 hover:text-orange-400 transition-colors flex items-center gap-2 text-sm font-medium"
-            >
-              <span>←</span>
-              <span>SHRP Notes</span>
-            </Link>
-            <Link
-              href="/webapp"
-              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors text-sm font-medium"
-            >
-              Try SHRP Notes
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
         <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-gray-900">
-          SHRP Notes Blog
+          Blog
         </h1>
         <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
           Proven strategies for organizing meeting notes, boosting productivity, and building privacy-first workflows.

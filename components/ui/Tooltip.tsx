@@ -111,7 +111,7 @@ export function Tooltip({
           className={`absolute z-50 ${getPositionClasses()}`}
           role="tooltip"
         >
-          <div className="rounded-lg px-3 py-2 text-xs font-medium shadow-xl ">
+          <div className="bg-gray-900 text-white rounded-lg px-3 py-2 text-xs font-medium shadow-xl whitespace-nowrap">
             {content}
             
             {isMobile && (
@@ -120,7 +120,7 @@ export function Tooltip({
                   e.stopPropagation();
                   setIsVisible(false);
                 }}
-                className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold "
+                className="absolute -top-1 -right-1 w-5 h-5 bg-gray-800 hover:bg-gray-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md"
                 aria-label="Close tooltip"
               >
                 ×

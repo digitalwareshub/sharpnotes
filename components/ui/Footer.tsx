@@ -5,8 +5,8 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="relative border-t mt-20 border-orange-200/50 bg-orange-50/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
           <div>
             <h3 className="font-semibold mb-4 text-orange-600">Product</h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t text-center text-sm border-orange-200/50 text-gray-600">
           <p className="mb-2">
-            Made with ❤️ by{' '}
+            Made with ❤️ for Productivity Geeks by{' '}
             <a
               href="https://digiwares.xyz"
               target="_blank"

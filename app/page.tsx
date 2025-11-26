@@ -280,8 +280,8 @@ export default function LandingPage() {
       <section className={`relative py-12 border-y ${
         'border-slate-200'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className={`text-2xl sm:text-3xl font-bold mb-2 ${
@@ -447,10 +447,10 @@ export default function LandingPage() {
               }`}>
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-3">Paste Your Messy Notes</h3>
+              <h3 className="text-xl font-semibold mb-3">Capture Your Thoughts</h3>
               <p className="text-gray-900">
-                Meeting brain dump, voice transcription, stream-of-consciousness typing, 
-                or quick voice dictation. No need to format while capturing.
+                Type, paste, or speak your messy notes directly. Use voice input for hands-free capture 
+                or paste meeting transcripts. No formatting needed.
               </p>
             </div>
 
@@ -475,31 +475,9 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Get Sharp Output Instantly</h3>
               <p className="text-gray-900">
-                Copy to clipboard, export as Markdown or text file, or save to note history. 
-                Transformation happens in 0.3 seconds locally.
+                AI processes everything locally in 0.3 seconds. Copy, export as Markdown, 
+                or save to history. Your data never leaves your device.
               </p>
-            </div>
-          </div>
-
-          <div className={`mt-16 p-8 rounded-2xl border ${
-            "border-orange-200 bg-orange-50"
-          }`}>
-            <div className="flex items-start gap-4">
-              <div className="text-3xl">🎥</div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Watch 60-Second Demo</h3>
-                <p className={`mb-4 ${'text-gray-900'}`}>
-                  See how Kam transformed 800 words of meeting chaos into 5 action items in under 30 seconds.
-                </p>
-                <a 
-                  href="/webapp"
-                  className={`inline-block px-6 py-3 rounded-lg font-medium shadow-lg transition-all ${
-                    "bg-orange-600 text-white hover:bg-orange-700"
-                  }`}
-                >
-                  Try It Yourself →
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -1245,7 +1223,7 @@ export default function LandingPage() {
           </h2>
           <p className={`text-xl mb-8 ${'text-gray-900'}`}>
             No signup. No credit card. No catch.<br />
-            Just paste your messy notes and see the magic happen.
+            Type, paste, or speak your notes — see the magic happen instantly.
           </p>
           
           <Link 

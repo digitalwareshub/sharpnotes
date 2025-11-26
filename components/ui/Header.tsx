@@ -9,16 +9,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-            SHRP Notes
+            SHRP
           </Link>
 
-          {/* Centered Navigation Links */}
-          <div className="hidden md:flex items-center gap-6 text-sm absolute left-1/2 transform -translate-x-1/2 text-gray-900">
-            <a href="/#features" className="hover:text-orange-600">Features</a>
-            <a href="/#how-it-works" className="hover:text-orange-600">How It Works</a>
-            <a href="/#use-cases" className="hover:text-orange-600">Use Cases</a>
+          {/* Centered Navigation Links - visible on all screen sizes */}
+          <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm absolute left-1/2 transform -translate-x-1/2 text-gray-900">
+            <Link href="/" className="hover:text-orange-600">Home</Link>
+            <a href="/#how-it-works" className="hover:text-orange-600 whitespace-nowrap">How It Works</a>
             <Link href="/blog" className="hover:text-orange-600">Blog</Link>
-            <a href="/#faq" className="hover:text-orange-600">FAQ</a>
           </div>
 
           {/* Right side buttons */}
@@ -26,7 +24,7 @@ export default function Header() {
             {/* Launch App Button */}
             <Link
               href="/webapp"
-              className="px-4 py-2 rounded-full font-medium text-sm transition-all hover:scale-105 shadow-lg bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-orange-300/40"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all hover:scale-105 shadow-lg bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-orange-300/40"
             >
               Launch App
             </Link>

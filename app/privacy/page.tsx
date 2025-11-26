@@ -176,7 +176,7 @@ export default function PrivacyPage() {
                 If you have questions about this privacy policy, please contact us:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Email: <a href="mailto:hello@digiwares.xyz" className="text-orange-400 hover:underline">hello@digiwares.xyz</a></li>
+                <li>Email: <a href="mailto:write@digiwares.xyz" className="text-orange-400 hover:underline">write@digiwares.xyz</a></li>
                 <li>Twitter: <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">@digi_wares</a></li>
                 <li>GitHub: <a href="https://github.com/digitalwareshub/sharpnotes/issues" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">GitHub Issues</a></li>
               </ul>
