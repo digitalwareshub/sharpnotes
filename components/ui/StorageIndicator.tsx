@@ -7,6 +7,7 @@ import { formatFileSize } from '../../lib/export';
 import { trackStorageWarning } from '../../lib/analytics';
 import type { StorageInfo } from '../../types';
 
+export default function StorageIndicator() {
   const [storageInfo, setStorageInfo] = useState<StorageInfo | null>(null);
   const hasShownWarning = useRef(false);
   const hasShownCritical = useRef(false);
@@ -91,6 +92,7 @@ import type { StorageInfo } from '../../types';
       hasShownWarning.current = false;
       hasShownCritical.current = false;
     }
+  }, []);
 
   useEffect(() => {
     updateStorageInfo();

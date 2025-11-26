@@ -16,6 +16,7 @@ interface BeforeInstallPromptEvent extends Event {
 interface PWAInstallPromptProps {
 }
 
+export default function PWAInstallPrompt({}: PWAInstallPromptProps) {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [browserType, setBrowserType] = useState<'safari' | 'firefox' | 'chrome' | 'unknown'>('unknown');

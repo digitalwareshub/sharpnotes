@@ -22,10 +22,11 @@ interface OnboardingTourProps {
 }
 
 const SAMPLE_NOTE = `Quick brain dump:
-Met with the product team today. I need to send them a follow-up email with the updated roadmap. 
+Met with the product team today. I need to send them a follow-up email with the updated roadmap.
 Also have to prepare slides for Friday's review. I'm worried about timelines but excited about the new launch.
 Remember to check in with marketing about the launch campaign and schedule a call with the design team.`;
 
+export default function OnboardingTour({ onComplete }: OnboardingTourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
