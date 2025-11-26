@@ -57,44 +57,12 @@ export default function BlogPage() {
               <span>←</span>
               <span>SHRP Notes</span>
             </Link>
-            <div className="flex items-center gap-3">
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors "
-                title="Switch to Dark Mode"
-                aria-label="Toggle theme"
-              >
-                {/* Bulb Icon - On (lit) for Light Mode, Off (unlit) for Dark Mode */}
-                <svg 
-                  className="w-5 h-5" 
-                  fill="currentColor" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                >
-                  {/* Bulb shape */}
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    opacity="1"
-                  />
-                  {/* Bulb base */}
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M9 17v1a2 2 0 002 2h2a2 2 0 002-2v-1"
-                  />
-                </svg>
-              </button>
-              <Link 
-                href="/webapp"
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors text-sm font-medium"
-              >
-                Try SHRP Notes
-              </Link>
-            </div>
+            <Link
+              href="/webapp"
+              className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors text-sm font-medium"
+            >
+              Try SHRP Notes
+            </Link>
           </div>
         </div>
       </header>
