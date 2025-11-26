@@ -62,20 +62,20 @@ export default function BlogPage() {
   return (
     <div className={`min-h-screen ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
-        : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900' 
+        : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
     }`}>
       {/* Header */}
       <header className={`border-b sticky top-0 z-10 backdrop-blur-sm ${
         isDarkMode 
           ? 'border-slate-800/50 bg-slate-900/50' 
-          : 'border-violet-200/50 bg-white/50'
+          : 'border-orange-200/50 bg-white/50'
       }`}>
         <div className="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link 
               href="/"
-              className="text-violet-400 hover:text-violet-300 transition-colors flex items-center gap-2 text-sm font-medium"
+              className="text-orange-400 hover:text-orange-400 transition-colors flex items-center gap-2 text-sm font-medium"
             >
               <span>←</span>
               <span>SHRP Notes</span>
@@ -86,8 +86,8 @@ export default function BlogPage() {
                 onClick={toggleTheme}
                 className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
                   isDarkMode
-                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                    : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                    ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
+                    : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
                 }`}
                 title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 aria-label="Toggle theme"
@@ -117,7 +117,7 @@ export default function BlogPage() {
               </button>
               <Link 
                 href="/webapp"
-                className="px-4 py-2 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors text-sm font-medium"
+                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors text-sm font-medium"
               >
                 Try SHRP Notes
               </Link>
@@ -144,28 +144,28 @@ export default function BlogPage() {
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-violet-100/50 text-slate-700 border-violet-200/50'
+              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
           }`}>
             📝 Note-Taking
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-violet-100/50 text-slate-700 border-violet-200/50'
+              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
           }`}>
             ⚡ Productivity
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-violet-100/50 text-slate-700 border-violet-200/50'
+              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
           }`}>
             🔒 Privacy
           </span>
           <span className={`px-4 py-2 rounded-full text-sm border ${
             isDarkMode 
               ? 'bg-slate-800/50 text-slate-300 border-slate-700/50' 
-              : 'bg-violet-100/50 text-slate-700 border-violet-200/50'
+              : 'bg-orange-100/50 text-slate-700 border-orange-200/50'
           }`}>
             🚀 Tutorials
           </span>
@@ -176,7 +176,7 @@ export default function BlogPage() {
       <section className="max-w-6xl mx-auto px-4 pb-16 sm:px-6 lg:px-8">
         {isLoading ? (
           <div className="text-center py-16">
-            <p className="text-violet-400 text-lg">Loading posts...</p>
+            <p className="text-orange-400 text-lg">Loading posts...</p>
           </div>
         ) : posts.length === 0 ? (
           <div className="text-center py-16">
@@ -194,8 +194,8 @@ export default function BlogPage() {
               >
                 <article className={`h-full p-6 border rounded-2xl transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-slate-900/50 border-slate-800/50 hover:border-violet-500/50 hover:bg-slate-900/70' 
-                    : 'bg-white/50 border-violet-200/50 hover:border-violet-400/50 hover:bg-white/70'
+                    ? 'bg-slate-900/50 border-slate-800/50 hover:border-orange-500/50 hover:bg-slate-900/70' 
+                    : 'bg-white/50 border-orange-200/50 hover:border-orange-400/50 hover:bg-white/70'
                 }`}>
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -204,8 +204,8 @@ export default function BlogPage() {
                         key={tag}
                         className={`px-2 py-1 text-xs rounded-full border ${
                           isDarkMode 
-                            ? 'bg-violet-500/10 text-violet-300 border-violet-500/30' 
-                            : 'bg-violet-100/50 text-violet-600 border-violet-300/30'
+                            ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' 
+                            : 'bg-orange-100/50 text-orange-600 border-orange-400/30'
                         }`}
                       >
                         #{tag}
@@ -214,7 +214,7 @@ export default function BlogPage() {
                   </div>
 
                   {/* Title */}
-                  <h2 className={`text-xl font-bold mb-3 group-hover:text-violet-300 transition-colors line-clamp-2 ${
+                  <h2 className={`text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors line-clamp-2 ${
                     isDarkMode ? 'text-slate-50' : 'text-slate-900'
                   }`}>
                     {post.title}
@@ -229,7 +229,7 @@ export default function BlogPage() {
 
                   {/* Meta */}
                   <div className={`flex items-center gap-3 text-xs mt-auto pt-4 border-t ${
-                    isDarkMode ? 'text-slate-500 border-slate-800/50' : 'text-slate-500 border-violet-200/50'
+                    isDarkMode ? 'text-slate-500 border-slate-800/50' : 'text-slate-500 border-orange-200/50'
                   }`}>
                     <time>{formatDate(post.date)}</time>
                     <span>•</span>
@@ -237,7 +237,7 @@ export default function BlogPage() {
                   </div>
 
                   {/* Read More Arrow */}
-                  <div className="mt-4 flex items-center text-violet-400 text-sm font-medium group-hover:gap-2 transition-all">
+                  <div className="mt-4 flex items-center text-orange-400 text-sm font-medium group-hover:gap-2 transition-all">
                     <span>Read article</span>
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </div>
@@ -252,8 +252,8 @@ export default function BlogPage() {
       <section className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className={`border rounded-2xl p-8 text-center ${
           isDarkMode 
-            ? 'bg-gradient-to-r from-violet-900/30 to-blue-900/30 border-violet-500/30' 
-            : 'bg-gradient-to-r from-violet-100/50 to-blue-100/50 border-violet-300/30'
+            ? 'bg-gradient-to-r from-orange-900/30 to-blue-900/30 border-orange-500/30' 
+            : 'bg-gradient-to-r from-orange-100/50 to-blue-100/50 border-orange-400/30'
         }`}>
           <h2 className={`text-2xl font-bold mb-3 ${
             isDarkMode ? 'text-slate-50' : 'text-slate-900'
@@ -267,7 +267,7 @@ export default function BlogPage() {
           </p>
           <Link 
             href="/webapp"
-            className="inline-block px-8 py-3 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors font-medium text-lg"
+            className="inline-block px-8 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors font-medium text-lg"
           >
             Try SHRP Notes Free →
           </Link>
@@ -281,7 +281,7 @@ export default function BlogPage() {
 
       {/* Footer */}
       <footer className={`border-t mt-16 ${
-        isDarkMode ? 'border-slate-800/50' : 'border-violet-200/50'
+        isDarkMode ? 'border-slate-800/50' : 'border-orange-200/50'
       }`}>
         <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className={`text-center text-sm ${
@@ -293,17 +293,17 @@ export default function BlogPage() {
                 href="https://digiwares.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:underline"
+                className="text-orange-400 hover:underline"
               >
                 Digiwares
               </a>
             </p>
             <div className="flex items-center justify-center gap-4 text-xs">
-              <Link href="/" className="hover:text-violet-400 transition-colors">
+              <Link href="/" className="hover:text-orange-400 transition-colors">
                 Home
               </Link>
               <span>•</span>
-              <Link href="/blog" className="hover:text-violet-400 transition-colors">
+              <Link href="/blog" className="hover:text-orange-400 transition-colors">
                 Blog
               </Link>
               <span>•</span>
@@ -311,7 +311,7 @@ export default function BlogPage() {
                 href="https://github.com/digitalwareshub/sharpnotes" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-violet-400 transition-colors"
+                className="hover:text-orange-400 transition-colors"
               >
                 GitHub
               </a>
@@ -320,7 +320,7 @@ export default function BlogPage() {
                 href="https://twitter.com/digi_wares" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-violet-400 transition-colors"
+                className="hover:text-orange-400 transition-colors"
               >
                 Twitter
               </a>

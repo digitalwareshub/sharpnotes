@@ -235,7 +235,7 @@ export default function LandingPage() {
   return (
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900 text-slate-50' 
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900 text-slate-50' 
         : 'bg-white text-slate-900'
     }`}>
 
@@ -274,7 +274,7 @@ export default function LandingPage() {
                 onClick={toggleTheme}
                 className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
                   isDarkMode
-                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
+                    ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
                     : 'border-slate-300 bg-white text-slate-900 shadow-slate-200 hover:bg-slate-50'
                 }`}
                 title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -481,7 +481,7 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <p className={`text-2xl font-semibold ${
-              isDarkMode ? 'text-violet-300' : 'text-gray-900'
+              isDarkMode ? 'text-orange-400' : 'text-gray-900'
             }`}>
               We fixed it. ↓
             </p>
@@ -610,7 +610,7 @@ export default function LandingPage() {
 
           <div className={`mt-16 p-8 rounded-2xl border ${
             isDarkMode 
-              ? 'border-violet-500/30 bg-violet-500/10' 
+              ? 'border-orange-500/30 bg-orange-500/10' 
               : 'border-orange-200 bg-orange-50'
           }`}>
             <div className="flex items-start gap-4">
@@ -682,7 +682,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link 
               href="/blog"
-              className="text-violet-400 hover:text-violet-300 font-medium"
+              className="text-orange-400 hover:text-orange-400 font-medium"
             >
               See All Use Cases & Success Stories →
             </Link>
@@ -781,7 +781,7 @@ export default function LandingPage() {
               </p>
               <Link 
                 href="/blog/privacy-cost-of-cloud-note-apps"
-                className="text-violet-400 hover:text-violet-300 font-medium"
+                className="text-orange-400 hover:text-orange-400 font-medium"
               >
                 Read: Privacy Cost of Cloud Note Apps →
               </Link>
@@ -815,7 +815,7 @@ export default function LandingPage() {
                   }`}>Feature</th>
                   <th className={`p-4 text-left text-sm font-semibold border-b ${
                     isDarkMode 
-                      ? 'border-slate-700/50 bg-violet-500/10' 
+                      ? 'border-slate-700/50 bg-orange-500/10' 
                       : 'border-slate-200 bg-orange-100'
                   }`}>SHRP Notes</th>
                   <th className={`p-4 text-left text-sm font-semibold border-b ${
@@ -838,7 +838,7 @@ export default function LandingPage() {
                       {row.feature}
                     </td>
                     <td className={`p-4 text-left text-sm font-medium ${
-                      isDarkMode ? 'bg-violet-500/5' : 'bg-orange-50'
+                      isDarkMode ? 'bg-orange-500/5' : 'bg-orange-50'
                     }`}>{row.shrp}</td>
                     <td className="p-4 text-left text-sm">{row.chatgpt}</td>
                     <td className="p-4 text-left text-sm">{row.notion}</td>
@@ -852,7 +852,7 @@ export default function LandingPage() {
           <div className="text-center mt-8">
             <Link 
               href="/blog/shrp-vs-notion-vs-obsidian"
-              className="text-violet-400 hover:text-violet-300 font-medium"
+              className="text-orange-400 hover:text-orange-400 font-medium"
             >
               Read Full Comparison: SHRP vs Notion vs Obsidian →
             </Link>
@@ -1038,7 +1038,7 @@ export default function LandingPage() {
             </p>
             <Link 
               href="/webapp"
-              className="inline-block px-8 py-3 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors font-medium text-lg"
+              className="inline-block px-8 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors font-medium text-lg"
             >
               Try SHRP Notes Free →
             </Link>
@@ -1064,7 +1064,7 @@ export default function LandingPage() {
             {/* Free Tier - Web App */}
             <div className={`p-8 rounded-3xl border ${
               isDarkMode 
-                ? 'border-violet-500/50 bg-gradient-to-br from-violet-500/10 to-blue-500/10' 
+                ? 'border-orange-500/50 bg-gradient-to-br from-orange-500/10 to-blue-500/10' 
                 : 'border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100/50'
             }`}>
               <div className="text-center mb-6">
@@ -1077,7 +1077,7 @@ export default function LandingPage() {
                   isDarkMode ? 'text-slate-50' : 'text-slate-900'
                 }`}>Everything Included</h3>
                 <div className={`text-5xl font-bold mb-2 ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-600'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-600'
                 }`}>$0</div>
                 <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                   Forever • No credit card • No limits
@@ -1137,7 +1137,7 @@ export default function LandingPage() {
 
               <Link 
                 href="/webapp"
-                className="w-full block text-center px-6 py-3 bg-violet-500 text-white rounded-xl hover:bg-violet-400 transition-colors font-semibold"
+                className="w-full block text-center px-6 py-3 bg-orange-500 text-white rounded-xl hover:bg-orange-400 transition-colors font-semibold"
               >
                 Start Using SHRP Now →
               </Link>
@@ -1156,7 +1156,7 @@ export default function LandingPage() {
                 href="https://github.com/sponsors/digitalwareshub" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:text-violet-300 underline"
+                className="text-orange-400 hover:text-orange-400 underline"
               >
                 sponsoring us on GitHub
               </a> or starring the repo!
@@ -1314,7 +1314,7 @@ export default function LandingPage() {
             <div className={`p-6 rounded-2xl border text-center ${
               isDarkMode 
                 ? 'border-slate-700/50 bg-slate-900/50' 
-                : 'border-violet-200/50 bg-white/50'
+                : 'border-orange-200/50 bg-white/50'
             }`}>
               <div className="text-5xl mb-4">🌐</div>
               <h3 className="text-lg font-semibold mb-2">Web App</h3>
@@ -1323,7 +1323,7 @@ export default function LandingPage() {
               </p>
               <Link 
                 href="/webapp"
-                className="inline-block px-4 py-2 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors font-medium text-sm"
+                className="inline-block px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors font-medium text-sm"
               >
                 Launch Web App →
               </Link>
@@ -1332,7 +1332,7 @@ export default function LandingPage() {
             <div className={`p-6 rounded-2xl border text-center ${
               isDarkMode 
                 ? 'border-slate-700/50 bg-slate-900/50' 
-                : 'border-violet-200/50 bg-white/50'
+                : 'border-orange-200/50 bg-white/50'
             }`}>
               {/* Apple iOS Icon */}
               <div className="flex items-center justify-center mb-4">
@@ -1359,7 +1359,7 @@ export default function LandingPage() {
             <div className={`p-6 rounded-2xl border text-center ${
               isDarkMode 
                 ? 'border-slate-700/50 bg-slate-900/50' 
-                : 'border-violet-200/50 bg-white/50'
+                : 'border-orange-200/50 bg-white/50'
             }`}>
               {/* Android Icon */}
               <div className="flex items-center justify-center mb-4">
@@ -1386,7 +1386,7 @@ export default function LandingPage() {
             <div className={`p-6 rounded-2xl border text-center ${
               isDarkMode 
                 ? 'border-slate-700/50 bg-slate-900/50' 
-                : 'border-violet-200/50 bg-white/50'
+                : 'border-orange-200/50 bg-white/50'
             }`}>
               <div className="text-5xl mb-4">💻</div>
               <h3 className="text-lg font-semibold mb-2">Desktop App</h3>
@@ -1411,8 +1411,8 @@ export default function LandingPage() {
       {/* Final CTA - Hero Reprise */}
       <section className={`relative py-20 border-y ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-violet-900/30 to-blue-900/30 border-violet-500/30' 
-          : 'bg-gradient-to-br from-violet-100/50 to-blue-100/50 border-violet-300/30'
+          ? 'bg-gradient-to-br from-orange-900/30 to-blue-900/30 border-orange-500/30' 
+          : 'bg-gradient-to-br from-orange-100/50 to-blue-100/50 border-orange-400/30'
       }`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -1425,7 +1425,7 @@ export default function LandingPage() {
           
           <Link 
             href="/webapp"
-            className="inline-block px-8 py-4 bg-violet-500 text-white rounded-xl hover:bg-violet-400 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg shadow-violet-900/50 mb-6"
+            className="inline-block px-8 py-4 bg-orange-500 text-white rounded-xl hover:bg-orange-400 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg shadow-orange-900/50 mb-6"
           >
             Try Free Now - Takes 30 Seconds →
           </Link>
@@ -1437,7 +1437,7 @@ export default function LandingPage() {
             </div>
             <span>•</span>
             <div className="flex items-center gap-2">
-              <span className="text-violet-400">⚡</span>
+              <span className="text-orange-400">⚡</span>
               <span>Instant (0.3s)</span>
             </div>
             <span>•</span>
@@ -1453,61 +1453,61 @@ export default function LandingPage() {
       <footer className={`relative border-t py-12 ${
         isDarkMode 
           ? 'border-slate-800/50 bg-slate-900/50' 
-          : 'border-violet-200/50 bg-violet-50/30'
+          : 'border-orange-200/50 bg-orange-50/30'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className={`font-semibold mb-4 ${
-                isDarkMode ? 'text-violet-300' : 'text-violet-600'
+                isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Product</h3>
               <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                <li><Link href="/webapp" className="hover:text-violet-300 transition-colors">Web App</Link></li>
-                <li><a href="#features" className="hover:text-violet-300 transition-colors">Features</a></li>
-                <li><a href="#how-it-works" className="hover:text-violet-300 transition-colors">How It Works</a></li>
-                <li><a href="#use-cases" className="hover:text-violet-300 transition-colors">Use Cases</a></li>
+                <li><Link href="/webapp" className="hover:text-orange-400 transition-colors">Web App</Link></li>
+                <li><a href="#features" className="hover:text-orange-400 transition-colors">Features</a></li>
+                <li><a href="#how-it-works" className="hover:text-orange-400 transition-colors">How It Works</a></li>
+                <li><a href="#use-cases" className="hover:text-orange-400 transition-colors">Use Cases</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className={`font-semibold mb-4 ${
-                isDarkMode ? 'text-violet-300' : 'text-violet-600'
+                isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Company</h3>
               <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                <li><Link href="/blog" className="hover:text-violet-300 transition-colors">Blog</Link></li>
-                <li><a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className="hover:text-violet-300 transition-colors">About Digiwares</a></li>
-                <li><a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="hover:text-violet-300 transition-colors">Twitter</a></li>
-                <li><a href="https://github.com/digitalwareshub/sharpnotes" target="_blank" rel="noopener noreferrer" className="hover:text-violet-300 transition-colors">GitHub</a></li>
+                <li><Link href="/blog" className="hover:text-orange-400 transition-colors">Blog</Link></li>
+                <li><a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">About Digiwares</a></li>
+                <li><a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">Twitter</a></li>
+                <li><a href="https://github.com/digitalwareshub/sharpnotes" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">GitHub</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className={`font-semibold mb-4 ${
-                isDarkMode ? 'text-violet-300' : 'text-violet-600'
+                isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Resources</h3>
               <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                <li><a href="#faq" className="hover:text-violet-300 transition-colors">FAQ</a></li>
-                <li><Link href="/blog/how-to-organize-meeting-notes" className="hover:text-violet-300 transition-colors">Meeting Notes Guide</Link></li>
-                <li><Link href="/blog/privacy-cost-of-cloud-note-apps" className="hover:text-violet-300 transition-colors">Privacy Guide</Link></li>
-                <li><Link href="/blog/shrp-vs-notion-vs-obsidian" className="hover:text-violet-300 transition-colors">Comparison</Link></li>
+                <li><a href="#faq" className="hover:text-orange-400 transition-colors">FAQ</a></li>
+                <li><Link href="/blog/how-to-organize-meeting-notes" className="hover:text-orange-400 transition-colors">Meeting Notes Guide</Link></li>
+                <li><Link href="/blog/privacy-cost-of-cloud-note-apps" className="hover:text-orange-400 transition-colors">Privacy Guide</Link></li>
+                <li><Link href="/blog/shrp-vs-notion-vs-obsidian" className="hover:text-orange-400 transition-colors">Comparison</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className={`font-semibold mb-4 ${
-                isDarkMode ? 'text-violet-300' : 'text-violet-600'
+                isDarkMode ? 'text-orange-400' : 'text-orange-600'
               }`}>Legal</h3>
               <ul className={`space-y-2 text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                <li><Link href="/privacy" className="hover:text-violet-300 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-violet-300 transition-colors">Terms of Service</Link></li>
-                <li><Link href="/report" className="hover:text-violet-300 transition-colors">Report Bug/Feature</Link></li>
-                <li><a href="https://github.com/digitalwareshub/sharpnotes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-violet-300 transition-colors">Open Source (MIT)</a></li>
+                <li><Link href="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-orange-400 transition-colors">Terms of Service</Link></li>
+                <li><Link href="/report" className="hover:text-orange-400 transition-colors">Report Bug/Feature</Link></li>
+                <li><a href="https://github.com/digitalwareshub/sharpnotes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">Open Source (MIT)</a></li>
               </ul>
             </div>
           </div>
 
           <div className={`pt-8 border-t text-center text-sm ${
-            isDarkMode ? 'border-slate-800/50 text-slate-500' : 'border-violet-200/50 text-slate-600'
+            isDarkMode ? 'border-slate-800/50 text-slate-500' : 'border-orange-200/50 text-slate-600'
           }`}>
             <p className="mb-2">
               Made with ❤️ by{' '}
@@ -1515,7 +1515,7 @@ export default function LandingPage() {
                 href="https://digiwares.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:underline"
+                className="text-orange-400 hover:underline"
               >
                 Digiwares
               </a>

@@ -25,8 +25,8 @@ export default function TermsPage() {
   return (
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 to-violet-900 text-slate-50' 
-        : 'bg-gradient-to-br from-violet-50 to-purple-50 text-slate-900'
+        ? 'bg-gradient-to-br from-slate-950 to-orange-900 text-slate-50' 
+        : 'bg-gradient-to-br from-orange-50 to-orange-50 text-slate-900'
     }`}>
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -38,7 +38,7 @@ export default function TermsPage() {
           }`}>
             <li>
               <Link href="/" className={`hover:underline ${
-                isDarkMode ? 'hover:text-violet-300' : 'hover:text-violet-600'
+                isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'
               }`}>
                 Home
               </Link>
@@ -64,7 +64,7 @@ export default function TermsPage() {
 
           <div className={`space-y-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 1. Agreement to Terms
               </h2>
               <p>
@@ -74,7 +74,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 2. Use License
               </h2>
               <p className="mb-4">
@@ -86,12 +86,12 @@ export default function TermsPage() {
                 <li>Create derivative works</li>
               </ul>
               <p className="mt-4">
-                See our <a href="https://github.com/digitalwareshub/sharpnotes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">MIT License</a> for full details.
+                See our <a href="https://github.com/digitalwareshub/sharpnotes/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">MIT License</a> for full details.
               </p>
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 3. Acceptable Use
               </h2>
               <p className="mb-4">You agree NOT to:</p>
@@ -105,7 +105,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 4. Disclaimer of Warranties
               </h2>
               <p className="mb-4">
@@ -120,7 +120,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 5. Limitation of Liability
               </h2>
               <p>
@@ -137,7 +137,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 6. Privacy and Data Responsibility
               </h2>
               <p className="mb-4">
@@ -147,12 +147,12 @@ export default function TermsPage() {
                 <li>Your data stays on your device</li>
                 <li>You are responsible for backing up your notes</li>
                 <li>We cannot recover lost data</li>
-                <li>See our <Link href="/privacy" className="text-violet-400 hover:underline">Privacy Policy</Link> for details</li>
+                <li>See our <Link href="/privacy" className="text-orange-400 hover:underline">Privacy Policy</Link> for details</li>
               </ul>
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 7. Professional Use
               </h2>
               <p>
@@ -167,7 +167,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 8. Modifications to Service
               </h2>
               <p>
@@ -177,7 +177,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 9. Governing Law
               </h2>
               <p>
@@ -187,7 +187,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 10. Changes to Terms
               </h2>
               <p>
@@ -198,16 +198,16 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 11. Contact Information
               </h2>
               <p>
                 Questions about these Terms of Service? Contact us:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Email: <a href="mailto:hello@digiwares.xyz" className="text-violet-400 hover:underline">hello@digiwares.xyz</a></li>
-                <li>Twitter: <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">@digi_wares</a></li>
-                <li>GitHub: <a href="https://github.com/digitalwareshub/sharpnotes/issues" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">GitHub Issues</a></li>
+                <li>Email: <a href="mailto:hello@digiwares.xyz" className="text-orange-400 hover:underline">hello@digiwares.xyz</a></li>
+                <li>Twitter: <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">@digi_wares</a></li>
+                <li>GitHub: <a href="https://github.com/digitalwareshub/sharpnotes/issues" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">GitHub Issues</a></li>
               </ul>
             </section>
           </div>

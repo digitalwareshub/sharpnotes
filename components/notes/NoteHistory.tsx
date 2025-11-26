@@ -87,7 +87,7 @@ export function NoteHistory({
         className={`fixed top-0 right-0 h-screen backdrop-blur-xl z-50 flex flex-col transition-all duration-300 border-l ${
           isDarkMode 
             ? 'bg-slate-900/95 border-slate-700/70' 
-            : 'bg-white/95 border-violet-200/60'
+            : 'bg-white/95 border-orange-200/60'
         } ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } lg:translate-x-0 w-80 ${isPinned ? 'lg:w-80' : 'lg:w-12'}`}
@@ -99,7 +99,7 @@ export function NoteHistory({
             className={`hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full border border-r-0 rounded-l-lg p-2 hover:opacity-80 ${
               isDarkMode
                 ? 'bg-slate-900/95 border-slate-700/70 text-slate-400 hover:text-slate-200 hover:bg-slate-800/95'
-                : 'bg-white/95 border-violet-200/60 text-violet-600 hover:text-violet-900 hover:bg-violet-50/95'
+                : 'bg-white/95 border-orange-200/60 text-orange-600 hover:text-orange-900 hover:bg-orange-50/95'
             }`}
             aria-label="Expand history"
           >
@@ -113,7 +113,7 @@ export function NoteHistory({
             <button
               onClick={onTogglePin}
               className={`writing-mode-vertical text-sm font-medium tracking-wider ${
-                isDarkMode ? 'text-slate-400 hover:text-slate-200' : 'text-violet-600 hover:text-violet-900'
+                isDarkMode ? 'text-slate-400 hover:text-slate-200' : 'text-orange-600 hover:text-orange-900'
               }`}
               style={{ writingMode: 'vertical-rl' }}
             >
@@ -126,13 +126,13 @@ export function NoteHistory({
         <div className={`flex-1 flex flex-col overflow-hidden lg:flex ${isPinned ? 'lg:flex' : 'lg:hidden'}`}>
         {/* Header */}
         <div className={`p-4 border-b flex-shrink-0 ${
-          isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'
+          isDarkMode ? 'border-slate-700/70' : 'border-orange-200/60'
         }`}>
           <div className="flex items-center justify-between mb-3">
             <div>
               <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>Note History</h2>
               {isChromeAndroid && isOpen && (
-                <p className={`text-xs font-bold mt-1 ${isDarkMode ? 'text-violet-400' : 'text-violet-600'}`}>
+                <p className={`text-xs font-bold mt-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                   Tap anywhere on the history<br />pane if the pane doesn&apos;t<br />load completely
                 </p>
               )}
@@ -144,7 +144,7 @@ export function NoteHistory({
                 className={`hidden lg:block rounded-full p-1.5 ${
                   isDarkMode 
                     ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' 
-                    : 'text-violet-600 hover:bg-violet-100 hover:text-violet-900'
+                    : 'text-orange-600 hover:bg-orange-100 hover:text-orange-900'
                 }`}
                 aria-label={isPinned ? 'Unpin history' : 'Pin history'}
                 title={isPinned ? 'Collapse sidebar' : 'Pin sidebar'}
@@ -157,7 +157,7 @@ export function NoteHistory({
                 className={`lg:hidden rounded-full p-1.5 ${
                   isDarkMode 
                     ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' 
-                    : 'text-violet-600 hover:bg-violet-100 hover:text-violet-900'
+                    : 'text-orange-600 hover:bg-orange-100 hover:text-orange-900'
                 }`}
                 aria-label="Close history"
               >
@@ -172,10 +172,10 @@ export function NoteHistory({
             placeholder="Search notes..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-violet-500 ${
+            className={`w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 ${
               isDarkMode
-                ? 'bg-slate-950/80 border-slate-700 text-slate-50 placeholder:text-slate-500 focus:border-violet-500'
-                : 'bg-white border-violet-200 text-slate-900 placeholder:text-slate-400 focus:border-violet-500'
+                ? 'bg-slate-950/80 border-slate-700 text-slate-50 placeholder:text-slate-500 focus:border-orange-500'
+                : 'bg-white border-orange-200 text-slate-900 placeholder:text-slate-400 focus:border-orange-500'
             }`}
           />
         </div>
@@ -198,15 +198,15 @@ export function NoteHistory({
               )}
             </div>
           ) : (
-            <div className={`divide-y ${isDarkMode ? 'divide-slate-800' : 'divide-violet-100'}`}>
+            <div className={`divide-y ${isDarkMode ? 'divide-slate-800' : 'divide-orange-100'}`}>
               {notes.map((note) => (
                 <div
                   key={note.id}
                   onClick={() => onSelectNote(note)}
                   className={`p-3 cursor-pointer transition-colors ${
                     selectedNoteId === note.id 
-                      ? isDarkMode ? 'bg-violet-500/10' : 'bg-violet-100/50'
-                      : isDarkMode ? 'hover:bg-slate-800/50' : 'hover:bg-violet-50/50'
+                      ? isDarkMode ? 'bg-orange-500/10' : 'bg-orange-100/50'
+                      : isDarkMode ? 'hover:bg-slate-800/50' : 'hover:bg-orange-50/50'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">

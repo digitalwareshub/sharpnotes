@@ -139,7 +139,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   placeholder="Your name"
                 />
               </div>
@@ -154,7 +154,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -170,7 +170,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   onChange={(e) => setMessage(e.target.value)}
                   required
                   rows={5}
-                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 resize-none"
+                  className="w-full px-3 py-2 text-sm bg-slate-950/80 border border-slate-700 rounded-lg text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none"
                   placeholder="Tell us what you think, report a bug, or suggest a feature..."
                 />
               </div>
@@ -187,7 +187,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting || !message.trim()}
-                  className="flex-1 px-4 py-2 text-sm font-medium text-slate-950 bg-violet-500 hover:bg-violet-400 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-2 text-sm font-medium text-slate-950 bg-orange-500 hover:bg-orange-400 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

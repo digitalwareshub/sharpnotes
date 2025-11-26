@@ -75,8 +75,8 @@ export default function ReportPage() {
   return (
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 to-violet-900 text-slate-50' 
-        : 'bg-gradient-to-br from-violet-50 to-purple-50 text-slate-900'
+        ? 'bg-gradient-to-br from-slate-950 to-orange-900 text-slate-50' 
+        : 'bg-gradient-to-br from-orange-50 to-orange-50 text-slate-900'
     }`}>
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -88,7 +88,7 @@ export default function ReportPage() {
           }`}>
             <li>
               <Link href="/" className={`hover:underline ${
-                isDarkMode ? 'hover:text-violet-300' : 'hover:text-violet-600'
+                isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'
               }`}>
                 Home
               </Link>
@@ -117,7 +117,7 @@ export default function ReportPage() {
 
         {/* Form Card */}
         <div className={`rounded-2xl shadow-xl border p-8 ${
-          isDarkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-violet-200'
+          isDarkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-orange-200'
         }`}>
           {isSubmitted ? (
             <div className="text-center py-12">
@@ -148,18 +148,18 @@ export default function ReportPage() {
                     onClick={() => setFormData({ ...formData, type: 'bug' })}
                     className={`p-4 rounded-lg border-2 transition-all ${
                       formData.type === 'bug'
-                        ? isDarkMode ? 'border-violet-500 bg-violet-900/30' : 'border-violet-600 bg-violet-50'
+                        ? isDarkMode ? 'border-orange-500 bg-orange-900/30' : 'border-orange-600 bg-orange-50'
                         : isDarkMode ? 'border-slate-700 hover:border-slate-600' : 'border-slate-300 hover:border-slate-400'
                     }`}
                   >
                     <svg className={`w-6 h-6 mx-auto mb-2 ${
-                      formData.type === 'bug' ? 'text-violet-500' : 'text-slate-400'
+                      formData.type === 'bug' ? 'text-orange-500' : 'text-slate-400'
                     }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                     <div className={`font-semibold ${
                       formData.type === 'bug' 
-                        ? 'text-violet-500' 
+                        ? 'text-orange-500' 
                         : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       Bug Report
@@ -174,18 +174,18 @@ export default function ReportPage() {
                     onClick={() => setFormData({ ...formData, type: 'feature' })}
                     className={`p-4 rounded-lg border-2 transition-all ${
                       formData.type === 'feature'
-                        ? isDarkMode ? 'border-violet-500 bg-violet-900/30' : 'border-violet-600 bg-violet-50'
+                        ? isDarkMode ? 'border-orange-500 bg-orange-900/30' : 'border-orange-600 bg-orange-50'
                         : isDarkMode ? 'border-slate-700 hover:border-slate-600' : 'border-slate-300 hover:border-slate-400'
                     }`}
                   >
                     <svg className={`w-6 h-6 mx-auto mb-2 ${
-                      formData.type === 'feature' ? 'text-violet-500' : 'text-slate-400'
+                      formData.type === 'feature' ? 'text-orange-500' : 'text-slate-400'
                     }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
                     </svg>
                     <div className={`font-semibold ${
                       formData.type === 'feature' 
-                        ? 'text-violet-500' 
+                        ? 'text-orange-500' 
                         : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       Feature Request
@@ -210,7 +210,7 @@ export default function ReportPage() {
                   value={formData.title}
                   onChange={handleChange}
                   placeholder={formData.type === 'bug' ? 'Brief description of the bug' : 'Brief description of the feature'}
-                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all ${
                     isDarkMode 
                       ? 'bg-slate-900 border-slate-600 text-white placeholder-slate-500' 
                       : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
@@ -235,7 +235,7 @@ export default function ReportPage() {
                       ? 'Please describe:\n- What you were trying to do\n- What happened instead\n- Steps to reproduce\n- Browser and device info'
                       : 'Please describe:\n- What problem would it solve?\n- How should it work?\n- Any examples or references?'
                   }
-                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none ${
+                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none ${
                     isDarkMode 
                       ? 'bg-slate-900 border-slate-600 text-white placeholder-slate-500' 
                       : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
@@ -255,7 +255,7 @@ export default function ReportPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all ${
                     isDarkMode 
                       ? 'bg-slate-900 border-slate-600 text-white placeholder-slate-500' 
                       : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
@@ -267,7 +267,7 @@ export default function ReportPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 disabled:from-slate-500 disabled:to-slate-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 disabled:scale-100 shadow-lg disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                className="w-full px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 disabled:from-slate-500 disabled:to-slate-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 disabled:scale-100 shadow-lg disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 {isSubmitting ? (
                   <>
@@ -292,11 +292,11 @@ export default function ReportPage() {
               isDarkMode ? 'border-slate-700 text-slate-400' : 'border-slate-200 text-slate-600'
             }`}>
               Need immediate help? Reach out on{' '}
-              <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline font-medium">
+              <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline font-medium">
                 Twitter
               </a>
               {' '}or check our{' '}
-              <Link href="/blog" className="text-violet-400 hover:underline font-medium">
+              <Link href="/blog" className="text-orange-400 hover:underline font-medium">
                 Blog
               </Link>
               {' '}for guides and tips.

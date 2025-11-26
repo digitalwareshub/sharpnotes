@@ -144,12 +144,12 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
           <div className={`relative rounded-3xl border shadow-2xl flex flex-col h-full overflow-hidden ${
             isDarkMode
               ? 'border-slate-700/70 bg-slate-900/95 backdrop-blur-xl'
-              : 'border-violet-200/60 bg-white/95 backdrop-blur-xl'
+              : 'border-orange-200/60 bg-white/95 backdrop-blur-xl'
           }`}>
             {/* Progress Bar */}
-            <div className={`h-1.5 flex-shrink-0 ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>
+            <div className={`h-1.5 flex-shrink-0 ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>
               <div 
-                className="h-full bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500 ease-out"
+                className="h-full bg-gradient-to-r from-orange-500 to-orange-500 transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -159,7 +159,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               {/* Icon & Step Counter */}
               <div className="flex items-start justify-between mb-6">
                 <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-4xl ${
-                  isDarkMode ? 'bg-violet-500/20' : 'bg-violet-100'
+                  isDarkMode ? 'bg-orange-500/20' : 'bg-orange-100'
                 }`}>
                   {step.icon}
                 </div>
@@ -193,7 +193,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                       className={`flex items-start gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] ${
                         isDarkMode
                           ? 'bg-slate-800/50 border border-slate-700/50'
-                          : 'bg-violet-50/50 border border-violet-200/50'
+                          : 'bg-orange-50/50 border border-orange-200/50'
                       }`}
                     >
                       <span className="text-2xl flex-shrink-0">{feature.icon}</span>
@@ -217,11 +217,11 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
               {/* Highlight Box */}
               <div className={`mb-8 rounded-xl border-l-4 p-4 ${
                 isDarkMode
-                  ? 'border-violet-500 bg-violet-500/10'
-                  : 'border-violet-500 bg-violet-50'
+                  ? 'border-orange-500 bg-orange-500/10'
+                  : 'border-orange-500 bg-orange-50'
               }`}>
                 <p className={`text-sm font-medium flex items-center gap-2 ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-900'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-900'
                 }`}>
                   <span>💡</span>
                   {step.highlight}
@@ -233,7 +233,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                 <div className={`mb-6 rounded-xl border p-4 ${
                   isDarkMode
                     ? 'border-slate-700 bg-slate-950/50'
-                    : 'border-violet-200 bg-violet-50/50'
+                    : 'border-orange-200 bg-orange-50/50'
                 }`}>
                   <p className={`mb-2 text-xs font-semibold uppercase tracking-wide ${
                     isDarkMode ? 'text-slate-400' : 'text-slate-600'
@@ -262,7 +262,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                       className={`rounded-xl border p-3 transition-all hover:scale-105 ${
                         isDarkMode
                           ? 'border-slate-700 bg-slate-800/50'
-                          : 'border-violet-200 bg-white'
+                          : 'border-orange-200 bg-white'
                       }`}
                     >
                       <div className="flex items-center gap-2 mb-1">
@@ -286,7 +286,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
 
             {/* Fixed Footer with Checkbox and Buttons */}
             <div className={`flex-shrink-0 border-t p-6 sm:p-8 md:p-10 pt-6 ${
-              isDarkMode ? 'border-slate-700/70' : 'border-violet-200/60'
+              isDarkMode ? 'border-slate-700/70' : 'border-orange-200/60'
             }`}>
               {/* Don't Show Again Checkbox */}
               <div className="mb-4">
@@ -316,7 +316,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   className={`flex-1 sm:flex-none rounded-xl px-6 py-3 text-sm font-medium transition-all min-h-[48px] ${
                     isDarkMode
                       ? 'border border-slate-700 text-slate-300 hover:bg-slate-800/50'
-                      : 'border border-violet-300 text-slate-700 hover:bg-violet-50'
+                      : 'border border-orange-400 text-slate-700 hover:bg-orange-50'
                   }`}
                 >
                   {currentStep === 0 ? 'Skip Tour' : 'Back'}
@@ -327,8 +327,8 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   onClick={handleNext}
                   className={`flex-1 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 min-h-[48px] ${
                     isDarkMode
-                      ? 'bg-violet-500 hover:bg-violet-600 shadow-lg shadow-violet-900/50'
-                      : 'bg-violet-500 hover:bg-violet-600 shadow-lg shadow-violet-500/30'
+                      ? 'bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-900/50'
+                      : 'bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/30'
                   }`}
                 >
                   {currentStep === steps.length - 1 ? "Let's Go! 🚀" : 'Next'}
@@ -341,7 +341,7 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                   isDarkMode ? 'text-slate-500' : 'text-slate-600'
                 }`}>
                   💡 Tip: Press <kbd className={`px-2 py-0.5 rounded ${
-                    isDarkMode ? 'bg-slate-800' : 'bg-violet-100'
+                    isDarkMode ? 'bg-slate-800' : 'bg-orange-100'
                   }`}>Cmd/Ctrl+Enter</kbd> to transform notes quickly
                 </p>
               )}
@@ -356,12 +356,12 @@ export function OnboardingTour({ isDarkMode = true, onComplete }: OnboardingTour
                 onClick={() => setCurrentStep(index)}
                 className={`h-2 rounded-full transition-all ${
                   index === currentStep
-                    ? 'w-8 bg-violet-500'
+                    ? 'w-8 bg-orange-500'
                     : index < currentStep
-                      ? 'w-2 bg-violet-400/50'
+                      ? 'w-2 bg-orange-400/50'
                       : isDarkMode
                         ? 'w-2 bg-slate-700'
-                        : 'w-2 bg-violet-200'
+                        : 'w-2 bg-orange-200'
                 }`}
                 aria-label={`Go to step ${index + 1}`}
               />

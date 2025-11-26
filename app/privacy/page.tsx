@@ -25,8 +25,8 @@ export default function PrivacyPage() {
   return (
     <div className={`min-h-screen transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 to-violet-900 text-slate-50' 
-        : 'bg-gradient-to-br from-violet-50 to-purple-50 text-slate-900'
+        ? 'bg-gradient-to-br from-slate-950 to-orange-900 text-slate-50' 
+        : 'bg-gradient-to-br from-orange-50 to-orange-50 text-slate-900'
     }`}>
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
           }`}>
             <li>
               <Link href="/" className={`hover:underline ${
-                isDarkMode ? 'hover:text-violet-300' : 'hover:text-violet-600'
+                isDarkMode ? 'hover:text-orange-400' : 'hover:text-orange-600'
               }`}>
                 Home
               </Link>
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
 
           <div className={`space-y-8 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Core Promise: Your Data Stays Private
               </h2>
               <p className="mb-4">
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 What We Don&apos;t Collect
               </h2>
               <ul className="list-disc pl-6 space-y-2">
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Local Storage
               </h2>
               <p className="mb-4">
@@ -103,7 +103,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Analytics
               </h2>
               <p className="mb-4">
@@ -125,7 +125,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Third-Party Services
               </h2>
               <p className="mb-4">
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Cookies
               </h2>
               <p>
@@ -155,7 +155,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 HIPAA and Professional Use
               </h2>
               <p className="mb-4">
@@ -170,7 +170,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Data Deletion
               </h2>
               <p>
@@ -184,7 +184,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Changes to This Policy
               </h2>
               <p>
@@ -194,16 +194,16 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-violet-300' : 'text-violet-600'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>
                 Contact Us
               </h2>
               <p>
                 If you have questions about this privacy policy, please contact us:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Email: <a href="mailto:hello@digiwares.xyz" className="text-violet-400 hover:underline">hello@digiwares.xyz</a></li>
-                <li>Twitter: <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">@digi_wares</a></li>
-                <li>GitHub: <a href="https://github.com/digitalwareshub/sharpnotes/issues" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">GitHub Issues</a></li>
+                <li>Email: <a href="mailto:hello@digiwares.xyz" className="text-orange-400 hover:underline">hello@digiwares.xyz</a></li>
+                <li>Twitter: <a href="https://twitter.com/digi_wares" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">@digi_wares</a></li>
+                <li>GitHub: <a href="https://github.com/digitalwareshub/sharpnotes/issues" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">GitHub Issues</a></li>
               </ul>
             </section>
           </div>

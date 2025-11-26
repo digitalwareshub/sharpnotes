@@ -394,13 +394,13 @@ Remember to check in with marketing about the launch campaign and schedule a cal
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900 text-slate-50' 
-        : 'bg-gradient-to-br from-violet-50 via-purple-50 to-blue-50 text-slate-900'
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900 text-slate-50' 
+        : 'bg-gradient-to-br from-orange-50 via-orange-50 to-blue-50 text-slate-900'
     }`}>
       {/* glowing blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className={`absolute -top-24 -left-24 h-64 w-64 rounded-full blur-3xl ${
-          isDarkMode ? 'bg-violet-500/30' : 'bg-violet-300/40'
+          isDarkMode ? 'bg-orange-500/30' : 'bg-orange-400/40'
         }`} />
         <div className={`absolute bottom-0 right-0 h-72 w-72 rounded-full blur-3xl ${
           isDarkMode ? 'bg-sky-500/30' : 'bg-blue-300/40'
@@ -461,8 +461,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   onClick={toggleTheme}
                   className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm transition-colors min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
                     isDarkMode
-                      ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                      : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                      ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
+                      : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
                   }`}
                   aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 >
@@ -501,8 +501,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   onClick={() => setIsHistoryOpen(!isHistoryOpen)}
                   className={`rounded-full border p-2 sm:p-2.5 shadow-lg backdrop-blur-sm lg:hidden min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center ${
                     isDarkMode
-                      ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                      : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                      ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
+                      : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
                   }`}
                   aria-label="View history"
                 >
@@ -522,11 +522,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
               activeView === 'input'
                 ? isDarkMode
-                  ? 'bg-violet-500 text-white shadow-lg shadow-violet-900/50'
-                  : 'bg-violet-600 text-white shadow-lg shadow-violet-300/50'
+                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/50'
+                  : 'bg-orange-600 text-white shadow-lg shadow-orange-400/50'
                 : isDarkMode
                   ? 'border border-slate-600/80 bg-slate-900/60 text-slate-300 hover:bg-slate-800'
-                  : 'border border-violet-300/60 bg-white/60 text-violet-900 hover:bg-white/80'
+                  : 'border border-orange-400/60 bg-white/60 text-orange-900 hover:bg-white/80'
             }`}
           >
             📝 Input
@@ -536,11 +536,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
               activeView === 'output'
                 ? isDarkMode
-                  ? 'bg-violet-500 text-white shadow-lg shadow-violet-900/50'
-                  : 'bg-violet-600 text-white shadow-lg shadow-violet-300/50'
+                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/50'
+                  : 'bg-orange-600 text-white shadow-lg shadow-orange-400/50'
                 : isDarkMode
                   ? 'border border-slate-600/80 bg-slate-900/60 text-slate-300 hover:bg-slate-800'
-                  : 'border border-violet-300/60 bg-white/60 text-violet-900 hover:bg-white/80'
+                  : 'border border-orange-400/60 bg-white/60 text-orange-900 hover:bg-white/80'
             }`}
           >
             ✨ Output {output && <span className="ml-1">●</span>}
@@ -557,7 +557,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             } ${
               isDarkMode
                 ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
-                : 'border-violet-200/60 bg-white/80 shadow-violet-200/40'
+                : 'border-orange-200/60 bg-white/80 shadow-orange-200/40'
             }`}
           >
             <div className="mb-2 flex items-center justify-between gap-2">
@@ -575,7 +575,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 className={`rounded-full border px-3 py-1 text-[11px] ${
                   isDarkMode
                     ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                    : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                    : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                 }`}
               >
                 Fill with sample
@@ -586,8 +586,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               <textarea
                 className={`h-full w-full resize-none rounded-xl border px-3 py-3 pr-12 text-sm outline-none ring-0 ${
                   isDarkMode
-                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-slate-500 focus:border-violet-400 focus:ring-1 focus:ring-violet-500'
-                    : 'border-violet-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-400'
+                    ? 'border-slate-700 bg-slate-950/80 text-slate-50 placeholder:text-slate-500 focus:border-orange-400 focus:ring-1 focus:ring-orange-500'
+                    : 'border-orange-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:ring-1 focus:ring-orange-400'
                 }`}
                 placeholder={`Example:\n"ok, meeting with team went all over the place. deadlines, bugs, new feature ideas... i need to email Sarah, fix that onboarding bug, and update the roadmap doc before Friday."`}
                 value={input + (interimTranscript ? ` ${  interimTranscript}` : '')}
@@ -615,7 +615,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                       ? 'bg-red-500 text-white animate-pulse'
                       : isDarkMode
                         ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-slate-100'
-                        : 'bg-violet-100 text-violet-700 hover:bg-violet-200'
+                        : 'bg-orange-100 text-orange-700 hover:bg-orange-200'
                   }`}
                   aria-label={isListening ? 'Stop recording' : 'Start voice input'}
                   title={isListening ? 'Stop recording' : 'Start voice input'}
@@ -650,11 +650,11 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     className={`rounded-lg px-3 py-2.5 text-sm font-medium capitalize transition lg:rounded-xl lg:px-4 lg:py-2 lg:text-xs ${
                       mode === m
                         ? isDarkMode
-                          ? 'bg-violet-500 text-white shadow-md shadow-violet-900/70'
-                          : 'bg-violet-500 text-white shadow-md shadow-violet-500/40'
+                          ? 'bg-orange-500 text-white shadow-md shadow-orange-900/70'
+                          : 'bg-orange-500 text-white shadow-md shadow-orange-500/40'
                         : isDarkMode
                           ? 'border border-slate-600/80 bg-slate-900/80 text-slate-200 hover:bg-slate-800'
-                          : 'border border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                          : 'border border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                     }`}
                   >
                     {modeLabel(m)}
@@ -671,7 +671,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium ${
                       isDarkMode
                         ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
-                        : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                        : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                     }`}
                   >
                     Clear
@@ -683,7 +683,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
                       isDarkMode
                         ? 'border-slate-600/80 bg-slate-900/80 text-slate-300 hover:bg-slate-800'
-                        : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                        : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                     }`}
                   >
                     Save
@@ -693,8 +693,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   type="button"
                   onClick={handleRun}
                   disabled={!input.trim() || isProcessing}
-                  className={`w-full inline-flex items-center justify-center gap-2 rounded-lg bg-violet-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
-                    isDarkMode ? 'shadow-md shadow-violet-900/50' : 'shadow-md shadow-violet-500/30'
+                  className={`w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
+                    isDarkMode ? 'shadow-md shadow-orange-900/50' : 'shadow-md shadow-orange-500/30'
                   }`}
                 >
                   {isProcessing ? (
@@ -729,7 +729,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     className={`rounded-full border px-3 py-1 text-xs hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed ${
                       isDarkMode
                         ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                        : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                        : 'border-orange-400/60 text-orange-900 hover:bg-orange-50/70'
                     }`}
                   >
                     Save
@@ -742,7 +742,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     className={`rounded-full border px-3 py-1 text-xs ${
                       isDarkMode
                         ? 'border-slate-600/80 text-slate-300 hover:bg-slate-800/80'
-                        : 'border-violet-300/60 text-violet-900 hover:bg-violet-50/70'
+                        : 'border-orange-400/60 text-orange-900 hover:bg-orange-50/70'
                     }`}
                   >
                     Clear
@@ -753,8 +753,8 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                     type="button"
                     onClick={handleRun}
                     disabled={!input.trim() || isProcessing}
-                    className={`inline-flex items-center gap-1.5 rounded-full bg-violet-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-violet-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
-                      isDarkMode ? 'shadow-lg shadow-violet-900/50' : 'shadow-lg shadow-violet-500/30'
+                    className={`inline-flex items-center gap-1.5 rounded-full bg-orange-500 px-4 py-1.5 text-xs font-medium text-white hover:bg-orange-400 disabled:cursor-not-allowed disabled:bg-slate-600 ${
+                      isDarkMode ? 'shadow-lg shadow-orange-900/50' : 'shadow-lg shadow-orange-500/30'
                     }`}
                   >
                     {isProcessing ? (
@@ -781,7 +781,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <div className={`flex flex-col rounded-2xl border p-4 shadow-xl backdrop-blur flex-1 min-h-0 ${
               isDarkMode
                 ? 'border-slate-700/70 bg-slate-900/80 shadow-slate-950/60'
-                : 'border-violet-200/60 bg-white/80 shadow-violet-200/40'
+                : 'border-orange-200/60 bg-white/80 shadow-orange-200/40'
             }`}>
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
@@ -794,7 +794,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   <span className={`rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wide ${
                     isDarkMode 
                       ? 'bg-slate-900/80 text-slate-400' 
-                      : 'bg-violet-100/70 text-violet-700'
+                      : 'bg-orange-100/70 text-orange-700'
                   }`}>
                     {modeLabel(mode)}
                   </span>
@@ -808,7 +808,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                         className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
                           isDarkMode
                             ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                            : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                            : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                         }`}
                       >
                         <span>📋</span>
@@ -822,7 +822,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                         className={`rounded-full border px-3 py-1 text-[11px] flex items-center gap-1.5 ${
                           isDarkMode
                             ? 'border-slate-600/80 bg-slate-900/70 text-slate-200 hover:bg-slate-800'
-                            : 'border-violet-300/60 bg-violet-50/70 text-violet-900 hover:bg-violet-100/70'
+                            : 'border-orange-400/60 bg-orange-50/70 text-orange-900 hover:bg-orange-100/70'
                         }`}
                       >
                         <span>📦</span>
@@ -837,7 +837,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 <pre className={`mt-1 flex-1 whitespace-pre-wrap rounded-xl p-3 text-xs leading-relaxed overflow-y-auto overflow-x-hidden ${
                   isDarkMode 
                     ? 'bg-slate-950/70 text-slate-100' 
-                    : 'bg-violet-50/50 text-slate-900'
+                    : 'bg-orange-50/50 text-slate-900'
                 }`}>
                   {output}
                 </pre>
@@ -846,7 +846,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                   <div className={`h-14 w-14 rounded-xl border border-dashed ${
                     isDarkMode 
                       ? 'border-slate-600/80 bg-slate-900/60' 
-                      : 'border-violet-300/60 bg-violet-50/50'
+                      : 'border-orange-400/60 bg-orange-50/50'
                   }`} />
                   <p className={`max-w-xs text-xs ${isDarkMode ? 'text-slate-300/80' : 'text-slate-600/80'}`}>
                     Your transformed notes will show up here. Paste something on the left,
@@ -859,16 +859,16 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <div className={`rounded-2xl border p-4 text-[11px] shadow-xl backdrop-blur ${
               isDarkMode
                 ? 'border-slate-700/70 bg-slate-900/80 text-slate-300/80 shadow-slate-950/60'
-                : 'border-violet-200/60 bg-white/80 text-slate-600/80 shadow-violet-200/40'
+                : 'border-orange-200/60 bg-white/80 text-slate-600/80 shadow-orange-200/40'
             }`}>
               <p className={`mb-1 font-semibold ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>
                 ⌨️ Keyboard Shortcuts
               </p>
               <div className="space-y-1 text-[10px]">
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+Enter</kbd> Transform</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+S</kbd> Save</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+E</kbd> Export</p>
-                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-violet-100'}`}>Cmd/Ctrl+K</kbd> Clear</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+Enter</kbd> Transform</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+S</kbd> Save</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+E</kbd> Export</p>
+                <p><kbd className={`px-1 py-0.5 rounded ${isDarkMode ? 'bg-slate-800' : 'bg-orange-100'}`}>Cmd/Ctrl+K</kbd> Clear</p>
               </div>
             </div>
           </div>
@@ -884,7 +884,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               target="_blank" 
               rel="noopener noreferrer"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               ⭐ Star on GitHub
@@ -893,7 +893,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <Link 
               href="/blog"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               📝 Blog
@@ -902,7 +902,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <Link 
               href="/privacy"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               � Privacy
@@ -913,7 +913,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
               target="_blank" 
               rel="noopener noreferrer"
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               🐦 Follow Updates
@@ -922,7 +922,7 @@ Remember to check in with marketing about the launch campaign and schedule a cal
             <button
               onClick={() => setIsFeedbackOpen(true)}
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               ✉️ Feedback
@@ -935,14 +935,14 @@ Remember to check in with marketing about the launch campaign and schedule a cal
                 setIsOnboardingOpen(true);
               }}
               className={`transition-colors py-2 px-1 ${
-                isDarkMode ? 'text-slate-400 hover:text-violet-400' : 'text-slate-700 hover:text-violet-600'
+                isDarkMode ? 'text-slate-400 hover:text-orange-400' : 'text-slate-700 hover:text-orange-600'
               }`}
             >
               🎓 Tutorial
             </button>
           </div>
           <p className={`text-xs ${isDarkMode ? 'text-slate-600' : 'text-slate-500'}`}>
-            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-violet-400 hover:underline' : 'text-violet-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
+            Made with ❤️ by <a href="https://digiwares.xyz" target="_blank" rel="noopener noreferrer" className={isDarkMode ? 'text-orange-400 hover:underline' : 'text-orange-600 hover:underline'}>Digiwares</a> • Open Source (MIT License)
           </p>
         </footer>
       </main>

@@ -67,7 +67,7 @@ export function TrayNotification({
   const getColorClasses = () => {
     const baseClasses = isDarkMode
       ? 'bg-slate-900/95 border-slate-700/70'
-      : 'bg-white/95 border-violet-200/60';
+      : 'bg-white/95 border-orange-200/60';
 
     const iconClasses = {
       info: isDarkMode ? 'text-blue-400' : 'text-blue-600',
@@ -137,8 +137,8 @@ export function TrayNotification({
                       onClick={handleAction}
                       className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                         isDarkMode
-                          ? 'bg-violet-500 text-white hover:bg-violet-400'
-                          : 'bg-violet-600 text-white hover:bg-violet-500'
+                          ? 'bg-orange-500 text-white hover:bg-orange-400'
+                          : 'bg-orange-600 text-white hover:bg-orange-500'
                       }`}
                     >
                       {actionLabel}
@@ -149,7 +149,7 @@ export function TrayNotification({
                     className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                       isDarkMode
                         ? 'border border-slate-600 text-slate-300 hover:bg-slate-800'
-                        : 'border border-violet-300 text-slate-700 hover:bg-violet-50'
+                        : 'border border-orange-400 text-slate-700 hover:bg-orange-50'
                     }`}
                   >
                     {actionLabel ? 'Not Now' : 'Dismiss'}
@@ -163,7 +163,7 @@ export function TrayNotification({
                 className={`flex-shrink-0 p-1 rounded-lg transition-colors ${
                   isDarkMode
                     ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-                    : 'text-slate-500 hover:text-slate-900 hover:bg-violet-100'
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-orange-100'
                 }`}
                 aria-label="Close notification"
               >

@@ -77,10 +77,10 @@ export default function BlogPost() {
     return (
       <div className={`min-h-screen flex items-center justify-center ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
-          : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900' 
+          : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
       }`}>
-        <div className="text-violet-400 text-lg">Loading...</div>
+        <div className="text-orange-400 text-lg">Loading...</div>
       </div>
     );
   }
@@ -89,14 +89,14 @@ export default function BlogPost() {
     return (
       <div className={`min-h-screen flex items-center justify-center ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
-          : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+          ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900' 
+          : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
       }`}>
         <div className="text-center">
           <h1 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-slate-50' : 'text-slate-900'}`}>
             Post not found
           </h1>
-          <Link href="/blog" className="text-violet-400 hover:text-violet-300">
+          <Link href="/blog" className="text-orange-400 hover:text-orange-400">
             ← Back to Blog
           </Link>
         </div>
@@ -116,8 +116,8 @@ export default function BlogPost() {
   return (
     <div className={`min-h-screen ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-violet-900' 
-        : 'bg-gradient-to-br from-violet-50 via-white to-blue-50'
+        ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-orange-900' 
+        : 'bg-gradient-to-br from-orange-50 via-white to-blue-50'
     }`}>
       {/* Breadcrumb Schema */}
       {blogPost && (
@@ -153,7 +153,7 @@ export default function BlogPost() {
       <header className={`border-b backdrop-blur-sm sticky top-0 z-10 ${
         isDarkMode 
           ? 'border-slate-800/50 bg-slate-900/50' 
-          : 'border-violet-200/50 bg-white/50'
+          : 'border-orange-200/50 bg-white/50'
       }`}>
         <div className="max-w-4xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -161,7 +161,7 @@ export default function BlogPost() {
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
               <Link 
                 href="/"
-                className={`hover:text-violet-400 transition-colors ${
+                className={`hover:text-orange-400 transition-colors ${
                   isDarkMode ? 'text-slate-400' : 'text-slate-600'
                 }`}
               >
@@ -170,7 +170,7 @@ export default function BlogPost() {
               <span className={isDarkMode ? 'text-slate-600' : 'text-slate-400'}>/</span>
               <Link 
                 href="/blog"
-                className={`hover:text-violet-400 transition-colors ${
+                className={`hover:text-orange-400 transition-colors ${
                   isDarkMode ? 'text-slate-400' : 'text-slate-600'
                 }`}
               >
@@ -187,8 +187,8 @@ export default function BlogPost() {
                 onClick={toggleTheme}
                 className={`rounded-full border p-2 shadow-lg backdrop-blur-sm transition-colors ${
                   isDarkMode
-                    ? 'border-violet-300/60 bg-violet-500/30 text-violet-50 shadow-violet-900/40 hover:bg-violet-500/40'
-                    : 'border-violet-400/60 bg-white/70 text-violet-900 shadow-violet-300/40 hover:bg-white/90'
+                    ? 'border-orange-400/60 bg-orange-500/30 text-orange-50 shadow-orange-900/40 hover:bg-orange-500/40'
+                    : 'border-orange-400/60 bg-white/70 text-orange-900 shadow-orange-400/40 hover:bg-white/90'
                 }`}
                 title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 aria-label="Toggle theme"
@@ -262,7 +262,7 @@ export default function BlogPost() {
               className={`px-3 py-1 text-xs rounded-full border ${
                 isDarkMode 
                   ? 'bg-slate-800/50 text-slate-400 border-slate-700/50' 
-                  : 'bg-violet-100/50 text-violet-600 border-violet-200/50'
+                  : 'bg-orange-100/50 text-orange-600 border-orange-200/50'
               }`}
             >
               #{tag}
@@ -279,31 +279,31 @@ export default function BlogPost() {
                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-slate-800 prose-h2:pb-3
                 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
                 prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-6
-                prose-a:text-violet-400 prose-a:no-underline hover:prose-a:text-violet-300 hover:prose-a:underline
+                prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-400 hover:prose-a:underline
                 prose-strong:text-slate-200 prose-strong:font-semibold
-                prose-code:text-violet-300 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
+                prose-code:text-orange-400 prose-code:bg-slate-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
                 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800
                 prose-ul:text-slate-300 prose-ul:my-6
                 prose-ol:text-slate-300 prose-ol:my-6
                 prose-li:my-2
-                prose-blockquote:border-l-violet-500 prose-blockquote:text-slate-400 prose-blockquote:italic
+                prose-blockquote:border-l-orange-500 prose-blockquote:text-slate-400 prose-blockquote:italic
                 prose-img:rounded-xl prose-img:shadow-lg
                 prose-hr:border-slate-800 prose-hr:my-12
                 prose-table:text-slate-300`
               : `prose-headings:text-slate-900 prose-headings:font-semibold
-                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-violet-200 prose-h2:pb-3
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-orange-200 prose-h2:pb-3
                 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
                 prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6
-                prose-a:text-violet-600 prose-a:no-underline hover:prose-a:text-violet-500 hover:prose-a:underline
+                prose-a:text-orange-600 prose-a:no-underline hover:prose-a:text-orange-500 hover:prose-a:underline
                 prose-strong:text-slate-800 prose-strong:font-semibold
-                prose-code:text-violet-600 prose-code:bg-violet-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
-                prose-pre:bg-slate-100 prose-pre:border prose-pre:border-violet-200
+                prose-code:text-orange-600 prose-code:bg-orange-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']
+                prose-pre:bg-slate-100 prose-pre:border prose-pre:border-orange-200
                 prose-ul:text-slate-700 prose-ul:my-6
                 prose-ol:text-slate-700 prose-ol:my-6
                 prose-li:my-2
-                prose-blockquote:border-l-violet-500 prose-blockquote:text-slate-600 prose-blockquote:italic
+                prose-blockquote:border-l-orange-500 prose-blockquote:text-slate-600 prose-blockquote:italic
                 prose-img:rounded-xl prose-img:shadow-lg
-                prose-hr:border-violet-200 prose-hr:my-12
+                prose-hr:border-orange-200 prose-hr:my-12
                 prose-table:text-slate-700`
           }`}
           dangerouslySetInnerHTML={{ __html: blogPost.content || '' }}
@@ -312,8 +312,8 @@ export default function BlogPost() {
         {/* CTA Box */}
         <div className={`border rounded-xl p-6 my-12 ${
           isDarkMode 
-            ? 'bg-gradient-to-r from-violet-900/30 to-blue-900/30 border-violet-500/30' 
-            : 'bg-gradient-to-r from-violet-100/50 to-blue-100/50 border-violet-300/30'
+            ? 'bg-gradient-to-r from-orange-900/30 to-blue-900/30 border-orange-500/30' 
+            : 'bg-gradient-to-r from-orange-100/50 to-blue-100/50 border-orange-400/30'
         }`}>
           <h3 className={`text-xl font-semibold mb-3 ${
             isDarkMode ? 'text-slate-50' : 'text-slate-900'
@@ -325,7 +325,7 @@ export default function BlogPost() {
           </p>
           <Link 
             href="/webapp"
-            className="inline-block px-6 py-3 bg-violet-500 text-white rounded-lg hover:bg-violet-400 transition-colors font-medium"
+            className="inline-block px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-400 transition-colors font-medium"
           >
             Try SHRP Notes Free →
           </Link>
@@ -333,7 +333,7 @@ export default function BlogPost() {
 
         {/* Share */}
         <div className={`mt-12 pt-8 border-t ${
-          isDarkMode ? 'border-slate-800/50' : 'border-violet-200/50'
+          isDarkMode ? 'border-slate-800/50' : 'border-orange-200/50'
         }`}>
           <p className={`mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Share this article:</p>
           <div className="flex gap-3">
@@ -344,7 +344,7 @@ export default function BlogPost() {
               className={`px-4 py-2 rounded-lg transition-colors text-sm ${
                 isDarkMode 
                   ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' 
-                  : 'bg-violet-100 text-slate-700 hover:bg-violet-200'
+                  : 'bg-orange-100 text-slate-700 hover:bg-orange-200'
               }`}
             >
               Share on Twitter
@@ -356,7 +356,7 @@ export default function BlogPost() {
               className={`px-4 py-2 rounded-lg transition-colors text-sm ${
                 isDarkMode 
                   ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' 
-                  : 'bg-violet-100 text-slate-700 hover:bg-violet-200'
+                  : 'bg-orange-100 text-slate-700 hover:bg-orange-200'
               }`}
             >
               Share on LinkedIn
@@ -368,7 +368,7 @@ export default function BlogPost() {
         <div className={`mt-12 p-6 border rounded-xl ${
           isDarkMode 
             ? 'bg-slate-900/50 border-slate-800/50' 
-            : 'bg-white/50 border-violet-200/50'
+            : 'bg-white/50 border-orange-200/50'
         }`}>
           <div className="flex gap-4">
             <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
@@ -395,7 +395,7 @@ export default function BlogPost() {
                 href="https://twitter.com/digi_wares"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:text-violet-300 text-sm"
+                className="text-orange-400 hover:text-orange-400 text-sm"
               >
                 Follow @digi_wares →
               </a>
@@ -418,14 +418,14 @@ export default function BlogPost() {
                   href={`/blog/${relatedPost.slug}`}
                   className={`p-6 border rounded-xl transition-colors group ${
                     isDarkMode 
-                      ? 'bg-slate-900/50 border-slate-800/50 hover:border-violet-500/50' 
-                      : 'bg-white/50 border-violet-200/50 hover:border-violet-400/50'
+                      ? 'bg-slate-900/50 border-slate-800/50 hover:border-orange-500/50' 
+                      : 'bg-white/50 border-orange-200/50 hover:border-orange-400/50'
                   }`}
                 >
                   <h4 className={`text-lg font-semibold mb-2 ${
                     isDarkMode 
-                      ? 'text-slate-50 group-hover:text-violet-300' 
-                      : 'text-slate-900 group-hover:text-violet-600'
+                      ? 'text-slate-50 group-hover:text-orange-400' 
+                      : 'text-slate-900 group-hover:text-orange-600'
                   }`}>
                     {relatedPost.title} →
                   </h4>
@@ -443,7 +443,7 @@ export default function BlogPost() {
 
       {/* Footer */}
       <footer className={`border-t mt-16 ${
-        isDarkMode ? 'border-slate-800/50' : 'border-violet-200/50'
+        isDarkMode ? 'border-slate-800/50' : 'border-orange-200/50'
       }`}>
         <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center text-sm">
@@ -453,7 +453,7 @@ export default function BlogPost() {
                 href="https://digiwares.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:underline"
+                className="text-orange-400 hover:underline"
               >
                 Digiwares
               </a>
@@ -461,11 +461,11 @@ export default function BlogPost() {
             <div className={`flex items-center justify-center gap-4 text-xs ${
               isDarkMode ? 'text-slate-500' : 'text-slate-600'
             }`}>
-              <Link href="/" className="hover:text-violet-400 transition-colors">
+              <Link href="/" className="hover:text-orange-400 transition-colors">
                 Home
               </Link>
               <span>•</span>
-              <Link href="/blog" className="hover:text-violet-400 transition-colors">
+              <Link href="/blog" className="hover:text-orange-400 transition-colors">
                 Blog
               </Link>
               <span>•</span>
@@ -473,7 +473,7 @@ export default function BlogPost() {
                 href="https://twitter.com/digi_wares" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-violet-400 transition-colors"
+                className="hover:text-orange-400 transition-colors"
               >
                 Twitter
               </a>

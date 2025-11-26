@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full text-center">
         {/* 404 Visual */}
         <div className="mb-8">
-          <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
             404
           </h1>
           <div className="mt-4">
             <svg
-              className="w-32 h-32 mx-auto text-purple-500/30"
+              className="w-32 h-32 mx-auto text-orange-500/30"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ export default function NotFound() {
             Looking for our PDF extraction or OCR service?
           </p>
           <p className="text-slate-400 text-sm mb-4">
-            We&apos;ve evolved! <span className="text-purple-400 font-semibold">SHRP Notes</span> is our 
+            We&apos;ve evolved! <span className="text-orange-400 font-semibold">SHRP Notes</span> is our 
             new privacy-first note transformation tool that helps you organize meeting notes, extract 
             tasks, and structure information—all locally in your browser.
           </p>
@@ -55,7 +55,7 @@ export default function NotFound() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="block w-full max-w-md mx-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
+            className="block w-full max-w-md mx-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
           >
             Try SHRP Notes Free →
           </Link>
@@ -84,7 +84,7 @@ export default function NotFound() {
             href="https://twitter.com/digi_wares"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-400 hover:text-purple-300 underline"
+            className="text-orange-400 hover:text-orange-400 underline"
           >
             let us know
           </a>

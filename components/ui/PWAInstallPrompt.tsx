@@ -137,7 +137,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
                 ✨
               </div>
             </div>
@@ -157,21 +157,21 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
               {/* Safari Instructions */}
               <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-violet-900/20' : 'bg-violet-50'
+                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
               }`}>
                 <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-violet-200' : 'text-violet-900'
+                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
                 }`}>
                   📱 On Safari:
                 </p>
                 <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-800'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
                 }`}>
                   <li>Tap the Share button <span className="inline-block">🔼</span></li>
                   <li>Select &ldquo;Add to Home Screen&rdquo;</li>
                 </ol>
                 <p className={`text-xs mt-1.5 ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-800'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
                 }`}>
                   💻 On Mac: File → Add to Dock
                 </p>
@@ -233,7 +233,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
                 ✨
               </div>
             </div>
@@ -253,15 +253,15 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
               {/* Firefox Instructions */}
               <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-violet-900/20' : 'bg-violet-50'
+                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
               }`}>
                 <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-violet-200' : 'text-violet-900'
+                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
                 }`}>
                   🦊 On Firefox:
                 </p>
                 <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-800'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
                 }`}>
                   <li>Click the menu (☰) in the top-right</li>
                   <li>Select &ldquo;Install&rdquo; or &ldquo;Install this site as an app&rdquo;</li>
@@ -324,7 +324,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
                 ✨
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
               <div className="flex gap-2">
                 <button
                   onClick={handleInstall}
-                  className="flex-1 px-3 py-2 bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium rounded-md transition-colors"
+                  className="flex-1 px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-medium rounded-md transition-colors"
                 >
                   Install
                 </button>
@@ -406,7 +406,7 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
           <div className="flex items-start gap-3">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-600 rounded-lg flex items-center justify-center text-white text-2xl font-bold">
                 ✨
               </div>
             </div>
@@ -426,15 +426,15 @@ export default function PWAInstallPrompt({ isDarkMode = false }: PWAInstallPromp
 
               {/* Chrome Instructions */}
               <div className={`rounded-md p-2 mb-3 ${
-                isDarkMode ? 'bg-violet-900/20' : 'bg-violet-50'
+                isDarkMode ? 'bg-orange-900/20' : 'bg-orange-50'
               }`}>
                 <p className={`text-xs mb-1 font-medium ${
-                  isDarkMode ? 'text-violet-200' : 'text-violet-900'
+                  isDarkMode ? 'text-orange-200' : 'text-orange-900'
                 }`}>
                   🌐 On Chrome/Edge:
                 </p>
                 <ol className={`text-xs space-y-0.5 list-decimal list-inside ${
-                  isDarkMode ? 'text-violet-300' : 'text-violet-800'
+                  isDarkMode ? 'text-orange-400' : 'text-orange-800'
                 }`}>
                   <li>Click the install icon (⊕) in the address bar</li>
                   <li>Or use Menu → Install SHRP Notes</li>

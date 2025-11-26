@@ -37,7 +37,7 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
             </p>
             <button
               onClick={() => toast.dismiss(t.id)}
-              className="text-xs text-violet-600 dark:text-violet-400 hover:underline text-left"
+              className="text-xs text-orange-600 dark:text-orange-400 hover:underline text-left"
             >
               Got it
             </button>
@@ -146,7 +146,7 @@ export function StorageIndicator({ isDarkMode = true }: { isDarkMode?: boolean }
               ? 'bg-red-500'
               : isNearFull
                 ? 'bg-yellow-500'
-                : 'bg-violet-500'
+                : 'bg-orange-500'
           }`}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
