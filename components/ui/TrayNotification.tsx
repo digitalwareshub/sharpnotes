@@ -66,6 +66,10 @@ export function TrayNotification({
     const baseClasses = 'bg-white/95 border-orange-200/60';
 
     const iconClasses = {
+      info: 'text-blue-600',
+      warning: 'text-yellow-600',
+      success: 'text-green-600',
+      error: 'text-red-600',
     };
 
     return {
