@@ -82,13 +82,16 @@ export function NoteHistory({
 
       {/* Sidebar - full width on mobile (w-80), fixed width on desktop */}
       <aside
-        className="fixed top-0 right-0 h-screen backdrop-blur-xl z-50 flex flex-col transition-all duration-300 border-l "
+        className={`fixed top-0 right-0 h-screen z-50 flex flex-col transition-transform duration-300 border-l border-gray-200 w-80 lg:w-96 bg-white
+          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+          ${isPinned ? 'lg:translate-x-0' : 'lg:translate-x-full'}
+        `}
       >
         {/* Collapse/Expand Button - Desktop only */}
         {!isPinned && (
           <button
             onClick={onTogglePin}
-            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full border border-r-0 rounded-l-lg p-2 hover:opacity-80 "
+            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full border border-r-0 rounded-l-lg p-2 hover:opacity-80 bg-white text-gray-600"
             aria-label="Expand history"
           >
             <span className="text-sm">«</span>
@@ -114,9 +117,9 @@ export function NoteHistory({
         <div className="p-4 border-b flex-shrink-0 border-orange-200/60">
           <div className="flex items-center justify-between mb-3">
             <div>
-              <h2 className={`text-lg font-semibold $'text-gray-900'`}>Note History</h2>
+              <h2 className="text-lg font-semibold text-gray-900">Note History</h2>
               {isChromeAndroid && isOpen && (
-                <p className={`text-xs font-bold mt-1 $'text-orange-600'`}>
+                <p className="text-xs font-bold mt-1 text-orange-600">
                   Tap anywhere on the history<br />pane if the pane doesn&apos;t<br />load completely
                 </p>
               )}
@@ -125,7 +128,7 @@ export function NoteHistory({
               {/* Pin button - Desktop only */}
               <button
                 onClick={onTogglePin}
-                className="hidden lg:block rounded-full p-1.5 "
+                className="hidden lg:block rounded-full p-1.5 text-gray-600 hover:bg-orange-100 hover:text-orange-600"
                 aria-label={isPinned ? 'Unpin history' : 'Pin history'}
                 title={isPinned ? 'Collapse sidebar' : 'Pin sidebar'}
               >
@@ -134,7 +137,7 @@ export function NoteHistory({
               {/* Close button - Mobile only */}
               <button
                 onClick={onClose}
-                className="lg:hidden rounded-full p-1.5 "
+                className="lg:hidden rounded-full p-1.5 text-gray-600 hover:bg-orange-100 hover:text-orange-600"
                 aria-label="Close history"
               >
                 ✕
@@ -148,14 +151,14 @@ export function NoteHistory({
             placeholder="Search notes..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 "
+            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 bg-white"
           />
         </div>
 
         {/* Notes List */}
         <div className="flex-1 overflow-y-auto">
           {isLoading ? (
-            <div className={`p-4 text-center text-sm $'text-gray-600'`}>
+            <div className="p-4 text-center text-sm text-gray-600">
               Loading notes...
             </div>
           ) : notes.length === 0 ? (
