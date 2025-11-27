@@ -18,6 +18,26 @@ export function middleware(request: NextRequest) {
     '/tools/contract-parser': '/',
     '/tools/invoice-extractor': '/',
     '/tools/receipt-scanner': '/',
+    '/tools/pdf-to-excel': '/blog/how-to-organize-meeting-notes',
+    '/tools/invoice-to-excel': '/',
+    '/tools/document-scanner': '/',
+    
+    // Old blog posts about OCR/PDF extraction → redirect to relevant SHRP Notes content
+    '/blog/free-vs-paid-ocr-software-comparison': '/blog/privacy-cost-of-cloud-note-apps',
+    '/blog/how-to-extract-text-from-pdf-complete-guide-2025': '/blog/how-to-organize-meeting-notes',
+    '/blog/ocr-software-comparison-shrp-vs-competitors': '/blog/shrp-vs-notion-vs-obsidian',
+    '/blog/document-digitization-for-law-firms': '/blog/privacy-cost-of-cloud-note-apps',
+    '/blog/document-digitization-guide': '/blog/how-to-organize-meeting-notes',
+    '/blog/ocr-accuracy-standards': '/blog',
+    '/blog/small-business-paperless-office-setup': '/blog',
+    '/blog/free-vs-paid-ocr': '/blog/privacy-cost-of-cloud-note-apps',
+    '/blog/pdf-extraction-guide': '/blog/how-to-organize-meeting-notes',
+    '/blog/best-ocr-software-2025': '/blog',
+    
+    // Webapp OCR variation (malformed URL from analytics)
+    '/webapp ocr': '/webapp',
+    '/webapp%20ocr': '/webapp',
+    '/webapp-ocr': '/webapp',
     
     // Old info pages → redirect to blog or homepage
     '/how-it-works': '/blog',
@@ -25,10 +45,15 @@ export function middleware(request: NextRequest) {
     '/contact': 'https://twitter.com/digi_wares',
     '/faq': '/blog',
     '/signup': '/',
+    '/features': '/',
+    '/use-cases': '/',
+    '/industries': '/',
     
-    // Old legal pages → we have these now, no redirects needed
+    // Old legal pages → we have these now
     '/data-privacy': '/privacy',
     '/security': '/blog/privacy-cost-of-cloud-note-apps',
+    '/terms-of-service': '/terms',
+    '/cookie-policy': '/privacy',
     
     // Old API endpoints → redirect to homepage
     '/api/extract-text': '/',
@@ -37,6 +62,8 @@ export function middleware(request: NextRequest) {
     '/api/invoice-extract': '/',
     '/api/form-extractor': '/',
     '/api/receipt-scan': '/',
+    '/api/ocr': '/',
+    '/api/digitize': '/',
     
     // Common variations/misspellings
     '/extract-pdf': '/blog/how-to-organize-meeting-notes',
@@ -49,10 +76,22 @@ export function middleware(request: NextRequest) {
     '/documentation': '/blog',
     '/pricing': '/',
     '/api-docs': '/blog',
+    '/plans': '/',
+    '/pro': '/',
+    '/enterprise': '/',
     
     // Additional old URLs
     '/restore': '/',
     '/examples': '/',
+    '/gallery': '/',
+    '/testimonials': '/',
+    '/reviews': '/',
+    '/support': '/report',
+    '/help': '/blog',
+    '/getting-started': '/blog',
+    '/tutorial': '/blog',
+    '/guide': '/blog',
+    '/download': '/',
   };
 
   // Check if current path should be redirected

@@ -56,6 +56,70 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Old tools from document digitization site
+      {
+        source: '/tools/pdf-to-excel',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      {
+        source: '/tools/contract-parser',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tools/invoice-extractor',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tools/receipt-scanner',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tools/invoice-to-excel',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tools/document-scanner',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tools/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      // Old preview/demo pages
+      {
+        source: '/preview',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/demo',
+        destination: '/',
+        permanent: true,
+      },
+      // OCR/PDF related pages
+      {
+        source: '/ocr',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/pdf-extract',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      {
+        source: '/extract-pdf',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      // Old image processing services
       {
         source: '/remove-background',
         destination: '/',
@@ -84,6 +148,47 @@ const nextConfig = {
       {
         source: '/how-it-works',
         destination: '/',
+        permanent: true,
+      },
+      // Old info/support pages
+      {
+        source: '/about',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/faq',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/report',
+        permanent: true,
+      },
+      {
+        source: '/support',
+        destination: '/report',
+        permanent: true,
+      },
+      {
+        source: '/help',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/getting-started',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/guide',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/tutorial',
+        destination: '/blog',
         permanent: true,
       },
       // Old utility/info pages
@@ -143,25 +248,55 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
-      // Old blog posts to main blog page
+      // Old blog posts - redirect to most relevant SHRP Notes content
+      {
+        source: '/blog/free-vs-paid-ocr-software-comparison',
+        destination: '/blog/privacy-cost-of-cloud-note-apps',
+        permanent: true,
+      },
       {
         source: '/blog/free-vs-paid-ocr',
-        destination: '/blog',
+        destination: '/blog/privacy-cost-of-cloud-note-apps',
+        permanent: true,
+      },
+      {
+        source: '/blog/how-to-extract-text-from-pdf-complete-guide-2025',
+        destination: '/blog/how-to-organize-meeting-notes',
         permanent: true,
       },
       {
         source: '/blog/extract-text-pdf',
-        destination: '/blog',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      {
+        source: '/blog/ocr-software-comparison-shrp-vs-competitors',
+        destination: '/blog/shrp-vs-notion-vs-obsidian',
+        permanent: true,
+      },
+      {
+        source: '/blog/document-digitization-for-law-firms',
+        destination: '/blog/privacy-cost-of-cloud-note-apps',
+        permanent: true,
+      },
+      {
+        source: '/blog/document-digitization-guide',
+        destination: '/blog/how-to-organize-meeting-notes',
         permanent: true,
       },
       {
         source: '/blog/digitization-guide',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      {
+        source: '/blog/small-business-paperless-office-setup',
         destination: '/blog',
         permanent: true,
       },
       {
         source: '/blog/ocr-security',
-        destination: '/blog',
+        destination: '/blog/privacy-cost-of-cloud-note-apps',
         permanent: true,
       },
       {
@@ -169,6 +304,17 @@ const nextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      {
+        source: '/blog/best-ocr-software-2025',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/pdf-extraction-guide',
+        destination: '/blog/how-to-organize-meeting-notes',
+        permanent: true,
+      },
+      // Photo restoration blog posts (old service)
       {
         source: '/blog/complete-guide-to-photo-restoration',
         destination: '/blog',

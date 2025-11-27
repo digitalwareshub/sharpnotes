@@ -1,95 +1,133 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: '404 - Page Not Found | SHRP Notes',
-  description: 'This page could not be found. SHRP Notes is our new privacy-first note transformation tool.',
-};
+import Link from 'next/link';
+import Header from '@/components/ui/Header';
+import Footer from '@/components/ui/Footer';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full text-center">
-        {/* 404 Visual */}
-        <div className="mb-8">
-          <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-            404
-          </h1>
-          <div className="mt-4">
-            <svg
-              className="w-32 h-32 mx-auto text-orange-500/30"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </div>
-        </div>
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      {/* 404 Section */}
+      <section className="relative py-20 sm:py-32 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            {/* 404 Visual */}
+            <div className="mb-8">
+              <h1 className="text-8xl sm:text-9xl font-bold text-gray-900 mb-4">
+                404
+              </h1>
+              <div className="text-6xl mb-6">😕</div>
+            </div>
 
-        {/* Main Message */}
-        <h2 className="text-3xl font-bold text-white mb-4">Page Not Found</h2>
-        
-        {/* Context about old site */}
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6 mb-8">
-          <p className="text-slate-300 mb-4">
-            Looking for our PDF extraction or OCR service?
-          </p>
-          <p className="text-slate-400 text-sm mb-4">
-            We&apos;ve evolved! <span className="text-orange-400 font-semibold">SHRP Notes</span> is our 
-            new privacy-first note transformation tool that helps you organize meeting notes, extract 
-            tasks, and structure information—all locally in your browser.
-          </p>
-          <p className="text-gray-500 text-xs">
-            Our previous PDF/OCR services have been discontinued as we focus on building the best 
-            note-taking experience.
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="space-y-4">
-          <Link
-            href="/"
-            className="block w-full max-w-md mx-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-lg"
-          >
-            Try SHRP Notes Free →
-          </Link>
-
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link
-              href="/blog"
-              className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors border border-slate-700"
-            >
-              Read Our Blog
-            </Link>
+            {/* Main Message */}
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Page Not Found
+            </h2>
             
-            <Link
-              href="/blog/how-to-organize-meeting-notes"
-              className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors border border-slate-700"
-            >
-              Organize Notes Guide
-            </Link>
+            {/* Context about old site */}
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-6 sm:p-8 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-900 mb-4">
+                <strong>Looking for our PDF extraction or OCR service?</strong>
+              </p>
+              <p className="text-gray-700 mb-4">
+                We&apos;ve evolved! <span className="text-orange-600 font-semibold">SHRP Notes</span> is our 
+                new privacy-first note transformation tool that helps you organize meeting notes, extract 
+                tasks, and structure information—all locally in your browser.
+              </p>
+              <div className="bg-white/50 border border-orange-300 rounded-lg p-4">
+                <p className="text-sm text-gray-600">
+                  <strong>What happened to the old site?</strong><br />
+                  Our previous PDF/OCR services have been discontinued. We&apos;re now focused on building 
+                  the best privacy-first note-taking experience with local NLP processing.
+                </p>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-4 mb-12">
+              <Link
+                href="/webapp"
+                className="inline-block px-8 py-4 bg-orange-600 text-white rounded-xl hover:bg-orange-700 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg shadow-orange-500/30"
+              >
+                Try SHRP Notes Free →
+              </Link>
+
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link
+                  href="/"
+                  className="px-6 py-3 border-2 border-gray-300 text-gray-900 hover:bg-gray-50 rounded-xl transition-colors font-medium"
+                >
+                  Go to Homepage
+                </Link>
+                
+                <Link
+                  href="/blog"
+                  className="px-6 py-3 border-2 border-gray-300 text-gray-900 hover:bg-gray-50 rounded-xl transition-colors font-medium"
+                >
+                  Read Our Blog
+                </Link>
+              </div>
+            </div>
+
+            {/* Popular Pages */}
+            <div className="border-t border-gray-200 pt-8">
+              <p className="text-sm text-gray-500 mb-4">Or explore these popular pages:</p>
+              <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <Link
+                  href="/blog/how-to-organize-meeting-notes"
+                  className="p-4 border border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-md transition-all text-left"
+                >
+                  <div className="text-2xl mb-2">📝</div>
+                  <div className="font-semibold text-gray-900 text-sm mb-1">Organize Notes Guide</div>
+                  <div className="text-xs text-gray-600">Learn how to structure meeting notes</div>
+                </Link>
+                
+                <Link
+                  href="/blog/privacy-cost-of-cloud-note-apps"
+                  className="p-4 border border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-md transition-all text-left"
+                >
+                  <div className="text-2xl mb-2">🔒</div>
+                  <div className="font-semibold text-gray-900 text-sm mb-1">Privacy Analysis</div>
+                  <div className="text-xs text-gray-600">Why local-first matters</div>
+                </Link>
+                
+                <Link
+                  href="/blog/adhd-note-taking-guide"
+                  className="p-4 border border-gray-200 rounded-lg hover:border-orange-500 hover:shadow-md transition-all text-left"
+                >
+                  <div className="text-2xl mb-2">🧠</div>
+                  <div className="font-semibold text-gray-900 text-sm mb-1">ADHD Note-Taking</div>
+                  <div className="text-xs text-gray-600">Systems that actually work</div>
+                </Link>
+              </div>
+            </div>
+
+            {/* Help Text */}
+            <p className="mt-12 text-gray-500 text-sm">
+              Think this page should exist?{' '}
+              <Link
+                href="/report"
+                className="text-orange-600 hover:text-orange-700 underline font-medium"
+              >
+                Report an issue
+              </Link>
+              {' '}or{' '}
+              <a
+                href="https://twitter.com/digi_wares"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 underline font-medium"
+              >
+                contact us on Twitter
+              </a>
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* Help Text */}
-        <p className="mt-8 text-gray-500 text-sm">
-          If you believe this page should exist, please{' '}
-          <a
-            href="https://twitter.com/digi_wares"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-orange-400 hover:text-orange-400 underline"
-          >
-            let us know
-          </a>
-        </p>
-      </div>
+      <Footer />
     </div>
   );
 }
